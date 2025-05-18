@@ -50,8 +50,8 @@ void Vector::swap(int i, int j) {
     elem[j] = temp;
 }
 
-// isvalo vektorių
-void Vector::clear() {
+// istrina vektorių
+void Vector::erase() {
     sz = 0; 
     delete[] elem;
     elem = nullptr;
@@ -91,4 +91,11 @@ void Vector::pop() {
     delete[] elem;
     elem = new_elem;
     sz--;
+}
+
+// išvalo vektorių elementu reiksmes
+void Vector::clear() {
+    for (int i = 0; i < sz; ++i) {
+        elem[i] = 0;
+    }
 }

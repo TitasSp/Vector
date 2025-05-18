@@ -20,8 +20,9 @@ public:
   ~Vector();
 
   // funkcijos
-  void swap(int i, int j);
-  void clear();
-  void insert(int i, double val);
-  void pop();
+  void swap(int i, int j); // apkeičia du elementus vietomis
+  void erase(); // istrina vektorių
+  void insert(int i, double val); // įterpia elementą į vektorių
+  void pop(); // pašalina paskutinį elementą iš vektoriaus
+  void clear(); // išvalo vektorių elementu reiksmes
 };
