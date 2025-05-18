@@ -15,6 +15,12 @@ public:
   double getElem (int id);
   double& operator[](int i);
   const double& operator[](int i) const;
+  
   // destruktorius: atlaisvina klasės objekto resursus
   ~Vector();
+
+  // funkcijos
+  void swap(int i, int j);
+  void clear();
+  void insert(int i, double val);
 };
