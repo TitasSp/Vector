@@ -25,4 +25,5 @@ public:
   void insert(int i, double val); // įterpia elementą į vektorių
   void pop(); // pašalina paskutinį elementą iš vektoriaus
   void clear(); // išvalo vektorių elementu reiksmes
+  void resize(int s); // pakeičia vektoriaus dydį
 };

@@ -36,7 +36,7 @@ const double& Vector::operator[](int i) const {
 // destruktorius: atlaisvina klasės objekto resursus
 Vector::~Vector(){ 
   delete[] elem; 
-  std::cout<< "Object destroyed\n"; 
+  //std::cout<< "Object destroyed\n"; 
 }
 
 // apkeičia du elementus vietomis
@@ -59,8 +59,8 @@ void Vector::erase() {
 
 // įterpia elementą į vektorių
 void Vector::insert(int i, double val) {
-    if (i < 0 || size() <= i) {
-        std::cout << "Element does not exist!" << std::endl;
+    if (i < 0 || size() < i) {
+        throw std::out_of_range("Index out of range in insert()");
         return;
     }
     double* new_elem = new double[sz + 1];
@@ -80,16 +80,7 @@ void Vector::insert(int i, double val) {
 
 // pašalina paskutinį elementą
 void Vector::pop() {
-    if (sz == 0) {
-        std::cout << "Vector is empty!" << std::endl;
-        return;
-    }
-    double* new_elem = new double[sz - 1];
-    for (int j = 0; j < sz - 1; ++j) {
-        new_elem[j] = elem[j];
-    }
-    delete[] elem;
-    elem = new_elem;
+    if (sz == 0) throw std::out_of_range("Pop from empty vector");
     sz--;
 }
 
@@ -98,4 +89,19 @@ void Vector::clear() {
     for (int i = 0; i < sz; ++i) {
         elem[i] = 0;
     }
+}
+
+// pakeičia vektoriaus dydį
+void Vector::resize(int s) {
+    if (s < 0) {
+        std::cout << "Invalid size!" << std::endl;
+        return;
+    }
+    double* new_elem = new double[s];
+    for (int i = 0; i < std::min(sz, s); ++i) {
+        new_elem[i] = elem[i];
+    }
+    delete[] elem;
+    elem = new_elem;
+    sz = s;
 }
