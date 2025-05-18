@@ -23,4 +23,5 @@ public:
   void swap(int i, int j);
   void clear();
   void insert(int i, double val);
+  void pop();
 };

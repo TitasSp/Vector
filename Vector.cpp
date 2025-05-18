@@ -77,3 +77,18 @@ void Vector::insert(int i, double val) {
     elem = new_elem;
     sz++;
 }
+
+// pašalina paskutinį elementą
+void Vector::pop() {
+    if (sz == 0) {
+        std::cout << "Vector is empty!" << std::endl;
+        return;
+    }
+    double* new_elem = new double[sz - 1];
+    for (int j = 0; j < sz - 1; ++j) {
+        new_elem[j] = elem[j];
+    }
+    delete[] elem;
+    elem = new_elem;
+    sz--;
+}
