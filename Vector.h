@@ -14,6 +14,7 @@ public:
   int size() const;
   double getElem (int id);
   double& operator[](int i);
+  const double& operator[](int i) const;
   // destruktorius: atlaisvina klasės objekto resursus
   ~Vector();
 };
