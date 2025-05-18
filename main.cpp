@@ -36,4 +36,8 @@ int main() {
     v3.resize(5); // pakeičiame vektoriaus dydį
     std::cout << "Resize: ";
     std::cout << v3.size() << std::endl;
+
+    v3.add(10); // pridedame elementą į vektoriaus pabaigą
+    std::cout << "Add: ";
+    std::cout << v3[5] << std::endl;
 }

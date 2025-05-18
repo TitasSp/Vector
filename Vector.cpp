@@ -105,3 +105,15 @@ void Vector::resize(int s) {
     elem = new_elem;
     sz = s;
 }
+
+// prideda elementą į vektoriaus pabaigą
+void Vector::add(double val) {
+    double* new_elem = new double[sz + 1];
+    for (int i = 0; i < sz; ++i) {
+        new_elem[i] = elem[i];
+    }
+    new_elem[sz] = val;
+    delete[] elem;
+    elem = new_elem;
+    sz++;
+}

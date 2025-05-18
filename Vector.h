@@ -26,4 +26,5 @@ public:
   void pop(); // pašalina paskutinį elementą iš vektoriaus
   void clear(); // išvalo vektorių elementu reiksmes
   void resize(int s); // pakeičia vektoriaus dydį
+  void add(double val); // prideda elementą į vektoriaus pabaigą
 };
