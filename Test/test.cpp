@@ -100,4 +100,11 @@ TEST_CASE("Vector resize (increase and shrink)", "[Vector]") {
     REQUIRE(v[0] == Approx(1.0));
 }
 
-
+TEST_CASE("Vector shrink", "[Vector]") {
+    Vector v(5, 1.0);
+    v.shrink();
+    REQUIRE(v.size() == 5);
+    v.resize(3);
+    v.shrink();
+    REQUIRE(v.size() == 3);
+}

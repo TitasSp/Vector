@@ -1,8 +1,12 @@
+#pragma once
 #include <iostream>
+
 class Vector{
 private:
+  int cap; // talpa
   int sz;        // elementų skaičius 
   double *elem;  // rodyklė į elementus
+
 public:
   // konstruktoriai  
   Vector();
@@ -27,4 +31,5 @@ public:
   void clear(); // išvalo vektorių elementu reiksmes
   void resize(int s); // pakeičia vektoriaus dydį
   void add(double val); // prideda elementą į vektoriaus pabaigą
+  void shrink(); // sumažina vektoriaus dydį
 };

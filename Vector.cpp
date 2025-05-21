@@ -116,4 +116,16 @@ void Vector::add(double val) {
     delete[] elem;
     elem = new_elem;
     sz++;
+} 
+
+// sumažina vektoriaus dydį
+void Vector::shrink() {
+    if (sz == 0) return;
+    double* new_elem = new double[sz - 1];
+    for (int i = 0; i < sz - 1; ++i) {
+        new_elem[i] = elem[i];
+    }
+    delete[] elem;
+    elem = new_elem;
+    sz--;
 }
