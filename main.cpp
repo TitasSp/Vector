@@ -26,7 +26,7 @@ int main() {
     std::cout << "Insert: ";
     std::cout << v1[0] << std::endl; 
 
-    v1.pop(); // pašaliname paskutinį elementą iš vektoriaus
+    v1.pop_back(); // pašaliname paskutinį elementą iš vektoriaus
     //std::cout << v1[0] << " " << v1[1] << " " << v1[2] << std::endl;
   
     v1.clear(); // išvalome vektorių
@@ -37,7 +37,7 @@ int main() {
     std::cout << "Resize: ";
     std::cout << v3.size() << std::endl;
 
-    v3.add(10); // pridedame elementą į vektoriaus pabaigą
-    std::cout << "Add: ";
+    v3.push_back(10); // pridedame elementą į vektoriaus pabaigą
+    std::cout << "Push_back: ";
     std::cout << v3[5] << std::endl;
 }
