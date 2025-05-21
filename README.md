@@ -30,9 +30,13 @@ int main() {
     std::cout << "First element: " << vec.front() << "\n";
     std::cout << "Last element: " << vec.back() << "\n";
 
+    vec.pop_back();
+
     for (auto val : vec) {
         std::cout << val << " ";
     }
 
     return 0;
 }
+
+```
