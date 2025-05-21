@@ -22,7 +22,7 @@ Diegimas ir paleidimas
 
 1. Klonuokite repozitoriją:
 ```
-git clone https://github.com/TitasSp/Obj2.git
+git clone https://github.com/TitasSp/Vector/tree/v3.0.git
 ```
 
 2. Pereikite į programos direktoriją:
