@@ -42,4 +42,5 @@ int main() {
 ```
 # std::vector ir Vector greičio palyginimo lentelė:
 
-![image](https://github.com/user-attachments/assets/70e2fc71-405f-4754-86a9-197132522e30)
+![image](https://github.com/user-attachments/assets/dea36c61-9839-45ad-bbd6-aa2921fd6fdf)
+
