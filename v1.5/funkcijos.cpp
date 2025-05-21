@@ -1,6 +1,6 @@
 #include "funkcijos.h"
 
-float Vidurkis(vector<int> pazymiai) {
+float Vidurkis(Vector<int> pazymiai) {
     if (pazymiai.empty()) {
         throw invalid_argument("Pazymiu sarasas yra tuscias");
     }
@@ -11,7 +11,7 @@ float Vidurkis(vector<int> pazymiai) {
     return suma / pazymiai.size();
 }
 
-float Mediana(vector<int> pazymiai) {
+float Mediana(Vector<int> pazymiai) {
     if (pazymiai.empty()) {
         throw invalid_argument("Pazymiu sarasas yra tuscias");
     }
@@ -24,7 +24,7 @@ float Mediana(vector<int> pazymiai) {
     }
 }
 
-void GeneruotiPazymius(int pazymiuSk, vector<int>& pazymiai) {
+void GeneruotiPazymius(int pazymiuSk, Vector<int>& pazymiai) {
     if (pazymiuSk <= 0) {
         throw invalid_argument("Pazymiu skaicius turi buti teigiamas");
     }
@@ -88,7 +88,7 @@ void FailuGeneravimas(int studentuSk, int pazymiuSk) {
 
 ///////////////////////////////////////////////////////////////////////////
 void Test1() {
-    vector<int> studentuSkaiciai = {1000, 10000, 100000, 1000000, 10000000};
+    Vector<int> studentuSkaiciai = {1000, 10000, 100000, 1000000, 10000000};
     int pazymiuSk = 10; // pazymiu skaicius
     
     for (int studentuSk : studentuSkaiciai) {
@@ -100,7 +100,7 @@ void Test1() {
 }
 
 void Test2() {
-    vector<string> failai = {"studentai1000.txt", "studentai10000.txt", "studentai100000.txt", "studentai1000000.txt", "studentai10000000.txt"};
+    Vector<string> failai = {"studentai1000.txt", "studentai10000.txt", "studentai100000.txt", "studentai1000000.txt", "studentai10000000.txt"};
 
     
     for (string failas : failai) {
@@ -110,7 +110,7 @@ void Test2() {
         
         out.open("rezultatai.txt", ios::trunc | ios::out | ios::binary);
           
-        vector<Studentas> studentai;
+        Vector<Studentas> studentai;
         NuskaitytiStudentusIsFailo(failas, studentai);
         
         
@@ -146,7 +146,7 @@ void Test2() {
 
 void Test3() {
     //vector<string> failai = {"studentai1000.txt", "studentai10000.txt", "studentai100000.txt", "studentai1000000.txt", "studentai10000000.txt"};
-    vector <string> failai = {"studentai100000.txt", "studentai1000000.txt"};
+    Vector <string> failai = {"studentai100000.txt", "studentai1000000.txt"};
     for (string failas : failai) {
         cout << failas << endl;
         auto start = high_resolution_clock::now();
@@ -154,7 +154,7 @@ void Test3() {
         
         out.open("rezultatai.txt", ios::trunc | ios::out | ios::binary);
           
-        vector<Studentas> studentai;
+        Vector<Studentas> studentai;
         //deque<Studentas> studentai;
         //list<Studentas> studentai;
         NuskaitytiStudentusIsFailo(failas, studentai);
@@ -192,7 +192,7 @@ void Test3() {
 }
 
 void TestStudentas() {
-    vector<int> pazymiai = {8, 9, 10};
+    Vector<int> pazymiai = {8, 9, 10};
     int egzaminas = 9;
     Studentas s("Jonas", "Jonaitis", pazymiai, egzaminas);
 
@@ -230,7 +230,7 @@ void TestStudentas() {
     ss >> s6;
     assert(s6.getVardas() == "Petras");
     assert(s6.getPavarde() == "Petraitis");
-    assert(s6.getPazymiai() == vector<int>({10, 8, 7}));
+    assert(s6.getPazymiai() == Vector<int>({10, 8, 7}));
     assert(s6.getEgzaminas() == 9);
 
     // Tikrinam operator<<

@@ -1,60 +1,111 @@
-# ObjPirmaUzduotis
+# Studentų Pažymių Valdymo Sistema
 
-Projekto naudojimo instrukcija:
-Atidarykite projekto aplankala ir paleiskite program.exe
+Apie programą
+-------------------------------------------------------------------
+Ši programa skirta studentų pažymių ir galutinio įvertinimo valdymui. Sistema leidžia įvesti, generuoti, skaityti iš failų bei apdoroti studentų duomenis, apskaičiuoti galutinius įvertinimus ir rūšiuoti studentus pagal įvairius kriterijus.
 
-Arba 
+Funkcionalumas
+-------------------------------------------------------------------
 
-1) Atidarykite terminala projekto direktorijoje (cd C:\"projekto direktorija")
-2) Sukurkite build direktorija 
-(mkdir build
-
-cd build)
-3) Paleiskite CMake, norint sugeneruoti build failus (cmake ..)
-4) Kompiliuokite projekta (cmake --build .)
-5) Paleiskite faila (.\ObjCppProject.exe)
+Duomenų įvedimas: galimybė rankiniu būdu įvesti studentų vardus, pavardes ir pažymius
+Atsitiktinis generavimas: automatinis studentų ir jų pažymių generavimas
+Duomenų nuskaitymas: efektyvus didelių duomenų failų nuskaitymas
+Duomenų išsaugojimas: rezultatų išsaugojimas į tekstinius failus
+Skaičiavimai: galutinio balo skaičiavimas naudojant vidurkį arba medianą
+Rūšiavimas: studentų rūšiavimas pagal vardą, pavardę ar galutinį balą
+Grupavimas: studentų skirstymas į "kietiakus" (≥5) ir "vargšiukus" (<5)
+Efektyvumo testavimas: programos veikimo greičio matavimas ir optimizavimas
 
 -------------------------------------------------------------------
-## Perdengtų metodų aprašymas
+Diegimas ir paleidimas
+----------------------------------------------------------------
 
-### Duomenų įvestis
+1. Klonuokite repozitoriją:
+```
+git clone https://github.com/TitasSp/Obj2.git
+```
 
-Programoje yra keli būdai įvesti duomenis apie studentus:
+2. Pereikite į programos direktoriją:
+```
+cd C:\"projekto direktorija"
+```
 
-1. **Rankiniu būdu**:
-   - Naudojant `istream& operator>>(istream& in, Studentas& studentas)` metodą, galima įvesti studento vardą, pavardę, pažymius ir egzamino rezultatą rankiniu būdu per konsolę.
-   - Pavyzdys:
-     ```
-     Jonas Jonaitis 8 9 10 7 6 5
-     ```
-     Čia paskutinis skaičius (5) yra egzamino rezultatas, o likę skaičiai – pažymiai.
+3. Sukompiliuokite programą:
+```
+g++ -o program main.cpp funkcijos.cpp -std=c++17
+```
 
-2. **Automatiniu būdu**:
-   - Naudojant  funkciją, galima sugeneruoti atsitiktinius studentų duomenis. Ši funkcija priima studentų skaičių ir konteinerį, į kurį bus įrašyti sugeneruoti studentai.
-   - Pavyzdys:
-     ```cpp
-     vector<Studentas> studentai;
-     GeneruotiStudentus(100, studentai);
-     ```
+4. Paleiskite programą:
+```
+./programa
+```
 
-3. **Iš failo**:
-   - Naudojant  funkciją, galima nuskaityti studentų duomenis iš failo. Failas turi būti tinkamai suformatuotas (pirmoje eilutėje – antraštės, o toliau – studentų duomenys).
-   - Pavyzdys:
-     ```cpp
-     vector<Studentas> studentai;
-     NuskaitytiStudentusIsFailo("studentai1000.txt", studentai);
-     ```
+Arba naudojant CMake
+----------------------------------------------------------------
+1. Atidarykite projekto direktoriją terminale:
+```
+cd C:\"projekto direktorija"
+```
+2. Sukurkite build direktoriją:
+```
+mkdir build
+```
+3. Pereikite į build direktoriją:
+```
+cd build
+```
+4. Paleiskite CMake, norint sugeneruoti build failus:
+```
+cmake ..
+```
+5. Kompiliuokite projekta:
+```
+cmake --build .
+```
+6. Paleiskite faila: 
+```
+.\ObjCppProject.exe
+```
+
+Naudojimas
+----------------------------------------------------------------
+Programa naudojama per terminalą. Paleidus programą, sekite pateikiamus nurodymus:
+
+Pasirinkite konteinerio tipą (vector, deque arba list)
+Pasirinkite duomenų įvedimo būdą:
+
+Įvesti duomenis rankiniu būdu
+Generuoti pažymius atsitiktinai
+Generuoti ir pažymius, ir studentų vardus/pavardes
+Nuskaityti duomenis iš failo
+
+
+Pasirinkite skaičiavimo būdą (vidurkis arba mediana)
+Pasirinkite rezultatų išvesties tipą (konsolė arba failas)
+Pasirinkite rūšiavimo būdą
+
+Releasai
+----------------------------------------------------------------
+
+## 🔹 v1.5
+- `Studentas` klasė paveldi iš abstrakčios `Žmogus` klasės.
 
 ---
 
-### Duomenų išvestis
+## 🔹 v1.2
+- Įdiegti „Rule of Five“ metodai klasei `Studentas`.
 
-Programoje taip pat yra keli būdai išvesti duomenis apie studentus:
+---
 
-1. **Į ekraną**
+## 🔹 v1.1
+- `Studentas` perdarytas iš struktūros į klasę.
+- Pridėti getteriai ir setteriai.
 
-2. **Į failą**
+---
 
+## 🔹 v1.0
+- Palaikomi `vector`, `list`, `deque` konteineriai.
+- Pridėtas `CMakeLists.txt` diegimui.
 
 ---------------------------------------------------------------------------------------------
 Testavimo sistemos parametrai:
@@ -258,4 +309,3 @@ Studentu nuskaitymas is failo uztruko: 1403 ms
 Studentu rikiavimas uztruko: 179 ms
 Studentu skaidymas ir irasymas i failus uztruko: 8881 ms
 Is viso uztruko: 13072 ms
-

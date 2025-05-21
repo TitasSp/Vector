@@ -1,12 +1,13 @@
 #include "mano_lib.h"
 #include "funkcijos.h"
+#include "../Vector.h"
 
 int main() {
     
     TestStudentas(); // testuoja Studentas klase
 
     try {
-        vector<Studentas> studentai; 
+        Vector<Studentas> studentai; 
 
         int konteinerioTipas; 
         cout << "Pasirinkite konteinerio tipa(1 - deque, 2 - list, 3 - vector):\n";
@@ -19,7 +20,7 @@ int main() {
             list<Studentas> studentai;
         } else {
             cout << "Naudojamas vector" << endl;
-            vector<Studentas> studentai; 
+            Vector<Studentas> studentai; 
         }
         //deque<Studentas> studentai; 
         //list<Studentas> studentai;

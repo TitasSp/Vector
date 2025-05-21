@@ -1,8 +1,9 @@
 #include "mano_lib.h"
+#include "../Vector.h"
 
-void GeneruotiPazymius(int pazymiuSk, vector<int>& pazymiai);
-float Vidurkis(vector<int> pazymiai);
-float Mediana(vector<int> pazymiai);
+void GeneruotiPazymius(int pazymiuSk, Vector<int>& pazymiai);
+float Vidurkis(Vector<int> pazymiai);
+float Mediana(Vector<int> pazymiai);
 
 // Abstrakti bazinė klasė
 class Zmogus {
@@ -30,14 +31,14 @@ class Zmogus {
 class Studentas: public Zmogus {
     private:
        
-        vector<int> pazymiai;
+        Vector<int> pazymiai;
         int egzaminas;
         float galutinis;
     
     public:
         // Constructors
         Studentas() : egzaminas(0), galutinis(0.0f) {} // Default constructor
-        Studentas(const string& vardas, const string& pavarde, const vector<int>& pazymiai, int egzaminas)
+        Studentas(const string& vardas, const string& pavarde, const Vector<int>& pazymiai, int egzaminas)
             : Zmogus(vardas, pavarde), pazymiai(pazymiai), egzaminas(egzaminas), galutinis(0.0f) {}
     
 
@@ -89,15 +90,15 @@ class Studentas: public Zmogus {
         // Getters
         string getVardas() const { return vardas; }
         string getPavarde() const { return pavarde; }
-        vector<int> getPazymiai() const { return pazymiai; }
-        vector<int>& getPazymiaiRef() { return pazymiai; }
+        Vector<int> getPazymiai() const { return pazymiai; }
+        Vector<int>& getPazymiaiRef() { return pazymiai; }
         int getEgzaminas() const { return egzaminas; }
         float getGalutinis() const { return galutinis; }
     
         // Setters
         void setVardas(const string& v) { vardas = v; }
         void setPavarde(const string& p) { pavarde = p; }
-        void setPazymiai(const vector<int>& p) { pazymiai = p; }
+        void setPazymiai(const Vector<int>& p) { pazymiai = p; }
         void setEgzaminas(int e) { egzaminas = e; }
         void setGalutinis(float g) { galutinis = g; }
     
@@ -126,7 +127,7 @@ class Studentas: public Zmogus {
 
             // Read grades and exam score
             int pazymys;
-            vector<int> tempPazymiai;
+            Vector<int> tempPazymiai;
             while (in >> pazymys) {
                 tempPazymiai.push_back(pazymys);
             }
@@ -167,15 +168,15 @@ class Studentas: public Zmogus {
         if (studentuSk <= 0) {
             throw invalid_argument("Studentu skaicius turi buti teigiamas");
         }
-        vector<string> vardai = {"Jonas", "Petras", "Antanas", "Tomas", "Marius"};
-        vector<string> pavardes = {"Jonaitis", "Petraitis", "Antanaitis", "Tomaitis", "Maraitis"};
+        Vector<string> vardai = {"Jonas", "Petras", "Antanas", "Tomas", "Marius"};
+        Vector<string> pavardes = {"Jonaitis", "Petraitis", "Antanaitis", "Tomaitis", "Maraitis"};
     
         for (int i = 0; i < studentuSk; i++) {
             Studentas studentas;
             studentas.setVardas(vardai[rand() % vardai.size()]);
             studentas.setPavarde(pavardes[rand() % pavardes.size()]);
             
-            vector<int> pazymiai;
+            Vector<int> pazymiai;
             GeneruotiPazymius(rand() % 10 + 1, pazymiai);
             studentas.setPazymiai(pazymiai);
             
@@ -196,7 +197,7 @@ class Studentas: public Zmogus {
         string line;
         getline(in, line); // Skip the header line
 
-        if constexpr (is_same<Container, vector<Studentas>>::value) {
+        if constexpr (is_same<Container, Vector<Studentas>>::value) {
             studentai.reserve(10000000); // Reserve memory for vector or deque
         }
 
@@ -301,8 +302,8 @@ void StudentuAtskirimas(Container& studentai) {
         throw runtime_error("Nepavyko atidaryti failo");
     }
 
-    vector<Studentas> vargsiukai;
-    vector<Studentas> kieti;
+    Vector<Studentas> vargsiukai;
+    Vector<Studentas> kieti;
 
     auto start = high_resolution_clock::now();
 
