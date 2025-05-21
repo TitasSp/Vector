@@ -107,7 +107,7 @@ void Vector::resize(int s) {
 }
 
 // prideda elementą į vektoriaus pabaigą
-void Vector::add(double val) {
+void Vector::push_back(double val) {
     double* new_elem = new double[sz + 1];
     for (int i = 0; i < sz; ++i) {
         new_elem[i] = elem[i];
@@ -119,7 +119,7 @@ void Vector::add(double val) {
 } 
 
 // sumažina vektoriaus dydį
-void Vector::shrink() {
+void Vector::shrink_to_fit() {
     if (sz == 0) return;
     double* new_elem = new double[sz - 1];
     for (int i = 0; i < sz - 1; ++i) {

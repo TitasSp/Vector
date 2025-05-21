@@ -34,10 +34,10 @@ TEST_CASE("Vector operator[] bounds", "[Vector]") {
     REQUIRE_THROWS_AS(v[2], std::out_of_range);
 }
 
-TEST_CASE("Vector add (push_back equivalent)", "[Vector]") {
+TEST_CASE("Vector push_back", "[Vector]") {
     Vector v;
-    v.add(1.1);
-    v.add(2.2);
+    v.push_back(1.1);
+    v.push_back(2.2);
     REQUIRE(v.size() == 2);
     REQUIRE(v[0] == Approx(1.1));
     REQUIRE(v[1] == Approx(2.2));
@@ -45,8 +45,8 @@ TEST_CASE("Vector add (push_back equivalent)", "[Vector]") {
 
 TEST_CASE("Vector pop", "[Vector]") {
     Vector v;
-    v.add(1.0);
-    v.add(2.0);
+    v.push_back(1.0);
+    v.push_back(2.0);
     v.pop();
     REQUIRE(v.size() == 1);
     REQUIRE(v[0] == Approx(1.0));
@@ -57,8 +57,8 @@ TEST_CASE("Vector pop", "[Vector]") {
 
 TEST_CASE("Vector insert", "[Vector]") {
     Vector v;
-    v.add(1);
-    v.add(3);
+    v.push_back(1);
+    v.push_back(3);
     v.insert(1, 2); // now should be 1, 2, 3
     REQUIRE(v.size() == 3);
     REQUIRE(v[0] == Approx(1));
@@ -102,9 +102,9 @@ TEST_CASE("Vector resize (increase and shrink)", "[Vector]") {
 
 TEST_CASE("Vector shrink", "[Vector]") {
     Vector v(5, 1.0);
-    v.shrink();
+    v.shrink_to_fit();
     REQUIRE(v.size() == 5);
     v.resize(3);
-    v.shrink();
+    v.shrink_to_fit();
     REQUIRE(v.size() == 3);
 }
