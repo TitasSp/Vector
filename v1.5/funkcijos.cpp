@@ -1,4 +1,5 @@
 #include "funkcijos.h"
+#include "../Vector.h"
 
 float Vidurkis(Vector<int> pazymiai) {
     if (pazymiai.empty()) {
@@ -100,7 +101,7 @@ void Test1() {
 }
 
 void Test2() {
-    Vector<string> failai = {"studentai1000.txt", "studentai10000.txt", "studentai100000.txt", "studentai1000000.txt", "studentai10000000.txt"};
+    Vector<string> failai = {"studentai100000.txt", "studentai1000000.txt", "studentai10000000.txt"};
 
     
     for (string failas : failai) {
@@ -122,7 +123,7 @@ void Test2() {
                 studentas.setGalutinis(0.4 * Vidurkis(studentas.getPazymiai()) + 0.6 * studentas.getEgzaminas());
         }
 
-        RikiuotiStudentus(studentai, 0);
+        RikiuotiStudentus(studentai, 3);
 
         // irasoma dalimis, kad neuzimtu per daug atminties
         const size_t chunkSize = 100000; // daliu dydis
@@ -135,7 +136,8 @@ void Test2() {
                
             }
         }
-        StudentuAtskirimas(studentai);
+        //StudentuAtskirimas(studentai);
+        SkaidytiStudentus3Strategija(studentai);
         auto end = high_resolution_clock::now();
         auto duration = duration_cast<milliseconds>(end - start);
         cout << "Is viso uztruko: " << duration.count() << " ms" << endl;
@@ -146,7 +148,7 @@ void Test2() {
 
 void Test3() {
     //vector<string> failai = {"studentai1000.txt", "studentai10000.txt", "studentai100000.txt", "studentai1000000.txt", "studentai10000000.txt"};
-    Vector <string> failai = {"studentai100000.txt", "studentai1000000.txt"};
+    vector <string> failai = {"studentai100000.txt", "studentai1000000.txt"};
     for (string failas : failai) {
         cout << failas << endl;
         auto start = high_resolution_clock::now();
@@ -154,7 +156,7 @@ void Test3() {
         
         out.open("rezultatai.txt", ios::trunc | ios::out | ios::binary);
           
-        Vector<Studentas> studentai;
+        vector<Studentas> studentai;
         //deque<Studentas> studentai;
         //list<Studentas> studentai;
         NuskaitytiStudentusIsFailo(failas, studentai);
@@ -167,7 +169,7 @@ void Test3() {
            
                 studentas.setGalutinis ( 0.4 * Vidurkis(studentas.getPazymiai()) + 0.6 * studentas.getEgzaminas());
         }
-
+        
         RikiuotiStudentus(studentai, 3);
 
         // rasoma dalimis, kad neuzimtu per daug atminties
@@ -181,6 +183,7 @@ void Test3() {
                 out << left << setw(15) << it->getVardas() << setw(20) << it->getPavarde() << fixed << setprecision(2) << it->getGalutinis() << endl;
             }
         }
+        
         //StudentuAtskirimas(studentai);
         SkaidytiStudentus3Strategija(studentai);
         auto end = high_resolution_clock::now();

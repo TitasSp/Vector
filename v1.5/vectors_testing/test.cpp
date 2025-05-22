@@ -1,6 +1,9 @@
 // Test vector performance
 #include "../../Vector.h"
 #include "../mano_lib.h"
+#include "../funkcijos.cpp"
+
+void FailTest();
 
 template <typename V>
 int count_reallocations(V& vec, size_t N) {
@@ -52,6 +55,13 @@ main(){
 
     int my_reallocs = count_reallocations(myvec, N);
     cout << "Vector reallocations with 100000000: " << my_reallocs << "\n";
+
+
+    for (int i = 0; i < 3; i++){
+        cout << "Testas " << i + 1 << endl;
+        Test2();
+        cout << endl;
+    }
 
     return 0;
 }

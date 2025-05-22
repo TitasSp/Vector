@@ -384,7 +384,7 @@ void SkaidytiStudentus3Strategija(Container& studentai) {
     // Įrašome "vargšyku" į failą
     ofstream outVargsiukai("stud_b.txt");
     if (!outVargsiukai.is_open()) {
-        throw runtime_error("Nepavyko atidaryti failo");
+        throw runtime_error("Nepavyko atidaryti failo"); 
     }
     outVargsiukai << left << setw(15) << "Vardas" << setw(20) << "Pavarde" << "Galutinis" << endl;
     for (const auto& studentas : vargsiukai) {
