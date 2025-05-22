@@ -1,0 +1,81 @@
+.TH "Catch::Matchers::Impl::MatcherBase< T >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Matchers::Impl::MatcherBase< T >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::Matchers::Impl::MatcherUntypedBase\fP, and \fBCatch::Matchers::Impl::MatcherMethod< T >\fP\&.
+.PP
+Inherited by \fBCatch::Matchers::Exception::ExceptionMessageMatcher\fP, \fBCatch::Matchers::Floating::WithinAbsMatcher\fP, \fBCatch::Matchers::Floating::WithinRelMatcher\fP, \fBCatch::Matchers::Floating::WithinUlpsMatcher\fP, \fBCatch::Matchers::Generic::PredicateMatcher< T >\fP, \fBCatch::Matchers::StdString::RegexMatcher\fP, \fBCatch::Matchers::StdString::StringMatcherBase\fP, \fBCatch::Matchers::Vector::ApproxMatcher< T, AllocComp, AllocMatch >\fP, \fBCatch::Matchers::Vector::ContainsElementMatcher< T, Alloc >\fP, \fBCatch::Matchers::Vector::ContainsMatcher< T, AllocComp, AllocMatch >\fP, \fBCatch::Matchers::Vector::EqualsMatcher< T, AllocComp, AllocMatch >\fP, and \fBCatch::Matchers::Vector::UnorderedEqualsMatcher< T, AllocComp, AllocMatch >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatchAllOf\fP< T > \fBoperator&&\fP (\fBMatcherBase\fP const &other) const"
+.br
+.ti -1c
+.RI "\fBMatchAnyOf\fP< T > \fBoperator||\fP (\fBMatcherBase\fP const &other) const"
+.br
+.ti -1c
+.RI "\fBMatchNotOf\fP< T > \fBoperator!\fP () const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Matchers::Impl::MatcherUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP ()=default"
+.br
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP (\fBMatcherUntypedBase\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP & \fBoperator=\fP (\fBMatcherUntypedBase\fP const &)=delete"
+.br
+.ti -1c
+.RI "std::string \fBtoString\fP () const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Matchers::Impl::MatcherMethod< T >\fP
+.in +1c
+.ti -1c
+.RI "virtual bool \fBmatch\fP (T const &arg) const=0"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Member Functions inherited from \fBCatch::Matchers::Impl::MatcherUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~MatcherUntypedBase\fP ()"
+.br
+.ti -1c
+.RI "virtual std::string \fBdescribe\fP () const =0"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBCatch::Matchers::Impl::MatcherUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBm_cachedToString\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T> \fBMatchNotOf\fP< T > \fBCatch::Matchers::Impl::MatcherBase\fP< T >::operator! () const"
+
+.SS "template<typename T> \fBMatchAllOf\fP< T > \fBCatch::Matchers::Impl::MatcherBase\fP< T >::operator&& (\fBMatcherBase\fP< T > const & other) const"
+
+.SS "template<typename T> \fBMatchAnyOf\fP< T > \fBCatch::Matchers::Impl::MatcherBase\fP< T >::operator|| (\fBMatcherBase\fP< T > const & other) const"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

@@ -1,0 +1,82 @@
+.TH "Zmogus" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Zmogus
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <funkcijos\&.h>\fP
+.PP
+Inherited by \fBStudentas\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBZmogus\fP ()"
+.br
+.ti -1c
+.RI "\fBZmogus\fP (const string &v, const string &p)"
+.br
+.ti -1c
+.RI "virtual \fB~Zmogus\fP ()=default"
+.br
+.ti -1c
+.RI "virtual void \fBspausdinti\fP () const =0"
+.br
+.ti -1c
+.RI "string \fBgetVardas\fP () const"
+.br
+.ti -1c
+.RI "string \fBgetPavarde\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetVardas\fP (const string &v)"
+.br
+.ti -1c
+.RI "void \fBsetPavarde\fP (const string &p)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBvardas\fP"
+.br
+.ti -1c
+.RI "string \fBpavarde\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Zmogus::Zmogus ()\fR [inline]\fP"
+
+.SS "Zmogus::Zmogus (const string & v, const string & p)\fR [inline]\fP"
+
+.SS "virtual Zmogus::~Zmogus ()\fR [virtual]\fP, \fR [default]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "string Zmogus::getPavarde () const\fR [inline]\fP"
+
+.SS "string Zmogus::getVardas () const\fR [inline]\fP"
+
+.SS "void Zmogus::setPavarde (const string & p)\fR [inline]\fP"
+
+.SS "void Zmogus::setVardas (const string & v)\fR [inline]\fP"
+
+.SS "virtual void Zmogus::spausdinti () const\fR [pure virtual]\fP"
+
+.PP
+Implemented in \fBStudentas\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "string Zmogus::pavarde\fR [protected]\fP"
+
+.SS "string Zmogus::vardas\fR [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

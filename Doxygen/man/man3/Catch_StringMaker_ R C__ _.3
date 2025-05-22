@@ -1,0 +1,35 @@
+.TH "Catch::StringMaker< R C::* >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::StringMaker< R C::* >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static std::string \fBconvert\fP (R C::*p)"
+.br
+.ti -1c
+.RI "static std::enable_if<\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBconvert\fP (const Fake &value)"
+.br
+.ti -1c
+.RI "static std::enable_if<!\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBconvert\fP (const Fake &value)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "static std::enable_if<\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBCatch::StringMaker\fP< R C::*, typename >::convert (const Fake & value)\fR [inline]\fP, \fR [static]\fP"
+
+.SS "static std::enable_if<!\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBCatch::StringMaker\fP< R C::*, typename >::convert (const Fake & value)\fR [inline]\fP, \fR [static]\fP"
+
+.SS "template<typename R, typename C> static std::string \fBCatch::StringMaker\fP< R C::* >::convert (R C::* p)\fR [inline]\fP, \fR [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

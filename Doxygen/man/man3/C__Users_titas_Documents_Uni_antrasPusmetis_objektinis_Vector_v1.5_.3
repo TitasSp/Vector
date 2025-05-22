@@ -1,0 +1,300 @@
+.TH "v1.5 Directory Reference" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+v1.5 Directory Reference
+.SH SYNOPSIS
+.br
+.PP
+.SS "Directories"
+
+.in +1c
+.ti -1c
+.RI "directory \fBvectors_testing\fP"
+.br
+.in -1c
+.SS "Files"
+
+.in +1c
+.ti -1c
+.RI "file \fBfunkcijos\&.cpp\fP"
+.br
+.ti -1c
+.RI "file \fBfunkcijos\&.h\fP"
+.br
+.ti -1c
+.RI "file \fBmain\&.cpp\fP"
+.br
+.ti -1c
+.RI "file \fBmano_lib\&.h\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SH "Apie programą"
+.PP
+Ši programa skirta studentų pažymių ir galutinio įvertinimo valdymui\&. Sistema leidžia įvesti, generuoti, skaityti iš failų bei apdoroti studentų duomenis, apskaičiuoti galutinius įvertinimus ir rūšiuoti studentus pagal įvairius kriterijus\&.
+.SH "Funkcionalumas"
+.PP
+Duomenų įvedimas: galimybė rankiniu būdu įvesti studentų vardus, pavardes ir pažymius Atsitiktinis generavimas: automatinis studentų ir jų pažymių generavimas Duomenų nuskaitymas: efektyvus didelių duomenų failų nuskaitymas Duomenų išsaugojimas: rezultatų išsaugojimas į tekstinius failus Skaičiavimai: galutinio balo skaičiavimas naudojant vidurkį arba medianą Rūšiavimas: studentų rūšiavimas pagal vardą, pavardę ar galutinį balą Grupavimas: studentų skirstymas į "kietiakus" (≥5) ir "vargšiukus" (<5) Efektyvumo testavimas: programos veikimo greičio matavimas ir optimizavimas
+
+.PP
+.PP
+ 
+.SH "Diegimas ir paleidimas"
+.PP
+.IP "1." 4
+Klonuokite repozitoriją: 
+.PP
+.nf
+git clone https://github\&.com/TitasSp/Vector/tree/v3\&.0\&.git
+
+.fi
+.PP
+
+.IP "2." 4
+Pereikite į programos direktoriją: 
+.PP
+.nf
+cd C:\\"projekto direktorija"
+
+.fi
+.PP
+
+.IP "3." 4
+Sukompiliuokite programą: 
+.PP
+.nf
+g++ \-o program main\&.cpp funkcijos\&.cpp \-std=c++17
+
+.fi
+.PP
+
+.IP "4." 4
+Paleiskite programą: 
+.PP
+.nf
+\&./programa
+
+.fi
+.PP
+
+.PP
+.SH "Arba naudojant CMake"
+.PP
+.IP "1." 4
+Atidarykite projekto direktoriją terminale: 
+.PP
+.nf
+cd C:\\"projekto direktorija"
+
+.fi
+.PP
+
+.IP "2." 4
+Sukurkite build direktoriją: 
+.PP
+.nf
+mkdir build
+
+.fi
+.PP
+
+.IP "3." 4
+Pereikite į build direktoriją: 
+.PP
+.nf
+cd build
+
+.fi
+.PP
+
+.IP "4." 4
+Paleiskite CMake, norint sugeneruoti build failus: 
+.PP
+.nf
+cmake \&.\&.
+
+.fi
+.PP
+
+.IP "5." 4
+Kompiliuokite projekta: 
+.PP
+.nf
+cmake \-\-build \&.
+
+.fi
+.PP
+
+.IP "6." 4
+Paleiskite faila: 
+.PP
+.nf
+\&.\\ObjCppProject\&.exe
+
+.fi
+.PP
+
+.PP
+.SH "Naudojimas"
+.PP
+Programa naudojama per terminalą\&. Paleidus programą, sekite pateikiamus nurodymus:
+
+.PP
+Pasirinkite konteinerio tipą (vector, deque arba list) Pasirinkite duomenų įvedimo būdą:
+
+.PP
+Įvesti duomenis rankiniu būdu Generuoti pažymius atsitiktinai Generuoti ir pažymius, ir studentų vardus/pavardes Nuskaityti duomenis iš failo
+
+.PP
+Pasirinkite skaičiavimo būdą (vidurkis arba mediana) Pasirinkite rezultatų išvesties tipą (konsolė arba failas) Pasirinkite rūšiavimo būdą
+.SH "Releasai"
+.PP
+.SH "🔹 v1\&.5"
+.PP
+.IP "\(bu" 2
+\fR\fBStudentas\fP\fP klasė paveldi iš abstrakčios \fRŽmogus\fP klasės\&.
+.PP
+
+.PP
+.PP
+.SH "🔹 v1\&.2"
+.PP
+.IP "\(bu" 2
+Įdiegti „Rule of Five“ metodai klasei \fR\fBStudentas\fP\fP\&.
+.PP
+
+.PP
+.PP
+.SH "🔹 v1\&.1"
+.PP
+.IP "\(bu" 2
+\fR\fBStudentas\fP\fP perdarytas iš struktūros į klasę\&.
+.IP "\(bu" 2
+Pridėti getteriai ir setteriai\&.
+.PP
+
+.PP
+.PP
+.SH "🔹 v1\&.0"
+.PP
+.IP "\(bu" 2
+Palaikomi \fRvector\fP, \fRlist\fP, \fRdeque\fP konteineriai\&.
+.IP "\(bu" 2
+Pridėtas \fRCMakeLists\&.txt\fP diegimui\&.
+.PP
+
+.PP
+.PP
+ 
+.SH "Testavimo sistemos parametrai:"
+.PP
+Processor 12th Gen Intel(R) Core(TM) i5-1235U, 1300 Mhz, 10 Core(s), 12 Logical Processor(s)
+
+.PP
+Installed Physical Memory (RAM) 16\&.0 GB
+
+.PP
+SSD 512 GB NVMe Micron_2400_MTFDKBA512QFM
+
+.PP
+.PP
+ 
+.SH "Testai su klasemis (naudojant vector)"
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 3689 ms Studentu rikiavimas uztruko: 158 ms Studentu skaidymas ir irasymas i failus uztruko: 2043 ms Is viso uztruko: 8654 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 20653 ms Studentu rikiavimas uztruko: 919 ms Studentu skaidymas ir irasymas i failus uztruko: 14782 ms Is viso uztruko: 42303 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 3414 ms Studentu rikiavimas uztruko: 157 ms Studentu skaidymas ir irasymas i failus uztruko: 2561 ms Is viso uztruko: 7009 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 21611 ms Studentu rikiavimas uztruko: 904 ms Studentu skaidymas ir irasymas i failus uztruko: 14855 ms Is viso uztruko: 42616 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 3829 ms Studentu rikiavimas uztruko: 187 ms Studentu skaidymas ir irasymas i failus uztruko: 2722 ms Is viso uztruko: 7787 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 19429 ms Studentu rikiavimas uztruko: 820 ms Studentu skaidymas ir irasymas i failus uztruko: 15109 ms Is viso uztruko: 40092 ms
+
+.PP
+.PP
+ 
+.SH "Testai su strukturomis (naudojant vector)"
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 3392 ms Studentu rikiavimas uztruko: 159 ms Studentu skaidymas ir irasymas i failus uztruko: 1433 ms Is viso uztruko: 6611 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 19578 ms Studentu rikiavimas uztruko: 783 ms Studentu skaidymas ir irasymas i failus uztruko: 8246 ms Is viso uztruko: 36521 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 3958 ms Studentu rikiavimas uztruko: 194 ms Studentu skaidymas ir irasymas i failus uztruko: 1645 ms Is viso uztruko: 7404 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 20860 ms Studentu rikiavimas uztruko: 768 ms Studentu skaidymas ir irasymas i failus uztruko: 8065 ms Is viso uztruko: 37336 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 3283 ms Studentu rikiavimas uztruko: 133 ms Studentu skaidymas ir irasymas i failus uztruko: 1328 ms Is viso uztruko: 6050 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 20787 ms Studentu rikiavimas uztruko: 938 ms Studentu skaidymas ir irasymas i failus uztruko: 8911 ms Is viso uztruko: 38931 ms
+.SH "Flag testai:"
+.PP
+.SH "O1 flag, \&.exe failo dydis: 309 KB"
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 261 ms Studentu rikiavimas uztruko: 31 ms Studentu skaidymas ir irasymas i failus uztruko: 1184 ms Is viso uztruko: 3311 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1393 ms Studentu rikiavimas uztruko: 158 ms Studentu skaidymas ir irasymas i failus uztruko: 9316 ms Is viso uztruko: 13442 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 319 ms Studentu rikiavimas uztruko: 22 ms Studentu skaidymas ir irasymas i failus uztruko: 1481 ms Is viso uztruko: 2275 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1406 ms Studentu rikiavimas uztruko: 180 ms Studentu skaidymas ir irasymas i failus uztruko: 9146 ms Is viso uztruko: 13562 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 238 ms Studentu rikiavimas uztruko: 22 ms Studentu skaidymas ir irasymas i failus uztruko: 1150 ms Is viso uztruko: 1909 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1671 ms Studentu rikiavimas uztruko: 208 ms Studentu skaidymas ir irasymas i failus uztruko: 9555 ms Is viso uztruko: 15102 ms
+.SH "O2 flag, \&.exe failo dydis: 273 KB"
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 278 ms Studentu rikiavimas uztruko: 31 ms Studentu skaidymas ir irasymas i failus uztruko: 1210 ms Is viso uztruko: 3395 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1385 ms Studentu rikiavimas uztruko: 217 ms Studentu skaidymas ir irasymas i failus uztruko: 9109 ms Is viso uztruko: 13341 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 239 ms Studentu rikiavimas uztruko: 31 ms Studentu skaidymas ir irasymas i failus uztruko: 1452 ms Is viso uztruko: 2166 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1384 ms Studentu rikiavimas uztruko: 202 ms Studentu skaidymas ir irasymas i failus uztruko: 8809 ms Is viso uztruko: 12908 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 247 ms Studentu rikiavimas uztruko: 33 ms Studentu skaidymas ir irasymas i failus uztruko: 1376 ms Is viso uztruko: 2131 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1365 ms Studentu rikiavimas uztruko: 198 ms Studentu skaidymas ir irasymas i failus uztruko: 8973 ms Is viso uztruko: 13254 ms
+.SH "O3 flag, \&.exe failo dydis: 318 KB"
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 240 ms Studentu rikiavimas uztruko: 24 ms Studentu skaidymas ir irasymas i failus uztruko: 1286 ms Is viso uztruko: 3045 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1463 ms Studentu rikiavimas uztruko: 293 ms Studentu skaidymas ir irasymas i failus uztruko: 9018 ms Is viso uztruko: 13703 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 251 ms Studentu rikiavimas uztruko: 24 ms Studentu skaidymas ir irasymas i failus uztruko: 1298 ms Is viso uztruko: 2056 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1362 ms Studentu rikiavimas uztruko: 179 ms Studentu skaidymas ir irasymas i failus uztruko: 8984 ms Is viso uztruko: 13076 ms
+
+.PP
+studentai100000\&.txt Studentu nuskaitymas is failo uztruko: 249 ms Studentu rikiavimas uztruko: 23 ms Studentu skaidymas ir irasymas i failus uztruko: 1282 ms Is viso uztruko: 2034 ms
+
+.PP
+studentai1000000\&.txt Studentu nuskaitymas is failo uztruko: 1403 ms Studentu rikiavimas uztruko: 179 ms Studentu skaidymas ir irasymas i failus uztruko: 8881 ms Is viso uztruko: 13072 ms 

@@ -1,0 +1,373 @@
+.TH "Vector< T >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Vector< T >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Vector\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBvalue_type\fP = T"
+.br
+.ti -1c
+.RI "using \fBsize_type\fP = std::size_t"
+.br
+.ti -1c
+.RI "using \fBdifference_type\fP = std::ptrdiff_t"
+.br
+.ti -1c
+.RI "using \fBreference\fP = \fBvalue_type\fP&"
+.br
+.ti -1c
+.RI "using \fBconst_reference\fP = const \fBvalue_type\fP&"
+.br
+.ti -1c
+.RI "using \fBpointer\fP = \fBvalue_type\fP*"
+.br
+.ti -1c
+.RI "using \fBconst_pointer\fP = const \fBvalue_type\fP*"
+.br
+.ti -1c
+.RI "using \fBiterator\fP = \fBvalue_type\fP*"
+.br
+.ti -1c
+.RI "using \fBconst_iterator\fP = const \fBvalue_type\fP*"
+.br
+.ti -1c
+.RI "using \fBreverse_iterator\fP = std::reverse_iterator<\fBiterator\fP>"
+.br
+.ti -1c
+.RI "using \fBconst_reverse_iterator\fP = std::reverse_iterator<\fBconst_iterator\fP>"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVector\fP () noexcept"
+.br
+.ti -1c
+.RI "\fBVector\fP (\fBsize_type\fP s)"
+.br
+.ti -1c
+.RI "\fBVector\fP (\fBsize_type\fP s, const \fBvalue_type\fP &val)"
+.br
+.ti -1c
+.RI "template<typename InputIt, typename = typename std::enable_if<!std::is_integral<InputIt>::value>::type> \fBVector\fP (InputIt first, InputIt last)"
+.br
+.ti -1c
+.RI "\fBVector\fP (std::initializer_list< \fBvalue_type\fP > init)"
+.br
+.ti -1c
+.RI "\fBVector\fP (const \fBVector\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector\fP (\fBVector\fP &&other) noexcept"
+.br
+.ti -1c
+.RI "\fBVector\fP & \fBoperator=\fP (const \fBVector\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector\fP & \fBoperator=\fP (\fBVector\fP &&other) noexcept"
+.br
+.ti -1c
+.RI "\fBVector\fP & \fBoperator=\fP (std::initializer_list< \fBvalue_type\fP > ilist)"
+.br
+.ti -1c
+.RI "void \fBassign\fP (\fBsize_type\fP count, const \fBvalue_type\fP &value)"
+.br
+.ti -1c
+.RI "template<typename InputIt, typename = typename std::enable_if<!std::is_integral<InputIt>::value>::type> void \fBassign\fP (InputIt first, InputIt last)"
+.br
+.ti -1c
+.RI "void \fBassign\fP (std::initializer_list< \fBvalue_type\fP > ilist)"
+.br
+.ti -1c
+.RI "\fBreference\fP \fBat\fP (\fBsize_type\fP pos)"
+.br
+.ti -1c
+.RI "\fBconst_reference\fP \fBat\fP (\fBsize_type\fP pos) const"
+.br
+.ti -1c
+.RI "\fBreference\fP \fBoperator[]\fP (\fBsize_type\fP pos) noexcept"
+.br
+.ti -1c
+.RI "\fBconst_reference\fP \fBoperator[]\fP (\fBsize_type\fP pos) const noexcept"
+.br
+.ti -1c
+.RI "\fBreference\fP \fBfront\fP ()"
+.br
+.ti -1c
+.RI "\fBconst_reference\fP \fBfront\fP () const"
+.br
+.ti -1c
+.RI "\fBreference\fP \fBback\fP ()"
+.br
+.ti -1c
+.RI "\fBconst_reference\fP \fBback\fP () const"
+.br
+.ti -1c
+.RI "\fBpointer\fP \fBdata\fP () noexcept"
+.br
+.ti -1c
+.RI "\fBconst_pointer\fP \fBdata\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBbegin\fP () noexcept"
+.br
+.ti -1c
+.RI "\fBconst_iterator\fP \fBbegin\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBconst_iterator\fP \fBcbegin\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBend\fP () noexcept"
+.br
+.ti -1c
+.RI "\fBconst_iterator\fP \fBend\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBconst_iterator\fP \fBcend\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBreverse_iterator\fP \fBrbegin\fP () noexcept"
+.br
+.ti -1c
+.RI "\fBconst_reverse_iterator\fP \fBrbegin\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBconst_reverse_iterator\fP \fBcrbegin\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBreverse_iterator\fP \fBrend\fP () noexcept"
+.br
+.ti -1c
+.RI "\fBconst_reverse_iterator\fP \fBrend\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBconst_reverse_iterator\fP \fBcrend\fP () const noexcept"
+.br
+.ti -1c
+.RI "bool \fBempty\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBsize_type\fP \fBsize\fP () const noexcept"
+.br
+.ti -1c
+.RI "\fBsize_type\fP \fBmax_size\fP () const noexcept"
+.br
+.ti -1c
+.RI "void \fBreserve\fP (\fBsize_type\fP new_cap)"
+.br
+.ti -1c
+.RI "\fBsize_type\fP \fBcapacity\fP () const noexcept"
+.br
+.ti -1c
+.RI "void \fBshrink_to_fit\fP ()"
+.br
+.ti -1c
+.RI "void \fBclear\fP () noexcept"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBinsert\fP (\fBconst_iterator\fP pos, const \fBvalue_type\fP &value)"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBinsert\fP (\fBconst_iterator\fP pos, \fBvalue_type\fP &&value)"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBinsert\fP (\fBconst_iterator\fP pos, \fBsize_type\fP count, const \fBvalue_type\fP &value)"
+.br
+.ti -1c
+.RI "template<typename InputIt, typename = typename std::enable_if<!std::is_integral<InputIt>::value>::type> \fBiterator\fP \fBinsert\fP (\fBconst_iterator\fP pos, InputIt first, InputIt last)"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBinsert\fP (\fBconst_iterator\fP pos, std::initializer_list< \fBvalue_type\fP > ilist)"
+.br
+.ti -1c
+.RI "template<typename\&.\&.\&. Args> \fBiterator\fP \fBemplace\fP (\fBconst_iterator\fP pos, Args &&\&.\&.\&. args)"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBerase\fP (\fBconst_iterator\fP pos)"
+.br
+.ti -1c
+.RI "\fBiterator\fP \fBerase\fP (\fBconst_iterator\fP first, \fBconst_iterator\fP last)"
+.br
+.ti -1c
+.RI "void \fBpush_back\fP (const \fBvalue_type\fP &value)"
+.br
+.ti -1c
+.RI "void \fBpush_back\fP (\fBvalue_type\fP &&value)"
+.br
+.ti -1c
+.RI "template<typename\&.\&.\&. Args> \fBreference\fP \fBemplace_back\fP (Args &&\&.\&.\&. args)"
+.br
+.ti -1c
+.RI "void \fBpop_back\fP ()"
+.br
+.ti -1c
+.RI "void \fBresize\fP (\fBsize_type\fP count)"
+.br
+.ti -1c
+.RI "void \fBresize\fP (\fBsize_type\fP count, const \fBvalue_type\fP &value)"
+.br
+.ti -1c
+.RI "void \fBswap\fP (\fBVector\fP &other) noexcept"
+.br
+.ti -1c
+.RI "\fB~Vector\fP ()"
+.br
+.in -1c
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename T> using \fBVector\fP< T >::const_iterator = const \fBvalue_type\fP*"
+
+.SS "template<typename T> using \fBVector\fP< T >::const_pointer = const \fBvalue_type\fP*"
+
+.SS "template<typename T> using \fBVector\fP< T >::const_reference = const \fBvalue_type\fP&"
+
+.SS "template<typename T> using \fBVector\fP< T >::const_reverse_iterator = std::reverse_iterator<\fBconst_iterator\fP>"
+
+.SS "template<typename T> using \fBVector\fP< T >::difference_type = std::ptrdiff_t"
+
+.SS "template<typename T> using \fBVector\fP< T >::iterator = \fBvalue_type\fP*"
+
+.SS "template<typename T> using \fBVector\fP< T >::pointer = \fBvalue_type\fP*"
+
+.SS "template<typename T> using \fBVector\fP< T >::reference = \fBvalue_type\fP&"
+
+.SS "template<typename T> using \fBVector\fP< T >::reverse_iterator = std::reverse_iterator<\fBiterator\fP>"
+
+.SS "template<typename T> using \fBVector\fP< T >::size_type = std::size_t"
+
+.SS "template<typename T> using \fBVector\fP< T >::value_type = T"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T> \fBVector\fP< T >\fB::Vector\fP ()\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBVector\fP< T >\fB::Vector\fP (\fBsize_type\fP s)\fR [inline]\fP, \fR [explicit]\fP"
+
+.SS "template<typename T> \fBVector\fP< T >\fB::Vector\fP (\fBsize_type\fP s, const \fBvalue_type\fP & val)\fR [inline]\fP"
+
+.SS "template<typename T> template<typename InputIt, typename = typename std::enable_if<!std::is_integral<InputIt>::value>::type> \fBVector\fP< T >\fB::Vector\fP (InputIt first, InputIt last)\fR [inline]\fP"
+
+.SS "template<typename T> \fBVector\fP< T >\fB::Vector\fP (std::initializer_list< \fBvalue_type\fP > init)\fR [inline]\fP"
+
+.SS "template<typename T> \fBVector\fP< T >\fB::Vector\fP (const \fBVector\fP< T > & other)\fR [inline]\fP"
+
+.SS "template<typename T> \fBVector\fP< T >\fB::Vector\fP (\fBVector\fP< T > && other)\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBVector\fP< T >::~\fBVector\fP ()\fR [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T> template<typename InputIt, typename = typename std::enable_if<!std::is_integral<InputIt>::value>::type> void \fBVector\fP< T >::assign (InputIt first, InputIt last)\fR [inline]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::assign (\fBsize_type\fP count, const \fBvalue_type\fP & value)\fR [inline]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::assign (std::initializer_list< \fBvalue_type\fP > ilist)\fR [inline]\fP"
+
+.SS "template<typename T> \fBreference\fP \fBVector\fP< T >::at (\fBsize_type\fP pos)\fR [inline]\fP"
+
+.SS "template<typename T> \fBconst_reference\fP \fBVector\fP< T >::at (\fBsize_type\fP pos) const\fR [inline]\fP"
+
+.SS "template<typename T> \fBreference\fP \fBVector\fP< T >::back ()\fR [inline]\fP"
+
+.SS "template<typename T> \fBconst_reference\fP \fBVector\fP< T >::back () const\fR [inline]\fP"
+
+.SS "template<typename T> \fBconst_iterator\fP \fBVector\fP< T >::begin () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::begin ()\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBsize_type\fP \fBVector\fP< T >::capacity () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_iterator\fP \fBVector\fP< T >::cbegin () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_iterator\fP \fBVector\fP< T >::cend () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::clear ()\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_reverse_iterator\fP \fBVector\fP< T >::crbegin () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_reverse_iterator\fP \fBVector\fP< T >::crend () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_pointer\fP \fBVector\fP< T >::data () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBpointer\fP \fBVector\fP< T >::data ()\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> template<typename\&.\&.\&. Args> \fBiterator\fP \fBVector\fP< T >::emplace (\fBconst_iterator\fP pos, Args &&\&.\&.\&. args)\fR [inline]\fP"
+
+.SS "template<typename T> template<typename\&.\&.\&. Args> \fBreference\fP \fBVector\fP< T >::emplace_back (Args &&\&.\&.\&. args)\fR [inline]\fP"
+
+.SS "template<typename T> bool \fBVector\fP< T >::empty () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_iterator\fP \fBVector\fP< T >::end () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::end ()\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::erase (\fBconst_iterator\fP first, \fBconst_iterator\fP last)\fR [inline]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::erase (\fBconst_iterator\fP pos)\fR [inline]\fP"
+
+.SS "template<typename T> \fBreference\fP \fBVector\fP< T >::front ()\fR [inline]\fP"
+
+.SS "template<typename T> \fBconst_reference\fP \fBVector\fP< T >::front () const\fR [inline]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::insert (\fBconst_iterator\fP pos, const \fBvalue_type\fP & value)\fR [inline]\fP"
+
+.SS "template<typename T> template<typename InputIt, typename = typename std::enable_if<!std::is_integral<InputIt>::value>::type> \fBiterator\fP \fBVector\fP< T >::insert (\fBconst_iterator\fP pos, InputIt first, InputIt last)\fR [inline]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::insert (\fBconst_iterator\fP pos, \fBsize_type\fP count, const \fBvalue_type\fP & value)\fR [inline]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::insert (\fBconst_iterator\fP pos, std::initializer_list< \fBvalue_type\fP > ilist)\fR [inline]\fP"
+
+.SS "template<typename T> \fBiterator\fP \fBVector\fP< T >::insert (\fBconst_iterator\fP pos, \fBvalue_type\fP && value)\fR [inline]\fP"
+
+.SS "template<typename T> \fBsize_type\fP \fBVector\fP< T >::max_size () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBVector\fP & \fBVector\fP< T >::operator= (const \fBVector\fP< T > & other)\fR [inline]\fP"
+
+.SS "template<typename T> \fBVector\fP & \fBVector\fP< T >::operator= (std::initializer_list< \fBvalue_type\fP > ilist)\fR [inline]\fP"
+
+.SS "template<typename T> \fBVector\fP & \fBVector\fP< T >::operator= (\fBVector\fP< T > && other)\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_reference\fP \fBVector\fP< T >::operator[] (\fBsize_type\fP pos) const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBreference\fP \fBVector\fP< T >::operator[] (\fBsize_type\fP pos)\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::pop_back ()\fR [inline]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::push_back (const \fBvalue_type\fP & value)\fR [inline]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::push_back (\fBvalue_type\fP && value)\fR [inline]\fP"
+
+.SS "template<typename T> \fBconst_reverse_iterator\fP \fBVector\fP< T >::rbegin () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBreverse_iterator\fP \fBVector\fP< T >::rbegin ()\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBconst_reverse_iterator\fP \fBVector\fP< T >::rend () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> \fBreverse_iterator\fP \fBVector\fP< T >::rend ()\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::reserve (\fBsize_type\fP new_cap)\fR [inline]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::resize (\fBsize_type\fP count)\fR [inline]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::resize (\fBsize_type\fP count, const \fBvalue_type\fP & value)\fR [inline]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::shrink_to_fit ()\fR [inline]\fP"
+
+.SS "template<typename T> \fBsize_type\fP \fBVector\fP< T >::size () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> void \fBVector\fP< T >::swap (\fBVector\fP< T > & other)\fR [inline]\fP, \fR [noexcept]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

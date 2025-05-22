@@ -1,0 +1,122 @@
+.TH "Catch::IResultCapture" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::IResultCapture
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IResultCapture\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBsectionStarted\fP (\fBSectionInfo\fP const &sectionInfo, \fBCounts\fP &assertions)=0"
+.br
+.ti -1c
+.RI "virtual void \fBsectionEnded\fP (\fBSectionEndInfo\fP const &endInfo)=0"
+.br
+.ti -1c
+.RI "virtual void \fBsectionEndedEarly\fP (\fBSectionEndInfo\fP const &endInfo)=0"
+.br
+.ti -1c
+.RI "virtual auto \fBacquireGeneratorTracker\fP (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const &lineInfo) \-> \fBIGeneratorTracker\fP &=0"
+.br
+.ti -1c
+.RI "virtual void \fBpushScopedMessage\fP (\fBMessageInfo\fP const &message)=0"
+.br
+.ti -1c
+.RI "virtual void \fBpopScopedMessage\fP (\fBMessageInfo\fP const &message)=0"
+.br
+.ti -1c
+.RI "virtual void \fBemplaceUnscopedMessage\fP (\fBMessageBuilder\fP const &builder)=0"
+.br
+.ti -1c
+.RI "virtual void \fBhandleFatalErrorCondition\fP (\fBStringRef\fP message)=0"
+.br
+.ti -1c
+.RI "virtual void \fBhandleExpr\fP (\fBAssertionInfo\fP const &info, \fBITransientExpression\fP const &expr, \fBAssertionReaction\fP &reaction)=0"
+.br
+.ti -1c
+.RI "virtual void \fBhandleMessage\fP (\fBAssertionInfo\fP const &info, \fBResultWas::OfType\fP resultType, \fBStringRef\fP const &message, \fBAssertionReaction\fP &reaction)=0"
+.br
+.ti -1c
+.RI "virtual void \fBhandleUnexpectedExceptionNotThrown\fP (\fBAssertionInfo\fP const &info, \fBAssertionReaction\fP &reaction)=0"
+.br
+.ti -1c
+.RI "virtual void \fBhandleUnexpectedInflightException\fP (\fBAssertionInfo\fP const &info, std::string const &message, \fBAssertionReaction\fP &reaction)=0"
+.br
+.ti -1c
+.RI "virtual void \fBhandleIncomplete\fP (\fBAssertionInfo\fP const &info)=0"
+.br
+.ti -1c
+.RI "virtual void \fBhandleNonExpr\fP (\fBAssertionInfo\fP const &info, \fBResultWas::OfType\fP resultType, \fBAssertionReaction\fP &reaction)=0"
+.br
+.ti -1c
+.RI "virtual bool \fBlastAssertionPassed\fP ()=0"
+.br
+.ti -1c
+.RI "virtual void \fBassertionPassed\fP ()=0"
+.br
+.ti -1c
+.RI "virtual std::string \fBgetCurrentTestName\fP () const =0"
+.br
+.ti -1c
+.RI "virtual const AssertionResult * \fBgetLastResult\fP () const =0"
+.br
+.ti -1c
+.RI "virtual void \fBexceptionEarlyReported\fP ()=0"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Catch::IResultCapture::~IResultCapture ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual auto Catch::IResultCapture::acquireGeneratorTracker (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const & lineInfo) \->  \fBIGeneratorTracker\fP &\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::assertionPassed ()\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::emplaceUnscopedMessage (\fBMessageBuilder\fP const & builder)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::exceptionEarlyReported ()\fR [pure virtual]\fP"
+
+.SS "virtual std::string Catch::IResultCapture::getCurrentTestName () const\fR [pure virtual]\fP"
+
+.SS "virtual const AssertionResult * Catch::IResultCapture::getLastResult () const\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::handleExpr (\fBAssertionInfo\fP const & info, \fBITransientExpression\fP const & expr, \fBAssertionReaction\fP & reaction)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::handleFatalErrorCondition (\fBStringRef\fP message)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::handleIncomplete (\fBAssertionInfo\fP const & info)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::handleMessage (\fBAssertionInfo\fP const & info, \fBResultWas::OfType\fP resultType, \fBStringRef\fP const & message, \fBAssertionReaction\fP & reaction)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::handleNonExpr (\fBAssertionInfo\fP const & info, \fBResultWas::OfType\fP resultType, \fBAssertionReaction\fP & reaction)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::handleUnexpectedExceptionNotThrown (\fBAssertionInfo\fP const & info, \fBAssertionReaction\fP & reaction)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::handleUnexpectedInflightException (\fBAssertionInfo\fP const & info, std::string const & message, \fBAssertionReaction\fP & reaction)\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IResultCapture::lastAssertionPassed ()\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::popScopedMessage (\fBMessageInfo\fP const & message)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::pushScopedMessage (\fBMessageInfo\fP const & message)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::sectionEnded (\fBSectionEndInfo\fP const & endInfo)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IResultCapture::sectionEndedEarly (\fBSectionEndInfo\fP const & endInfo)\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IResultCapture::sectionStarted (\fBSectionInfo\fP const & sectionInfo, \fBCounts\fP & assertions)\fR [pure virtual]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

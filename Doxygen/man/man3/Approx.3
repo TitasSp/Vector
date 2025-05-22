@@ -1,0 +1,117 @@
+.TH "Approx" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Approx
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBApprox\fP (double value)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP (T const &value)"
+.br
+.ti -1c
+.RI "\fBApprox\fP \fBoperator\-\fP () const"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP \fBoperator()\fP (T const &value) const"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP & \fBepsilon\fP (T const &newEpsilon)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP & \fBmargin\fP (T const &newMargin)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP & \fBscale\fP (T const &newScale)"
+.br
+.ti -1c
+.RI "std::string \fBtoString\fP () const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBApprox\fP \fBcustom\fP ()"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator==\fP (const T &lhs, \fBApprox\fP const &rhs)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator==\fP (\fBApprox\fP const &lhs, const T &rhs)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator!=\fP (T const &lhs, \fBApprox\fP const &rhs)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator!=\fP (\fBApprox\fP const &lhs, T const &rhs)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator<=\fP (T const &lhs, \fBApprox\fP const &rhs)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator<=\fP (\fBApprox\fP const &lhs, T const &rhs)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator>=\fP (T const &lhs, \fBApprox\fP const &rhs)"
+.br
+.ti -1c
+.RI "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool \fBoperator>=\fP (\fBApprox\fP const &lhs, T const &rhs)"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::Detail::Approx::Approx (double value)\fR [explicit]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> Catch::Detail::Approx::Approx (T const & value)\fR [inline]\fP, \fR [explicit]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBApprox\fP Catch::Detail::Approx::custom ()\fR [static]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP & Catch::Detail::Approx::epsilon (T const & newEpsilon)\fR [inline]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP & Catch::Detail::Approx::margin (T const & newMargin)\fR [inline]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP Catch::Detail::Approx::operator() (T const & value) const\fR [inline]\fP"
+
+.SS "\fBApprox\fP Catch::Detail::Approx::operator\- () const"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> \fBApprox\fP & Catch::Detail::Approx::scale (T const & newScale)\fR [inline]\fP"
+
+.SS "std::string Catch::Detail::Approx::toString () const"
+
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator!= (\fBApprox\fP const & lhs, T const & rhs)\fR [friend]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator!= (T const & lhs, \fBApprox\fP const & rhs)\fR [friend]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator<= (\fBApprox\fP const & lhs, T const & rhs)\fR [friend]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator<= (T const & lhs, \fBApprox\fP const & rhs)\fR [friend]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator== (\fBApprox\fP const & lhs, const T & rhs)\fR [friend]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator== (const T & lhs, \fBApprox\fP const & rhs)\fR [friend]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator>= (\fBApprox\fP const & lhs, T const & rhs)\fR [friend]\fP"
+
+.SS "template<typename T, typename = typename std::enable_if<std::is_constructible<double, T>::value>::type> bool operator>= (T const & lhs, \fBApprox\fP const & rhs)\fR [friend]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

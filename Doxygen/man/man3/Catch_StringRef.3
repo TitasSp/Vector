@@ -1,0 +1,121 @@
+.TH "Catch::StringRef" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::StringRef
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBsize_type\fP = std::size_t"
+.br
+.ti -1c
+.RI "using \fBconst_iterator\fP = const char*"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "constexpr \fBStringRef\fP () noexcept=default"
+.br
+.ti -1c
+.RI "\fBStringRef\fP (char const *rawChars) noexcept"
+.br
+.ti -1c
+.RI "constexpr \fBStringRef\fP (char const *rawChars, \fBsize_type\fP \fBsize\fP) noexcept"
+.br
+.ti -1c
+.RI "\fBStringRef\fP (std::string const &stdString) noexcept"
+.br
+.ti -1c
+.RI "\fBoperator std::string\fP () const"
+.br
+.ti -1c
+.RI "auto \fBoperator==\fP (\fBStringRef\fP const &other) const noexcept \-> bool"
+.br
+.ti -1c
+.RI "auto \fBoperator!=\fP (\fBStringRef\fP const &other) const noexcept \-> bool"
+.br
+.ti -1c
+.RI "auto \fBoperator[]\fP (\fBsize_type\fP index) const noexcept \-> char"
+.br
+.ti -1c
+.RI "constexpr auto \fBempty\fP () const noexcept \-> bool"
+.br
+.ti -1c
+.RI "constexpr auto \fBsize\fP () const noexcept \-> \fBsize_type\fP"
+.br
+.ti -1c
+.RI "auto \fBc_str\fP () const \-> char const *"
+.br
+.ti -1c
+.RI "auto \fBsubstr\fP (\fBsize_type\fP start, \fBsize_type\fP length) const noexcept \-> \fBStringRef\fP"
+.br
+.ti -1c
+.RI "auto \fBdata\fP () const noexcept \-> char const *"
+.br
+.ti -1c
+.RI "constexpr auto \fBisNullTerminated\fP () const noexcept \-> bool"
+.br
+.ti -1c
+.RI "constexpr \fBconst_iterator\fP \fBbegin\fP () const"
+.br
+.ti -1c
+.RI "constexpr \fBconst_iterator\fP \fBend\fP () const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A non-owning string class (similar to the forthcoming std::string_view) Note that, because a \fBStringRef\fP may be a substring of another string, it may not be null terminated\&. 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "using \fBCatch::StringRef::const_iterator\fP = const char*"
+
+.SS "using \fBCatch::StringRef::size_type\fP = std::size_t"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::StringRef::StringRef ()\fR [constexpr]\fP, \fR [default]\fP, \fR [noexcept]\fP"
+
+.SS "Catch::StringRef::StringRef (char const * rawChars)\fR [noexcept]\fP"
+
+.SS "Catch::StringRef::StringRef (char const * rawChars, \fBsize_type\fP size)\fR [inline]\fP, \fR [constexpr]\fP, \fR [noexcept]\fP"
+
+.SS "Catch::StringRef::StringRef (std::string const & stdString)\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBconst_iterator\fP Catch::StringRef::begin () const\fR [inline]\fP, \fR [constexpr]\fP"
+
+.SS "auto Catch::StringRef::c_str () const \->  char const *"
+
+.SS "auto Catch::StringRef::data () const \->  char const *\fR [noexcept]\fP"
+
+.SS "auto Catch::StringRef::empty () const \-> bool \fR [inline]\fP, \fR [constexpr]\fP, \fR [noexcept]\fP"
+
+.SS "\fBconst_iterator\fP Catch::StringRef::end () const\fR [inline]\fP, \fR [constexpr]\fP"
+
+.SS "auto Catch::StringRef::isNullTerminated () const \-> bool \fR [inline]\fP, \fR [constexpr]\fP, \fR [noexcept]\fP"
+
+.SS "Catch::StringRef::operator std::string () const\fR [inline]\fP, \fR [explicit]\fP"
+
+.SS "auto Catch::StringRef::operator!= (\fBStringRef\fP const & other) const \-> bool \fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "auto Catch::StringRef::operator== (\fBStringRef\fP const & other) const \->  bool\fR [noexcept]\fP"
+
+.SS "auto Catch::StringRef::operator[] (\fBsize_type\fP index) const \-> char \fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "auto Catch::StringRef::size () const \-> \fBsize_type\fP \fR [inline]\fP, \fR [constexpr]\fP, \fR [noexcept]\fP"
+
+.SS "auto Catch::StringRef::substr (\fBsize_type\fP start, \fBsize_type\fP length) const \->  \fBStringRef\fP\fR [noexcept]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

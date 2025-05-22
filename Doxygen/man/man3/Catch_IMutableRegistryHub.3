@@ -1,0 +1,62 @@
+.TH "Catch::IMutableRegistryHub" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::IMutableRegistryHub
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IMutableRegistryHub\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBregisterReporter\fP (std::string const &name, \fBIReporterFactoryPtr\fP const &factory)=0"
+.br
+.ti -1c
+.RI "virtual void \fBregisterListener\fP (\fBIReporterFactoryPtr\fP const &factory)=0"
+.br
+.ti -1c
+.RI "virtual void \fBregisterTest\fP (\fBTestCase\fP const &testInfo)=0"
+.br
+.ti -1c
+.RI "virtual void \fBregisterTranslator\fP (const \fBIExceptionTranslator\fP *translator)=0"
+.br
+.ti -1c
+.RI "virtual void \fBregisterTagAlias\fP (std::string const &alias, std::string const &tag, \fBSourceLineInfo\fP const &lineInfo)=0"
+.br
+.ti -1c
+.RI "virtual void \fBregisterStartupException\fP () noexcept=0"
+.br
+.ti -1c
+.RI "virtual \fBIMutableEnumValuesRegistry\fP & \fBgetMutableEnumValuesRegistry\fP ()=0"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Catch::IMutableRegistryHub::~IMutableRegistryHub ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBIMutableEnumValuesRegistry\fP & Catch::IMutableRegistryHub::getMutableEnumValuesRegistry ()\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IMutableRegistryHub::registerListener (\fBIReporterFactoryPtr\fP const & factory)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IMutableRegistryHub::registerReporter (std::string const & name, \fBIReporterFactoryPtr\fP const & factory)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IMutableRegistryHub::registerStartupException ()\fR [pure virtual]\fP, \fR [noexcept]\fP"
+
+.SS "virtual void Catch::IMutableRegistryHub::registerTagAlias (std::string const & alias, std::string const & tag, \fBSourceLineInfo\fP const & lineInfo)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IMutableRegistryHub::registerTest (\fBTestCase\fP const & testInfo)\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IMutableRegistryHub::registerTranslator (const \fBIExceptionTranslator\fP * translator)\fR [pure virtual]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

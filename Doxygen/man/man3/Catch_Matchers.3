@@ -1,0 +1,134 @@
+.TH "Catch::Matchers" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Matchers
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBException\fP"
+.br
+.ti -1c
+.RI "namespace \fBFloating\fP"
+.br
+.ti -1c
+.RI "namespace \fBGeneric\fP"
+.br
+.ti -1c
+.RI "namespace \fBImpl\fP"
+.br
+.ti -1c
+.RI "namespace \fBStdString\fP"
+.br
+.ti -1c
+.RI "namespace \fBVector\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBException::ExceptionMessageMatcher\fP \fBMessage\fP (std::string const &message)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinUlpsMatcher\fP \fBWithinULP\fP (double target, uint64_t maxUlpDiff)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinUlpsMatcher\fP \fBWithinULP\fP (float target, uint64_t maxUlpDiff)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinAbsMatcher\fP \fBWithinAbs\fP (double target, double margin)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBWithinRel\fP (double target, double eps)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBWithinRel\fP (double target)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBWithinRel\fP (float target, float eps)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBWithinRel\fP (float target)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneric::PredicateMatcher\fP< T > \fBPredicate\fP (std::function< bool(T const &)> const &predicate, std::string const &description='')"
+.br
+.ti -1c
+.RI "\fBStdString::EqualsMatcher\fP \fBEquals\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::ContainsMatcher\fP \fBContains\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::EndsWithMatcher\fP \fBEndsWith\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::StartsWithMatcher\fP \fBStartsWith\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::RegexMatcher\fP \fBMatches\fP (std::string const &regex, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::ContainsMatcher\fP< T, AllocComp, AllocMatch > \fBContains\fP (std::vector< T, AllocComp > const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename Alloc = std::allocator<T>> \fBVector::ContainsElementMatcher\fP< T, Alloc > \fBVectorContains\fP (T const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::EqualsMatcher\fP< T, AllocComp, AllocMatch > \fBEquals\fP (std::vector< T, AllocComp > const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::ApproxMatcher\fP< T, AllocComp, AllocMatch > \fBApprox\fP (std::vector< T, AllocComp > const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::UnorderedEqualsMatcher\fP< T, AllocComp, AllocMatch > \fBUnorderedEquals\fP (std::vector< T, AllocComp > const &target)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::ApproxMatcher\fP< T, AllocComp, AllocMatch > Catch::Matchers::Approx (std::vector< T, AllocComp > const & comparator)"
+
+.SS "\fBStdString::ContainsMatcher\fP Catch::Matchers::Contains (std::string const & str, \fBCaseSensitive::Choice\fP caseSensitivity = \fR\fBCaseSensitive::Yes\fP\fP)"
+
+.SS "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::ContainsMatcher\fP< T, AllocComp, AllocMatch > Catch::Matchers::Contains (std::vector< T, AllocComp > const & comparator)"
+
+.SS "\fBStdString::EndsWithMatcher\fP Catch::Matchers::EndsWith (std::string const & str, \fBCaseSensitive::Choice\fP caseSensitivity = \fR\fBCaseSensitive::Yes\fP\fP)"
+
+.SS "\fBStdString::EqualsMatcher\fP Catch::Matchers::Equals (std::string const & str, \fBCaseSensitive::Choice\fP caseSensitivity = \fR\fBCaseSensitive::Yes\fP\fP)"
+
+.SS "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::EqualsMatcher\fP< T, AllocComp, AllocMatch > Catch::Matchers::Equals (std::vector< T, AllocComp > const & comparator)"
+
+.SS "\fBStdString::RegexMatcher\fP Catch::Matchers::Matches (std::string const & regex, \fBCaseSensitive::Choice\fP caseSensitivity = \fR\fBCaseSensitive::Yes\fP\fP)"
+
+.SS "\fBException::ExceptionMessageMatcher\fP Catch::Matchers::Message (std::string const & message)"
+
+.SS "template<typename T> \fBGeneric::PredicateMatcher\fP< T > Catch::Matchers::Predicate (std::function< bool(T const &)> const & predicate, std::string const & description = \fR''\fP)"
+
+.SS "\fBStdString::StartsWithMatcher\fP Catch::Matchers::StartsWith (std::string const & str, \fBCaseSensitive::Choice\fP caseSensitivity = \fR\fBCaseSensitive::Yes\fP\fP)"
+
+.SS "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::UnorderedEqualsMatcher\fP< T, AllocComp, AllocMatch > Catch::Matchers::UnorderedEquals (std::vector< T, AllocComp > const & target)"
+
+.SS "template<typename T, typename Alloc = std::allocator<T>> \fBVector::ContainsElementMatcher\fP< T, Alloc > Catch::Matchers::VectorContains (T const & comparator)"
+
+.SS "\fBFloating::WithinAbsMatcher\fP Catch::Matchers::WithinAbs (double target, double margin)"
+
+.SS "\fBFloating::WithinRelMatcher\fP Catch::Matchers::WithinRel (double target)"
+
+.SS "\fBFloating::WithinRelMatcher\fP Catch::Matchers::WithinRel (double target, double eps)"
+
+.SS "\fBFloating::WithinRelMatcher\fP Catch::Matchers::WithinRel (float target)"
+
+.SS "\fBFloating::WithinRelMatcher\fP Catch::Matchers::WithinRel (float target, float eps)"
+
+.SS "\fBFloating::WithinUlpsMatcher\fP Catch::Matchers::WithinULP (double target, uint64_t maxUlpDiff)"
+
+.SS "\fBFloating::WithinUlpsMatcher\fP Catch::Matchers::WithinULP (float target, uint64_t maxUlpDiff)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

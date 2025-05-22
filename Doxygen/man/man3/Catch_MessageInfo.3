@@ -1,0 +1,68 @@
+.TH "Catch::MessageInfo" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::MessageInfo
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMessageInfo\fP (\fBStringRef\fP const &_macroName, \fBSourceLineInfo\fP const &_lineInfo, \fBResultWas::OfType\fP _type)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBMessageInfo\fP const &other) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (\fBMessageInfo\fP const &other) const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBStringRef\fP \fBmacroName\fP"
+.br
+.ti -1c
+.RI "std::string \fBmessage\fP"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP \fBlineInfo\fP"
+.br
+.ti -1c
+.RI "\fBResultWas::OfType\fP \fBtype\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBsequence\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::MessageInfo::MessageInfo (\fBStringRef\fP const & _macroName, \fBSourceLineInfo\fP const & _lineInfo, \fBResultWas::OfType\fP _type)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Catch::MessageInfo::operator< (\fBMessageInfo\fP const & other) const"
+
+.SS "bool Catch::MessageInfo::operator== (\fBMessageInfo\fP const & other) const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBSourceLineInfo\fP Catch::MessageInfo::lineInfo"
+
+.SS "\fBStringRef\fP Catch::MessageInfo::macroName"
+
+.SS "std::string Catch::MessageInfo::message"
+
+.SS "unsigned int Catch::MessageInfo::sequence"
+
+.SS "\fBResultWas::OfType\fP Catch::MessageInfo::type"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

@@ -1,0 +1,43 @@
+.TH "Catch::TestInvokerAsMethod< C >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::TestInvokerAsMethod< C >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::ITestInvoker\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTestInvokerAsMethod\fP (void(C::*testAsMethod)()) noexcept"
+.br
+.ti -1c
+.RI "void \fBinvoke\fP () const override"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::ITestInvoker\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~ITestInvoker\fP ()"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename C> \fBCatch::TestInvokerAsMethod\fP< C >::TestInvokerAsMethod (void(C::* testAsMethod )())\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename C> void \fBCatch::TestInvokerAsMethod\fP< C >::invoke () const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBCatch::ITestInvoker\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

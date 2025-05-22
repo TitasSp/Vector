@@ -1,0 +1,88 @@
+.TH "Catch::SimplePcg32" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::SimplePcg32
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBresult_type\fP = std::uint32_t"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSimplePcg32\fP ()"
+.br
+.ti -1c
+.RI "\fBSimplePcg32\fP (\fBresult_type\fP seed_)"
+.br
+.ti -1c
+.RI "void \fBseed\fP (\fBresult_type\fP seed_)"
+.br
+.ti -1c
+.RI "void \fBdiscard\fP (uint64_t skip)"
+.br
+.ti -1c
+.RI "\fBresult_type\fP \fBoperator()\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static constexpr \fBresult_type\fP \fBmin\fP ()"
+.br
+.ti -1c
+.RI "static constexpr \fBresult_type\fP \fBmax\fP ()"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBSimplePcg32\fP const &lhs, \fBSimplePcg32\fP const &rhs)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (\fBSimplePcg32\fP const &lhs, \fBSimplePcg32\fP const &rhs)"
+.br
+.in -1c
+.SH "Member Typedef Documentation"
+.PP 
+.SS "using \fBCatch::SimplePcg32::result_type\fP = std::uint32_t"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::SimplePcg32::SimplePcg32 ()\fR [inline]\fP"
+
+.SS "Catch::SimplePcg32::SimplePcg32 (\fBresult_type\fP seed_)\fR [explicit]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Catch::SimplePcg32::discard (uint64_t skip)"
+
+.SS "static constexpr \fBresult_type\fP Catch::SimplePcg32::max ()\fR [inline]\fP, \fR [static]\fP, \fR [constexpr]\fP"
+
+.SS "static constexpr \fBresult_type\fP Catch::SimplePcg32::min ()\fR [inline]\fP, \fR [static]\fP, \fR [constexpr]\fP"
+
+.SS "\fBresult_type\fP Catch::SimplePcg32::operator() ()"
+
+.SS "void Catch::SimplePcg32::seed (\fBresult_type\fP seed_)"
+
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "bool operator!= (\fBSimplePcg32\fP const & lhs, \fBSimplePcg32\fP const & rhs)\fR [friend]\fP"
+
+.SS "bool operator== (\fBSimplePcg32\fP const & lhs, \fBSimplePcg32\fP const & rhs)\fR [friend]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

@@ -1,0 +1,59 @@
+.TH "Catch::MessageBuilder" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::MessageBuilder
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::MessageStream\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMessageBuilder\fP (\fBStringRef\fP const &macroName, \fBSourceLineInfo\fP const &lineInfo, \fBResultWas::OfType\fP type)"
+.br
+.ti -1c
+.RI "template<typename T> \fBMessageBuilder\fP & \fBoperator<<\fP (T const &value)"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::MessageStream\fP
+.in +1c
+.ti -1c
+.RI "template<typename T> \fBMessageStream\fP & \fBoperator<<\fP (T const &value)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBMessageInfo\fP \fBm_info\fP"
+.br
+.in -1c
+
+Public Attributes inherited from \fBCatch::MessageStream\fP
+.in +1c
+.ti -1c
+.RI "\fBReusableStringStream\fP \fBm_stream\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::MessageBuilder::MessageBuilder (\fBStringRef\fP const & macroName, \fBSourceLineInfo\fP const & lineInfo, \fBResultWas::OfType\fP type)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T> \fBMessageBuilder\fP & Catch::MessageBuilder::operator<< (T const & value)\fR [inline]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBMessageInfo\fP Catch::MessageBuilder::m_info"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

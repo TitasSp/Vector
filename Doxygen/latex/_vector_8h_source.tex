@@ -1,0 +1,765 @@
+\doxysection{Vector.\+h}
+\hypertarget{_vector_8h_source}{}\label{_vector_8h_source}\mbox{\hyperlink{_vector_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <initializer\_list>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ Type\ definitions}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\ =\ T;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ =\ std::size\_t;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a46db24fc8c2e8b3913fa4ff43546d344}{difference\_type}}\ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a590045eeb20d3c474dffbada9d9b59d3}{reference}}\ =\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a5fcf0c5b1f4b2f7e9b18aa2ed1e6c900}{const\_reference}}\ =\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ =\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}*;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a74a1db557f6707983a5ac4b9fe2a5b21}{const\_pointer}}\ =\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}*;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ =\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}*;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ =\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}*;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a468800ce1838bd48c7b9c685a8777720}{reverse\_iterator}}\ =\ std::reverse\_iterator<iterator>;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}\ =\ std::reverse\_iterator<const\_iterator>;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ cap;\ \ \ \ \textcolor{comment}{//\ capacity}}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ sz;\ \ \ \ \ \textcolor{comment}{//\ size\ (number\ of\ elements)}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ elem;\ \ \ \ \ \textcolor{comment}{//\ pointer\ to\ elements}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ allocate\ uninitialized\ memory}}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ allocate(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ n)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\textcolor{keyword}{>}(\textcolor{keyword}{operator}\ \textcolor{keyword}{new}(n\ *\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}})));}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ deallocate\ memory}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ deallocate(\mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ p,\ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ n)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p)\ \textcolor{keyword}{operator}\ \textcolor{keyword}{delete}(p);}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ construct\ elements}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ construct(\mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ p,\ Args\&\&...\ args)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (p)\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}(std::forward<Args>(args)...);}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ destroy\ elements}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ destroy(\mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ p)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ p-\/>\string~value\_type();}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ destroy\ a\ range\ of\ elements}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ destroy\_range(\mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ first,\ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ last)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ first\ !=\ last;\ ++first)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ destroy(first);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ move\ elements\ and\ handle\ reallocation\ properly}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ reallocate(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ new\_cap)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ new\_elem\ =\ allocate(new\_cap);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ elements\ to\ new\ location}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ i\ <\ sz;\ ++i)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ i,\ std::move(elem[i]));}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ construction\ fails,\ destroy\ already\ constructed\ elements}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(new\_elem,\ new\_elem\ +\ i);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(new\_elem,\ new\_cap);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ old\ elements\ and\ deallocate}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ elem\ =\ new\_elem;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ cap\ =\ new\_cap;}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Constructors}}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}()\ noexcept\ :\ sz(0),\ cap(0),\ elem(\textcolor{keywordtype}{nullptr})\ \{\}}
+\DoxyCodeLine{00089\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_vector_a0654d87504db90417db9583704761697}{Vector}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ s)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ :\ sz(s),\ cap(s),\ elem(allocate(s))\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ s;\ ++i)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ i);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{class_vector_a14389d234e95002fe665582427077685}{Vector}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ s,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\ val)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ :\ sz(s),\ cap(s),\ elem(allocate(s))\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ s;\ ++i)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ val);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ i);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ Range\ constructor}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ InputIt,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ =\ \textcolor{keyword}{typename}\ std::enable\_if<!std::is\_integral<InputIt>::value>::type>}
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{class_vector_a2d8668ab0e1c739ea4ceaa29660a0d51}{Vector}}(InputIt\ first,\ InputIt\ last)}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ :\ sz(0),\ cap(0),\ elem(nullptr)\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a4e81653039a6bab6046a666ba34a8940}{assign}}(first,\ last);}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Initializer\ list\ constructor}}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{class_vector_ae4dc0c1143ebc1cca89a2c9f764bf719}{Vector}}(std::initializer\_list<value\_type>\ init)}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ :\ sz(init.\mbox{\hyperlink{class_vector_a820aa7774df7f171db7ced1049adce57}{size}}()),\ cap(init.\mbox{\hyperlink{class_vector_a820aa7774df7f171db7ced1049adce57}{size}}()),\ elem(allocate(init.\mbox{\hyperlink{class_vector_a820aa7774df7f171db7ced1049adce57}{size}}()))\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ init.begin();\ it\ !=\ init.end();\ ++it,\ ++i)\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ *it);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ i);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ Copy\ constructor}}
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{class_vector_a940f94b7c4a1c15a65a1ab6e13859dfe}{Vector}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\ other)}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ :\ sz(other.sz),\ cap(other.sz),\ elem(allocate(other.sz))\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ sz;\ ++i)\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ other.elem[i]);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ i);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ Move\ constructor}}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{class_vector_a5ed9bb7852ccee071f8418d10182927f}{Vector}}(\mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\&\ other)\ noexcept}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ :\ sz(other.sz),\ cap(other.cap),\ elem(other.elem)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ other.sz\ =\ 0;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ other.cap\ =\ 0;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ other.elem\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ Copy\ assignment\ operator}}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\ \mbox{\hyperlink{class_vector_a2fe37b54a47d28015829196cb5abec05}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\ other)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.sz\ <=\ cap)\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reuse\ existing\ capacity}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ common\ =\ std::min(sz,\ other.sz);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ assign\ to\ existing\ elements}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ common;\ ++i)\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[i]\ =\ other.elem[i];}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ construct\ new\ elements\ if\ other\ is\ larger}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ common;\ i\ <\ other.sz;\ ++i)\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ other.elem[i]);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ excess\ elements\ if\ we're\ larger}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem\ +\ other.sz,\ elem\ +\ sz);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ sz\ =\ other.sz;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Need\ to\ reallocate}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\ temp(other);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a04719915f34b27674e1eca2c42e48eb2}{swap}}(temp);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{//\ Move\ assignment\ operator}}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\ \mbox{\hyperlink{class_vector_ac7a5d1c7410208d7ce8f13497e31dd87}{operator=}}(\mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ sz\ =\ other.sz;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ cap\ =\ other.cap;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ elem\ =\ other.elem;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ other.sz\ =\ 0;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ other.cap\ =\ 0;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ other.elem\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//\ Initializer\ list\ assignment}}
+\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\ \mbox{\hyperlink{class_vector_acbc884163281a83e0742c5a77582bb9b}{operator=}}(std::initializer\_list<value\_type>\ ilist)\ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a4e81653039a6bab6046a666ba34a8940}{assign}}(ilist.begin(),\ ilist.end());}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00214\ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{comment}{//\ Assign\ operations}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_a4e81653039a6bab6046a666ba34a8940}{assign}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ count,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\ value)\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ <=\ cap)\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ common\ =\ std::min(sz,\ count);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assign\ to\ existing\ elements}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ std::fill\_n(elem,\ common,\ value);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ new\ elements\ if\ needed}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ common;\ i\ <\ count;\ ++i)\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ value);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ excess\ elements}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem\ +\ count,\ elem\ +\ sz);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\ temp(count,\ value);}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a04719915f34b27674e1eca2c42e48eb2}{swap}}(temp);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ sz\ =\ count;}
+\DoxyCodeLine{00236\ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ InputIt,}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ =\ \textcolor{keyword}{typename}\ std::enable\_if<!std::is\_integral<InputIt>::value>::type>}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_adfcb62559bbb0d67e9353bcf18057661}{assign}}(InputIt\ first,\ InputIt\ last)\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ input\ iterators,\ we\ can't\ know\ the\ distance\ in\ advance}}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<typename\ std::iterator\_traits<InputIt>::iterator\_category,\ std::input\_iterator\_tag>)\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a3260a3cc75735ddf0fb75820d974a66e}{clear}}();}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ first\ !=\ last;\ ++first)\ \{}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_aa169231896a5e446fa915317857bcba6}{push\_back}}(*first);}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ forward\ iterators\ and\ above,\ we\ can\ calculate\ distance}}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ count\ =\ std::distance(first,\ last);}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ <\ 0)\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ iterator\ range"{}});}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\textcolor{keyword}{>}(count)\ <=\ cap)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ new\_size\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\textcolor{keyword}{>}(count);}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ common\ =\ std::min(sz,\ new\_size);}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ assign\ to\ existing\ elements}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ first;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ common;\ ++i,\ ++it)\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[i]\ =\ *it;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ construct\ new\ elements}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ common;\ i\ <\ new\_size;\ ++i,\ ++it)\ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ *it);}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ excess\ elements}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem\ +\ new\_size,\ elem\ +\ sz);}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sz\ =\ new\_size;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\ temp(first,\ last);}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a04719915f34b27674e1eca2c42e48eb2}{swap}}(temp);}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_a9e5f5314257e8e88ca18ee9cfc9770d3}{assign}}(std::initializer\_list<value\_type>\ ilist)\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a4e81653039a6bab6046a666ba34a8940}{assign}}(ilist.begin(),\ ilist.end());}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ }
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{comment}{//\ Element\ access}}
+\DoxyCodeLine{00283\ \ \ \ \ \mbox{\hyperlink{class_vector_a590045eeb20d3c474dffbada9d9b59d3}{reference}}\ \mbox{\hyperlink{class_vector_a1aaa89866e5ab494268603e434ff0be9}{at}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ pos)\ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ >=\ sz)\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::at\ out\ of\ range"{}});}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[pos];}
+\DoxyCodeLine{00286\ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \ \ \ \ }
+\DoxyCodeLine{00288\ \ \ \ \ \mbox{\hyperlink{class_vector_a5fcf0c5b1f4b2f7e9b18aa2ed1e6c900}{const\_reference}}\ \mbox{\hyperlink{class_vector_a586ae1edcd5a84a10bcd968fa7e771dc}{at}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ pos)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ >=\ sz)\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::at\ out\ of\ range"{}});}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[pos];}
+\DoxyCodeLine{00291\ \ \ \ \ \}}
+\DoxyCodeLine{00292\ \ \ \ \ }
+\DoxyCodeLine{00293\ \ \ \ \ \mbox{\hyperlink{class_vector_a590045eeb20d3c474dffbada9d9b59d3}{reference}}\ \mbox{\hyperlink{class_vector_a5f4f60c44e93653215b773e41856bd27}{operator[]}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ pos)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[pos];}
+\DoxyCodeLine{00295\ \ \ \ \ \}}
+\DoxyCodeLine{00296\ \ \ \ \ }
+\DoxyCodeLine{00297\ \ \ \ \ \mbox{\hyperlink{class_vector_a5fcf0c5b1f4b2f7e9b18aa2ed1e6c900}{const\_reference}}\ \mbox{\hyperlink{class_vector_ac62c51d8d757853bc83ba6bdea3aba3e}{operator[]}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ pos)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[pos];}
+\DoxyCodeLine{00299\ \ \ \ \ \}}
+\DoxyCodeLine{00300\ \ \ \ \ }
+\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{class_vector_a590045eeb20d3c474dffbada9d9b59d3}{reference}}\ \mbox{\hyperlink{class_vector_a2f2e14b2a9a0041c783b5ad44dd59593}{front}}()\ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_vector_a2f639b492129a072de508b75b73fe569}{empty}}())\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::front\ called\ on\ empty\ vector"{}});}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[0];}
+\DoxyCodeLine{00304\ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \ \ }
+\DoxyCodeLine{00306\ \ \ \ \ \mbox{\hyperlink{class_vector_a5fcf0c5b1f4b2f7e9b18aa2ed1e6c900}{const\_reference}}\ \mbox{\hyperlink{class_vector_a78dc531e4c79c33f8e7d4574a155f529}{front}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_vector_a2f639b492129a072de508b75b73fe569}{empty}}())\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::front\ called\ on\ empty\ vector"{}});}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[0];}
+\DoxyCodeLine{00309\ \ \ \ \ \}}
+\DoxyCodeLine{00310\ \ \ \ \ }
+\DoxyCodeLine{00311\ \ \ \ \ \mbox{\hyperlink{class_vector_a590045eeb20d3c474dffbada9d9b59d3}{reference}}\ \mbox{\hyperlink{class_vector_a8abc3f8273089dadf91fb8eaca0676e6}{back}}()\ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_vector_a2f639b492129a072de508b75b73fe569}{empty}}())\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::back\ called\ on\ empty\ vector"{}});}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[sz-\/1];}
+\DoxyCodeLine{00314\ \ \ \ \ \}}
+\DoxyCodeLine{00315\ \ \ \ \ }
+\DoxyCodeLine{00316\ \ \ \ \ \mbox{\hyperlink{class_vector_a5fcf0c5b1f4b2f7e9b18aa2ed1e6c900}{const\_reference}}\ \mbox{\hyperlink{class_vector_a66ecda4d7c3a5d0260451be6f2e30d30}{back}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_vector_a2f639b492129a072de508b75b73fe569}{empty}}())\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::back\ called\ on\ empty\ vector"{}});}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[sz-\/1];}
+\DoxyCodeLine{00319\ \ \ \ \ \}}
+\DoxyCodeLine{00320\ \ \ \ \ }
+\DoxyCodeLine{00321\ \ \ \ \ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ \mbox{\hyperlink{class_vector_afe28ad993c6fef5eb4a3645d5209f9bc}{data}}()\ noexcept\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem;}
+\DoxyCodeLine{00323\ \ \ \ \ \}}
+\DoxyCodeLine{00324\ \ \ \ \ }
+\DoxyCodeLine{00325\ \ \ \ \ \mbox{\hyperlink{class_vector_a74a1db557f6707983a5ac4b9fe2a5b21}{const\_pointer}}\ \mbox{\hyperlink{class_vector_a0626852bbb30ac168df4626c096be8cf}{data}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem;}
+\DoxyCodeLine{00327\ \ \ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \ \ }
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{comment}{//\ Iterators}}
+\DoxyCodeLine{00330\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ noexcept\ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem;}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ \ \ \ \ }
+\DoxyCodeLine{00334\ \ \ \ \ \mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ \mbox{\hyperlink{class_vector_ad3334a615a77391a4fe40252e1fd3975}{begin}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem;}
+\DoxyCodeLine{00336\ \ \ \ \ \}}
+\DoxyCodeLine{00337\ \ \ \ \ }
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ \mbox{\hyperlink{class_vector_a1fba2257baa625dde81a45cb64fc6175}{cbegin}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem;}
+\DoxyCodeLine{00340\ \ \ \ \ \}}
+\DoxyCodeLine{00341\ \ \ \ \ }
+\DoxyCodeLine{00342\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_a4af825d34cd281738bfbb8345a198072}{end}}()\ noexcept\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem\ +\ sz;}
+\DoxyCodeLine{00344\ \ \ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \ \ }
+\DoxyCodeLine{00346\ \ \ \ \ \mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ \mbox{\hyperlink{class_vector_a065c6c93dbcf049d7d39c3ac2afbb3fc}{end}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem\ +\ sz;}
+\DoxyCodeLine{00348\ \ \ \ \ \}}
+\DoxyCodeLine{00349\ \ \ \ \ }
+\DoxyCodeLine{00350\ \ \ \ \ \mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ \mbox{\hyperlink{class_vector_ae6a40650200621c05ade2a04efb45c54}{cend}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem\ +\ sz;}
+\DoxyCodeLine{00352\ \ \ \ \ \}}
+\DoxyCodeLine{00353\ \ \ \ \ }
+\DoxyCodeLine{00354\ \ \ \ \ \mbox{\hyperlink{class_vector_a468800ce1838bd48c7b9c685a8777720}{reverse\_iterator}}\ \mbox{\hyperlink{class_vector_a1ccf775c0a9c61b415508d88b4e79792}{rbegin}}()\ noexcept\ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a468800ce1838bd48c7b9c685a8777720}{reverse\_iterator}}(\mbox{\hyperlink{class_vector_a4af825d34cd281738bfbb8345a198072}{end}}());}
+\DoxyCodeLine{00356\ \ \ \ \ \}}
+\DoxyCodeLine{00357\ \ \ \ \ }
+\DoxyCodeLine{00358\ \ \ \ \ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}\ \mbox{\hyperlink{class_vector_a4fb453506efb9306cc4f722f60ae9eee}{rbegin}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}(\mbox{\hyperlink{class_vector_a4af825d34cd281738bfbb8345a198072}{end}}());}
+\DoxyCodeLine{00360\ \ \ \ \ \}}
+\DoxyCodeLine{00361\ \ \ \ \ }
+\DoxyCodeLine{00362\ \ \ \ \ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}\ \mbox{\hyperlink{class_vector_af790afac982ede9de733a4bd34fa06c0}{crbegin}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}(\mbox{\hyperlink{class_vector_a4af825d34cd281738bfbb8345a198072}{end}}());}
+\DoxyCodeLine{00364\ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ }
+\DoxyCodeLine{00366\ \ \ \ \ \mbox{\hyperlink{class_vector_a468800ce1838bd48c7b9c685a8777720}{reverse\_iterator}}\ \mbox{\hyperlink{class_vector_afb561678461f36ba0a0adb79484ff394}{rend}}()\ noexcept\ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a468800ce1838bd48c7b9c685a8777720}{reverse\_iterator}}(\mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}());}
+\DoxyCodeLine{00368\ \ \ \ \ \}}
+\DoxyCodeLine{00369\ \ \ \ \ }
+\DoxyCodeLine{00370\ \ \ \ \ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}\ \mbox{\hyperlink{class_vector_a1034cd20b0fcf0067b1fe198dea14672}{rend}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}(\mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}());}
+\DoxyCodeLine{00372\ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ }
+\DoxyCodeLine{00374\ \ \ \ \ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}\ \mbox{\hyperlink{class_vector_ac17b4529d7dc823acf78b9fb8a4d4cac}{crend}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a830f097cd0cf82deebdaa63a04d5ade6}{const\_reverse\_iterator}}(\mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}());}
+\DoxyCodeLine{00376\ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \ \ \ \ }
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{comment}{//\ Capacity}}
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_vector_a2f639b492129a072de508b75b73fe569}{empty}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sz\ ==\ 0;}
+\DoxyCodeLine{00381\ \ \ \ \ \}}
+\DoxyCodeLine{00382\ \ \ \ \ }
+\DoxyCodeLine{00383\ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ \mbox{\hyperlink{class_vector_a820aa7774df7f171db7ced1049adce57}{size}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sz;}
+\DoxyCodeLine{00385\ \ \ \ \ \}}
+\DoxyCodeLine{00386\ \ \ \ \ }
+\DoxyCodeLine{00387\ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ \mbox{\hyperlink{class_vector_a0dd08b19542784280ebc1fcbb109db99}{max\_size}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::numeric\_limits<size\_type>::max()\ /\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}});}
+\DoxyCodeLine{00389\ \ \ \ \ \}}
+\DoxyCodeLine{00390\ \ \ \ \ }
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_a18ced2e01a4cd11e87c20d1442a19353}{reserve}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ new\_cap)\ \{}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_cap\ <=\ cap)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ reallocate(new\_cap);}
+\DoxyCodeLine{00394\ \ \ \ \ \}}
+\DoxyCodeLine{00395\ \ \ \ \ }
+\DoxyCodeLine{00396\ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ \mbox{\hyperlink{class_vector_afe5164a7e80a14c40159346cec19a7b6}{capacity}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cap;}
+\DoxyCodeLine{00398\ \ \ \ \ \}}
+\DoxyCodeLine{00399\ \ \ \ \ }
+\DoxyCodeLine{00400\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_ad6454ce193263b8000d4c18cb0c3a0c8}{shrink\_to\_fit}}()\ \{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sz\ ==\ cap)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sz\ ==\ 0)\ \{}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ elem\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ cap\ =\ 0;}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ reallocate(sz);}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00411\ \ \ \ \ \}}
+\DoxyCodeLine{00412\ \ \ \ \ }
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{comment}{//\ Modifiers}}
+\DoxyCodeLine{00414\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_a3260a3cc75735ddf0fb75820d974a66e}{clear}}()\ noexcept\ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ sz\ =\ 0;}
+\DoxyCodeLine{00417\ \ \ \ \ \}}
+\DoxyCodeLine{00418\ \ \ \ \ }
+\DoxyCodeLine{00419\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_abb47f30f667a5444b78c8fc7b3061c6b}{insert}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ pos,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\ value)\ \{}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a6e7596194e3dc0ddc289017df291e179}{emplace}}(pos,\ value);}
+\DoxyCodeLine{00421\ \ \ \ \ \}}
+\DoxyCodeLine{00422\ \ \ \ \ }
+\DoxyCodeLine{00423\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_a6749f4551712f7d2d13b600feb418347}{insert}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ pos,\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\&\ value)\ \{}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a6e7596194e3dc0ddc289017df291e179}{emplace}}(pos,\ std::move(value));}
+\DoxyCodeLine{00425\ \ \ \ \ \}}
+\DoxyCodeLine{00426\ \ \ \ \ }
+\DoxyCodeLine{00427\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_af6028b071fc294ab16e18189931a1db6}{insert}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ pos,\ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ count,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\ value)\ \{}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\textcolor{keyword}{>}(pos);}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ position\ =\ pos\ -\/\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}();}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ >\ sz)\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::insert\ position\ out\ of\ range"{}});}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sz\ +\ count\ >\ cap)\ \{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ new\_cap\ =\ std::max(cap\ ==\ 0\ ?\ 1\ :\ cap\ *\ 2,\ sz\ +\ count);}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ new\ memory}}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ new\_elem\ =\ allocate(new\_cap);}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ elements\ before\ insertion\ point}}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ position;\ ++i)\ \{}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ i,\ std::move(elem[i]));}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ new\ elements}}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ count;\ ++i)\ \{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ position\ +\ i,\ value);}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ elements\ after\ insertion\ point}}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ position;\ i\ <\ sz;\ ++i)\ \{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ i\ +\ count,\ std::move(elem[i]));}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clean\ up\ on\ exception}}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(new\_elem,\ new\_elem\ +\ position\ +\ count\ +\ (sz\ -\/\ position));}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(new\_elem,\ new\_cap);}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clean\ up\ old\ storage}}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ elem\ =\ new\_elem;}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ cap\ =\ new\_cap;}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sufficient\ capacity,\ shift\ elements\ in\ place}}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ new\ elements\ at\ the\ end}}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ sz;\ i\ <\ sz\ +\ count;\ ++i)\ \{}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ value);}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ existing\ elements\ to\ make\ room}}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ sz\ -\/\ 1;\ i\ !=\ SIZE\_MAX\ \&\&\ i\ >=\ position;\ -\/-\/i)\ \{}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[i\ +\ count]\ =\ std::move(elem[i]);}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fill\ the\ gap\ with\ new\ values}}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ position;\ i\ <\ position\ +\ std::min(count,\ sz\ -\/\ position);\ ++i)\ \{}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[i]\ =\ value;}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ sz\ +=\ count;}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ +\ position;}
+\DoxyCodeLine{00488\ \ \ \ \ \}}
+\DoxyCodeLine{00489\ \ \ \ \ }
+\DoxyCodeLine{00490\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ InputIt,}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ =\ \textcolor{keyword}{typename}\ std::enable\_if<!std::is\_integral<InputIt>::value>::type>}
+\DoxyCodeLine{00492\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_af5b5a20b3fd128030806b9f46b83f0a1}{insert}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ pos,\ InputIt\ first,\ InputIt\ last)\ \{}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ position\ =\ pos\ -\/\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}();}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ >\ sz)\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::insert\ position\ out\ of\ range"{}});}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ input\ iterators,\ insert\ one\ by\ one}}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<typename\ std::iterator\_traits<InputIt>::iterator\_category,\ std::input\_iterator\_tag>)\ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ current\_pos\ =\ \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\textcolor{keyword}{>}(pos);}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ first\ !=\ last;\ ++first)\ \{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\_pos\ =\ \mbox{\hyperlink{class_vector_abb47f30f667a5444b78c8fc7b3061c6b}{insert}}(current\_pos,\ *first)\ +\ 1;}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ +\ position;}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ forward+\ iterators,\ we\ can\ calculate\ distance}}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ count\ =\ std::distance(first,\ last);}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ <=\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\textcolor{keyword}{>}(pos);}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ num\_elements\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\textcolor{keyword}{>}(count);}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sz\ +\ num\_elements\ >\ cap)\ \{}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ new\_cap\ =\ std::max(cap\ ==\ 0\ ?\ 1\ :\ cap\ *\ 2,\ sz\ +\ num\_elements);}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ new\_elem\ =\ allocate(new\_cap);}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ elements\ before\ insertion}}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ position;\ ++i)\ \{}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ i,\ std::move(elem[i]));}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ construct\ new\ elements}}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ j\ =\ 0;}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ first;\ it\ !=\ last;\ ++it,\ ++j)\ \{}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ position\ +\ j,\ *it);}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ elements\ after\ insertion}}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ position;\ i\ <\ sz;\ ++i)\ \{}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ i\ +\ num\_elements,\ std::move(elem[i]));}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(new\_elem,\ new\_elem\ +\ position\ +\ num\_elements\ +\ (sz\ -\/\ position));}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(new\_elem,\ new\_cap);}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem\ =\ new\_elem;}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cap\ =\ new\_cap;}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sufficient\ capacity}}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ at\ the\ end}}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ sz;\ i\ <\ sz\ +\ num\_elements;\ ++i)\ \{}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\{\});}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ existing\ elements}}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ sz\ -\/\ 1;\ i\ !=\ SIZE\_MAX\ \&\&\ i\ >=\ position;\ -\/-\/i)\ \{}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[i\ +\ num\_elements]\ =\ std::move(elem[i]);}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ new\ elements}}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ j\ =\ 0;}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ first;\ it\ !=\ last;\ ++it,\ ++j)\ \{}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[position\ +\ j]\ =\ *it;}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ sz\ +=\ num\_elements;}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ +\ position;}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00565\ \ \ \ \ \}}
+\DoxyCodeLine{00566\ \ \ \ \ }
+\DoxyCodeLine{00567\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_aac647eb0f6f7aeab865379aeaebb92eb}{insert}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ pos,\ std::initializer\_list<value\_type>\ ilist)\ \{}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_abb47f30f667a5444b78c8fc7b3061c6b}{insert}}(pos,\ ilist.begin(),\ ilist.end());}
+\DoxyCodeLine{00569\ \ \ \ \ \}}
+\DoxyCodeLine{00570\ \ \ \ \ }
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00572\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_a6e7596194e3dc0ddc289017df291e179}{emplace}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ pos,\ Args\&\&...\ args)\ \{}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ position\ =\ pos\ -\/\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}();}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ >\ sz)\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::emplace\ position\ out\ of\ range"{}});}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sz\ ==\ cap)\ \{}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ new\_cap\ =\ cap\ ==\ 0\ ?\ 1\ :\ cap\ *\ 2;}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a5afa677a40bd18d4dabc37bf5984c7d7}{pointer}}\ new\_elem\ =\ allocate(new\_cap);}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ elements\ before\ insertion\ point}}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ 0;\ i\ <\ position;\ ++i)\ \{}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ i,\ std::move(elem[i]));}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ new\ element}}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ position,\ std::forward<Args>(args)...);}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ construct\ elements\ after\ insertion\ point}}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ position;\ i\ <\ sz;\ ++i)\ \{}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(new\_elem\ +\ i\ +\ 1,\ std::move(elem[i]));}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(new\_elem,\ new\_elem\ +\ position\ +\ 1\ +\ (sz\ -\/\ position));}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(new\_elem,\ new\_cap);}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ elem\ =\ new\_elem;}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ cap\ =\ new\_cap;}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Shift\ elements\ to\ make\ room}}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ sz,\ std::move(elem[sz\ -\/\ 1]));}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ sz\ -\/\ 1;\ i\ >\ position;\ -\/-\/i)\ \{}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[i]\ =\ std::move(elem[i\ -\/\ 1]);}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ or\ assign\ new\ element}}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ <\ sz)\ \{}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elem[position]\ =\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}(std::forward<Args>(args)...);}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ position,\ std::forward<Args>(args)...);}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ ++sz;}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ +\ position;}
+\DoxyCodeLine{00623\ \ \ \ \ \}}
+\DoxyCodeLine{00624\ \ \ \ \ }
+\DoxyCodeLine{00625\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_ada08ce2d41733da63bdeac9901d48a74}{erase}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ pos)\ \{}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ position\ =\ pos\ -\/\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}();}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ >=\ sz)\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::erase\ position\ out\ of\ range"{}});}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ elements\ to\ fill\ the\ gap}}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ position;\ i\ <\ sz\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ elem[i]\ =\ std::move(elem[i\ +\ 1]);}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ last\ element}}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ destroy(elem\ +\ sz\ -\/\ 1);}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ -\/-\/sz;}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ +\ position;}
+\DoxyCodeLine{00639\ \ \ \ \ \}}
+\DoxyCodeLine{00640\ \ \ \ \ }
+\DoxyCodeLine{00641\ \ \ \ \ \mbox{\hyperlink{class_vector_a9da7cf711e923d5d827d42daeadd1fd4}{iterator}}\ \mbox{\hyperlink{class_vector_a4c79ccc14e48bf7efed8d57233b1d3ff}{erase}}(\mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ first,\ \mbox{\hyperlink{class_vector_af9031954e9b063c861cc7a2838dd9c12}{const\_iterator}}\ last)\ \{}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ start\ =\ first\ -\/\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}();}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ finish\ =\ last\ -\/\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}();}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ >\ sz\ ||\ finish\ >\ sz\ ||\ start\ >\ finish)\ \{}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::erase\ range\ out\ of\ range"{}});}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ count\ =\ finish\ -\/\ start;}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ ==\ 0)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ +\ start;}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ elements\ to\ fill\ the\ gap}}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ start;\ i\ <\ sz\ -\/\ count;\ ++i)\ \{}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \ \ \ \ elem[i]\ =\ std::move(elem[i\ +\ count]);}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ elements\ at\ the\ end}}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ destroy\_range(elem\ +\ sz\ -\/\ count,\ elem\ +\ sz);}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ sz\ -\/=\ count;}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}()\ +\ start;}
+\DoxyCodeLine{00662\ \ \ \ \ \}}
+\DoxyCodeLine{00663\ \ \ \ \ }
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_aa169231896a5e446fa915317857bcba6}{push\_back}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\ value)\ \{}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a14c322c13e01c8556d2e8f4bd8bea1ad}{emplace\_back}}(value);}
+\DoxyCodeLine{00666\ \ \ \ \ \}}
+\DoxyCodeLine{00667\ \ \ \ \ }
+\DoxyCodeLine{00668\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_aab26fb01ec95c0b58164bedcd3097ff9}{push\_back}}(\mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\&\ value)\ \{}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a14c322c13e01c8556d2e8f4bd8bea1ad}{emplace\_back}}(std::move(value));}
+\DoxyCodeLine{00670\ \ \ \ \ \}}
+\DoxyCodeLine{00671\ \ \ \ \ }
+\DoxyCodeLine{00672\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00673\ \ \ \ \ \mbox{\hyperlink{class_vector_a590045eeb20d3c474dffbada9d9b59d3}{reference}}\ \mbox{\hyperlink{class_vector_a14c322c13e01c8556d2e8f4bd8bea1ad}{emplace\_back}}(Args\&\&...\ args)\ \{}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sz\ ==\ cap)\ \{}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ new\_cap\ =\ cap\ ==\ 0\ ?\ 1\ :\ cap\ *\ 2;}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a18ced2e01a4cd11e87c20d1442a19353}{reserve}}(new\_cap);}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ construct(elem\ +\ sz,\ std::forward<Args>(args)...);}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ ++sz;}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ elem[sz\ -\/\ 1];}
+\DoxyCodeLine{00683\ \ \ \ \ \}}
+\DoxyCodeLine{00684\ \ \ \ \ }
+\DoxyCodeLine{00685\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_adcba035109febbe55cba2a25f8483ba6}{pop\_back}}()\ \{}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_vector_a2f639b492129a072de508b75b73fe569}{empty}}())\ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Vector::pop\_back\ called\ on\ empty\ vector"{}});}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ -\/-\/sz;}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ destroy(elem\ +\ sz);}
+\DoxyCodeLine{00689\ \ \ \ \ \}}
+\DoxyCodeLine{00690\ \ \ \ \ }
+\DoxyCodeLine{00691\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_aa33cb6ea7ef1dd4676db9d77a8c66e48}{resize}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ count)\ \{}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_aa33cb6ea7ef1dd4676db9d77a8c66e48}{resize}}(count,\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}());}
+\DoxyCodeLine{00693\ \ \ \ \ \}}
+\DoxyCodeLine{00694\ \ \ \ \ }
+\DoxyCodeLine{00695\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_acb0712ac1db3ca948505603c877aa71f}{resize}}(\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ count,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector_aa0d46e34338185ed330102229ecb4b0e}{value\_type}}\&\ value)\ \{}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ >\ sz)\ \{}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ >\ cap)\ \{}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_a18ced2e01a4cd11e87c20d1442a19353}{reserve}}(count);}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ new\ elements}}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_vector_abafb4cad9801440d5379d777088cf3ef}{size\_type}}\ i\ =\ sz;\ i\ <\ count;\ ++i)\ \{}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ construct(elem\ +\ i,\ value);}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (count\ <\ sz)\ \{}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ excess\ elements}}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \ \ \ \ destroy\_range(elem\ +\ count,\ elem\ +\ sz);}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ sz\ =\ count;}
+\DoxyCodeLine{00711\ \ \ \ \ \}}
+\DoxyCodeLine{00712\ \ \ \ \ }
+\DoxyCodeLine{00713\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_a04719915f34b27674e1eca2c42e48eb2}{swap}}(\mbox{\hyperlink{class_vector_a77d3f137987755d3a28658819800445c}{Vector}}\&\ other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ std::swap(sz,\ other.sz);}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ std::swap(cap,\ other.cap);}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ std::swap(elem,\ other.elem);}
+\DoxyCodeLine{00717\ \ \ \ \ \}}
+\DoxyCodeLine{00718\ \ \ \ \ }
+\DoxyCodeLine{00719\ \ \ \ \ \textcolor{comment}{//\ Destructor}}
+\DoxyCodeLine{00720\ \ \ \ \ \mbox{\hyperlink{class_vector_afd524fac19e6d3d69db5198ffe2952b0}{\string~Vector}}()\ \{}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ destroy\_range(elem,\ elem\ +\ sz);}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ deallocate(elem,\ cap);}
+\DoxyCodeLine{00723\ \ \ \ \ \}}
+\DoxyCodeLine{00724\ \};}
+\DoxyCodeLine{00725\ }
+\DoxyCodeLine{00726\ \textcolor{comment}{//\ Non-\/member\ functions}}
+\DoxyCodeLine{00727\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00728\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_vector_8h_a4a042dd1c2e48b3e3e4f9a48c3e00a33}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ rhs)\ \{}
+\DoxyCodeLine{00729\ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.\mbox{\hyperlink{class_vector_a820aa7774df7f171db7ced1049adce57}{size}}()\ ==\ rhs.\mbox{\hyperlink{class_vector_a820aa7774df7f171db7ced1049adce57}{size}}()\ \&\&\ std::equal(lhs.\mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}(),\ lhs.\mbox{\hyperlink{class_vector_a4af825d34cd281738bfbb8345a198072}{end}}(),\ rhs.\mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}());}
+\DoxyCodeLine{00730\ \}}
+\DoxyCodeLine{00731\ }
+\DoxyCodeLine{00732\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00733\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_vector_8h_af33b362313e0a866431e3d419769e45c}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ rhs)\ \{}
+\DoxyCodeLine{00734\ \ \ \ \ \textcolor{keywordflow}{return}\ !(lhs\ ==\ rhs);}
+\DoxyCodeLine{00735\ \}}
+\DoxyCodeLine{00736\ }
+\DoxyCodeLine{00737\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00738\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_vector_8h_adaadc8683f897352d0d46dd4de21e352}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ rhs)\ \{}
+\DoxyCodeLine{00739\ \ \ \ \ \textcolor{keywordflow}{return}\ std::lexicographical\_compare(lhs.\mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}(),\ lhs.\mbox{\hyperlink{class_vector_a4af825d34cd281738bfbb8345a198072}{end}}(),\ rhs.\mbox{\hyperlink{class_vector_a43711ecf8c3dce2124d08126b9654aef}{begin}}(),\ rhs.\mbox{\hyperlink{class_vector_a4af825d34cd281738bfbb8345a198072}{end}}());}
+\DoxyCodeLine{00740\ \}}
+\DoxyCodeLine{00741\ }
+\DoxyCodeLine{00742\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00743\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_vector_8h_aad6c20067a180bfb0ca7e9b482200da3}{operator<=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ rhs)\ \{}
+\DoxyCodeLine{00744\ \ \ \ \ \textcolor{keywordflow}{return}\ !(rhs\ <\ lhs);}
+\DoxyCodeLine{00745\ \}}
+\DoxyCodeLine{00746\ }
+\DoxyCodeLine{00747\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00748\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_vector_8h_a9716d9dbcc8f9ada1d56199f985f6671}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ rhs)\ \{}
+\DoxyCodeLine{00749\ \ \ \ \ \textcolor{keywordflow}{return}\ rhs\ <\ lhs;}
+\DoxyCodeLine{00750\ \}}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00753\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_vector_8h_a5cbee65335748f507a4b9b9760077d07}{operator>=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ rhs)\ \{}
+\DoxyCodeLine{00754\ \ \ \ \ \textcolor{keywordflow}{return}\ !(lhs\ <\ rhs);}
+\DoxyCodeLine{00755\ \}}
+\DoxyCodeLine{00756\ }
+\DoxyCodeLine{00757\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00758\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_vector_8h_a3b597588a215a71ac78ba65437556992}{swap}}(\mbox{\hyperlink{class_vector}{Vector<T>}}\&\ lhs,\ \mbox{\hyperlink{class_vector}{Vector<T>}}\&\ rhs)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00759\ \ \ \ \ lhs.swap(rhs);}
+\DoxyCodeLine{00760\ \}}
+
+\end{DoxyCode}

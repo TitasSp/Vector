@@ -1,0 +1,187 @@
+.TH "Catch::Generators" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Generators
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBpf\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBas\fP"
+.br
+.ti -1c
+.RI "class \fBChunkGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBFilterGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBFixedValuesGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBGenerators\fP"
+.br
+.ti -1c
+.RI "class \fBGeneratorUntypedBase\fP"
+.br
+.ti -1c
+.RI "class \fBGeneratorWrapper\fP"
+.br
+.ti -1c
+.RI "struct \fBIGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBIteratorGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBMapGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBRandomFloatingGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBRandomIntegerGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBRangeGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBRepeatGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBSingleValueGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBTakeGenerator\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "using \fBGeneratorBasePtr\fP = std::unique_ptr<\fBGeneratorUntypedBase\fP>"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBvalue\fP (T &&value)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBvalues\fP (std::initializer_list< T > values)"
+.br
+.ti -1c
+.RI "template<typename\&.\&.\&. Ts> \fBGeneratorWrapper\fP< std::tuple< Ts\&.\&.\&. > > \fBtable\fP (std::initializer_list< std::tuple< typename std::decay< Ts >::type\&.\&.\&. > > tuples)"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Gs> auto \fBmakeGenerators\fP (\fBGeneratorWrapper\fP< T > &&generator, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBmakeGenerators\fP (\fBGeneratorWrapper\fP< T > &&generator) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Gs> auto \fBmakeGenerators\fP (T &&val, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "template<typename T, typename U, typename\&.\&.\&. Gs> auto \fBmakeGenerators\fP (\fBas\fP< T >, U &&val, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "auto \fBacquireGeneratorTracker\fP (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const &lineInfo) \-> \fBIGeneratorTracker\fP &"
+.br
+.ti -1c
+.RI "template<typename L> auto \fBgenerate\fP (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const &lineInfo, L const &generatorExpression) \-> decltype(std::declval< decltype(generatorExpression())>()\&.get())"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBtake\fP (size_t target, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "template<typename T, typename \fBPredicate\fP> \fBGeneratorWrapper\fP< T > \fBfilter\fP (\fBPredicate\fP &&pred, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBrepeat\fP (size_t repeats, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "template<typename Func, typename U, typename T = FunctionReturnType<Func, U>> \fBGeneratorWrapper\fP< T > \fBmap\fP (Func &&function, \fBGeneratorWrapper\fP< U > &&generator)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< std::vector< T > > \fBchunk\fP (size_t size, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "template<typename T> std::enable_if< std::is_integral< T >\fB::value\fP &&!std::is_same< T, bool >\fB::value\fP, \fBGeneratorWrapper\fP< T > >::type \fBrandom\fP (T a, T b)"
+.br
+.ti -1c
+.RI "template<typename T> std::enable_if< std::is_floating_point< T >\fB::value\fP, \fBGeneratorWrapper\fP< T > >::type \fBrandom\fP (T a, T b)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBrange\fP (T const &start, T const &end, T const &step)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBrange\fP (T const &start, T const &end)"
+.br
+.ti -1c
+.RI "template<typename InputIterator, typename InputSentinel, typename ResultType = typename std::iterator_traits<InputIterator>::value_type> \fBGeneratorWrapper\fP< ResultType > \fBfrom_range\fP (InputIterator from, InputSentinel to)"
+.br
+.ti -1c
+.RI "template<typename Container, typename ResultType = typename Container::value_type> \fBGeneratorWrapper\fP< ResultType > \fBfrom_range\fP (Container const &cnt)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "using \fBCatch::Generators::GeneratorBasePtr\fP = std::unique_ptr<\fBGeneratorUntypedBase\fP>"
+
+.SH "Function Documentation"
+.PP 
+.SS "auto Catch::Generators::acquireGeneratorTracker (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const & lineInfo) \->  \fBIGeneratorTracker\fP &"
+
+.SS "template<typename T> \fBGeneratorWrapper\fP< std::vector< T > > Catch::Generators::chunk (size_t size, \fBGeneratorWrapper\fP< T > && generator)"
+
+.SS "template<typename T, typename \fBPredicate\fP> \fBGeneratorWrapper\fP< T > Catch::Generators::filter (\fBPredicate\fP && pred, \fBGeneratorWrapper\fP< T > && generator)"
+
+.SS "template<typename Container, typename ResultType = typename Container::value_type> \fBGeneratorWrapper\fP< ResultType > Catch::Generators::from_range (Container const & cnt)"
+
+.SS "template<typename InputIterator, typename InputSentinel, typename ResultType = typename std::iterator_traits<InputIterator>::value_type> \fBGeneratorWrapper\fP< ResultType > Catch::Generators::from_range (InputIterator from, InputSentinel to)"
+
+.SS "template<typename L> auto Catch::Generators::generate (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const & lineInfo, L const & generatorExpression) \-> decltype(std::declval<decltype(generatorExpression())>()\&.get()) "
+
+.SS "template<typename T, typename U, typename\&.\&.\&. Gs> auto Catch::Generators::makeGenerators (\fBas\fP< T > , U && val, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP<T> "
+
+.SS "template<typename T> auto Catch::Generators::makeGenerators (\fBGeneratorWrapper\fP< T > && generator) \-> \fBGenerators\fP<T> "
+
+.SS "template<typename T, typename\&.\&.\&. Gs> auto Catch::Generators::makeGenerators (\fBGeneratorWrapper\fP< T > && generator, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP<T> "
+
+.SS "template<typename T, typename\&.\&.\&. Gs> auto Catch::Generators::makeGenerators (T && val, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP<T> "
+
+.SS "template<typename Func, typename U, typename T = FunctionReturnType<Func, U>> \fBGeneratorWrapper\fP< T > Catch::Generators::map (Func && function, \fBGeneratorWrapper\fP< U > && generator)"
+
+.SS "template<typename T> std::enable_if< std::is_integral< T >\fB::value\fP &&!std::is_same< T, bool >\fB::value\fP, \fBGeneratorWrapper\fP< T > >::type Catch::Generators::random (T a, T b)"
+
+.SS "template<typename T> std::enable_if< std::is_floating_point< T >\fB::value\fP, \fBGeneratorWrapper\fP< T > >::type Catch::Generators::random (T a, T b)"
+
+.SS "template<typename T> \fBGeneratorWrapper\fP< T > Catch::Generators::range (T const & start, T const & end)"
+
+.SS "template<typename T> \fBGeneratorWrapper\fP< T > Catch::Generators::range (T const & start, T const & end, T const & step)"
+
+.SS "template<typename T> \fBGeneratorWrapper\fP< T > Catch::Generators::repeat (size_t repeats, \fBGeneratorWrapper\fP< T > && generator)"
+
+.SS "template<typename\&.\&.\&. Ts> \fBGeneratorWrapper\fP< std::tuple< Ts\&.\&.\&. > > Catch::Generators::table (std::initializer_list< std::tuple< typename std::decay< Ts >::type\&.\&.\&. > > tuples)"
+
+.SS "template<typename T> \fBGeneratorWrapper\fP< T > Catch::Generators::take (size_t target, \fBGeneratorWrapper\fP< T > && generator)"
+
+.SS "template<typename T> \fBGeneratorWrapper\fP< T > Catch::Generators::value (T && value)"
+
+.SS "template<typename T> \fBGeneratorWrapper\fP< T > Catch::Generators::values (std::initializer_list< T > values)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

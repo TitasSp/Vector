@@ -1,0 +1,66 @@
+.TH "Catch::Counts" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Counts
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCounts\fP \fBoperator\-\fP (\fBCounts\fP const &other) const"
+.br
+.ti -1c
+.RI "\fBCounts\fP & \fBoperator+=\fP (\fBCounts\fP const &other)"
+.br
+.ti -1c
+.RI "std::size_t \fBtotal\fP () const"
+.br
+.ti -1c
+.RI "bool \fBallPassed\fP () const"
+.br
+.ti -1c
+.RI "bool \fBallOk\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::size_t \fBpassed\fP = 0"
+.br
+.ti -1c
+.RI "std::size_t \fBfailed\fP = 0"
+.br
+.ti -1c
+.RI "std::size_t \fBfailedButOk\fP = 0"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Catch::Counts::allOk () const"
+
+.SS "bool Catch::Counts::allPassed () const"
+
+.SS "\fBCounts\fP & Catch::Counts::operator+= (\fBCounts\fP const & other)"
+
+.SS "\fBCounts\fP Catch::Counts::operator\- (\fBCounts\fP const & other) const"
+
+.SS "std::size_t Catch::Counts::total () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::size_t Catch::Counts::failed = 0"
+
+.SS "std::size_t Catch::Counts::failedButOk = 0"
+
+.SS "std::size_t Catch::Counts::passed = 0"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

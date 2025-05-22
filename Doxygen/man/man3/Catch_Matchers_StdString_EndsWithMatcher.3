@@ -1,0 +1,106 @@
+.TH "Catch::Matchers::StdString::EndsWithMatcher" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Matchers::StdString::EndsWithMatcher
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::Matchers::StdString::StringMatcherBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEndsWithMatcher\fP (\fBCasedString\fP const &comparator)"
+.br
+.ti -1c
+.RI "bool \fBmatch\fP (std::string const &source) const override"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Matchers::StdString::StringMatcherBase\fP
+.in +1c
+.ti -1c
+.RI "\fBStringMatcherBase\fP (std::string const &operation, \fBCasedString\fP const &comparator)"
+.br
+.ti -1c
+.RI "std::string \fBdescribe\fP () const override"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Matchers::Impl::MatcherBase< T >\fP
+.in +1c
+.ti -1c
+.RI "\fBMatchAllOf\fP< T > \fBoperator&&\fP (\fBMatcherBase\fP const &other) const"
+.br
+.ti -1c
+.RI "\fBMatchAnyOf\fP< T > \fBoperator||\fP (\fBMatcherBase\fP const &other) const"
+.br
+.ti -1c
+.RI "\fBMatchNotOf\fP< T > \fBoperator!\fP () const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Matchers::Impl::MatcherUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP ()=default"
+.br
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP (\fBMatcherUntypedBase\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP & \fBoperator=\fP (\fBMatcherUntypedBase\fP const &)=delete"
+.br
+.ti -1c
+.RI "std::string \fBtoString\fP () const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Matchers::Impl::MatcherMethod< T >\fP
+.in +1c
+.ti -1c
+.RI "virtual bool \fBmatch\fP (T const &arg) const=0"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Attributes inherited from \fBCatch::Matchers::StdString::StringMatcherBase\fP
+.in +1c
+.ti -1c
+.RI "\fBCasedString\fP \fBm_comparator\fP"
+.br
+.ti -1c
+.RI "std::string \fBm_operation\fP"
+.br
+.in -1c
+
+Protected Member Functions inherited from \fBCatch::Matchers::Impl::MatcherUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~MatcherUntypedBase\fP ()"
+.br
+.in -1c
+
+Protected Attributes inherited from \fBCatch::Matchers::Impl::MatcherUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBm_cachedToString\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::Matchers::StdString::EndsWithMatcher::EndsWithMatcher (\fBCasedString\fP const & comparator)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Catch::Matchers::StdString::EndsWithMatcher::match (std::string const & source) const\fR [override]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

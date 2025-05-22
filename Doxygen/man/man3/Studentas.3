@@ -1,0 +1,179 @@
+.TH "Studentas" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Studentas
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <funkcijos\&.h>\fP
+.PP
+Inherits \fBZmogus\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStudentas\fP ()"
+.br
+.ti -1c
+.RI "\fBStudentas\fP (const string &\fBvardas\fP, const string &\fBpavarde\fP, const \fBVector\fP< int > &pazymiai, int egzaminas)"
+.br
+.ti -1c
+.RI "\fB~Studentas\fP ()"
+.br
+.ti -1c
+.RI "\fBStudentas\fP (const \fBStudentas\fP &other)"
+.br
+.ti -1c
+.RI "\fBStudentas\fP (\fBStudentas\fP &&other) noexcept"
+.br
+.ti -1c
+.RI "\fBStudentas\fP & \fBoperator=\fP (const \fBStudentas\fP &other)"
+.br
+.ti -1c
+.RI "\fBStudentas\fP & \fBoperator=\fP (\fBStudentas\fP &&other) noexcept"
+.br
+.ti -1c
+.RI "string \fBgetVardas\fP () const"
+.br
+.ti -1c
+.RI "string \fBgetPavarde\fP () const"
+.br
+.ti -1c
+.RI "\fBVector\fP< int > \fBgetPazymiai\fP () const"
+.br
+.ti -1c
+.RI "\fBVector\fP< int > & \fBgetPazymiaiRef\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetEgzaminas\fP () const"
+.br
+.ti -1c
+.RI "float \fBgetGalutinis\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetVardas\fP (const string &v)"
+.br
+.ti -1c
+.RI "void \fBsetPavarde\fP (const string &p)"
+.br
+.ti -1c
+.RI "void \fBsetPazymiai\fP (const \fBVector\fP< int > &p)"
+.br
+.ti -1c
+.RI "void \fBsetEgzaminas\fP (int e)"
+.br
+.ti -1c
+.RI "void \fBsetGalutinis\fP (float g)"
+.br
+.ti -1c
+.RI "void \fBaddPazymys\fP (int pazymys)"
+.br
+.ti -1c
+.RI "void \fBspausdinti\fP () const override"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBZmogus\fP
+.in +1c
+.ti -1c
+.RI "\fBZmogus\fP ()"
+.br
+.ti -1c
+.RI "\fBZmogus\fP (const string &v, const string &p)"
+.br
+.ti -1c
+.RI "virtual \fB~Zmogus\fP ()=default"
+.br
+.ti -1c
+.RI "string \fBgetVardas\fP () const"
+.br
+.ti -1c
+.RI "string \fBgetPavarde\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetVardas\fP (const string &v)"
+.br
+.ti -1c
+.RI "void \fBsetPavarde\fP (const string &p)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "istream & \fBoperator>>\fP (istream &in, \fBStudentas\fP &studentas)"
+.br
+.ti -1c
+.RI "ostream & \fBoperator<<\fP (ostream &out, const \fBStudentas\fP &studentas)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBZmogus\fP
+.in +1c
+.ti -1c
+.RI "string \fBvardas\fP"
+.br
+.ti -1c
+.RI "string \fBpavarde\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Studentas::Studentas ()\fR [inline]\fP"
+
+.SS "Studentas::Studentas (const string & vardas, const string & pavarde, const \fBVector\fP< int > & pazymiai, int egzaminas)\fR [inline]\fP"
+
+.SS "Studentas::~Studentas ()\fR [inline]\fP"
+
+.SS "Studentas::Studentas (const \fBStudentas\fP & other)\fR [inline]\fP"
+
+.SS "Studentas::Studentas (\fBStudentas\fP && other)\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Studentas::addPazymys (int pazymys)\fR [inline]\fP"
+
+.SS "int Studentas::getEgzaminas () const\fR [inline]\fP"
+
+.SS "float Studentas::getGalutinis () const\fR [inline]\fP"
+
+.SS "string Studentas::getPavarde () const\fR [inline]\fP"
+
+.SS "\fBVector\fP< int > Studentas::getPazymiai () const\fR [inline]\fP"
+
+.SS "\fBVector\fP< int > & Studentas::getPazymiaiRef ()\fR [inline]\fP"
+
+.SS "string Studentas::getVardas () const\fR [inline]\fP"
+
+.SS "\fBStudentas\fP & Studentas::operator= (const \fBStudentas\fP & other)\fR [inline]\fP"
+
+.SS "\fBStudentas\fP & Studentas::operator= (\fBStudentas\fP && other)\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "void Studentas::setEgzaminas (int e)\fR [inline]\fP"
+
+.SS "void Studentas::setGalutinis (float g)\fR [inline]\fP"
+
+.SS "void Studentas::setPavarde (const string & p)\fR [inline]\fP"
+
+.SS "void Studentas::setPazymiai (const \fBVector\fP< int > & p)\fR [inline]\fP"
+
+.SS "void Studentas::setVardas (const string & v)\fR [inline]\fP"
+
+.SS "void Studentas::spausdinti () const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBZmogus\fP\&.
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "ostream & operator<< (ostream & out, const \fBStudentas\fP & studentas)\fR [friend]\fP"
+
+.SS "istream & operator>> (istream & in, \fBStudentas\fP & studentas)\fR [friend]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

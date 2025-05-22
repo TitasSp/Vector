@@ -1,0 +1,71 @@
+.TH "Catch::Matchers::Impl::MatcherUntypedBase" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Matchers::Impl::MatcherUntypedBase
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherited by \fBCatch::Matchers::Impl::MatcherBase< std::string >\fP, \fBCatch::Matchers::Impl::MatcherBase< std::exception >\fP, \fBCatch::Matchers::Impl::MatcherBase< double >\fP, \fBCatch::Matchers::Impl::MatcherBase< ArgT >\fP, \fBCatch::Matchers::Impl::MatcherBase< std::vector< T, AllocMatch > >\fP, \fBCatch::Matchers::Impl::MatcherBase< std::vector< T, Alloc > >\fP, and \fBCatch::Matchers::Impl::MatcherBase< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP ()=default"
+.br
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP (\fBMatcherUntypedBase\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBMatcherUntypedBase\fP & \fBoperator=\fP (\fBMatcherUntypedBase\fP const &)=delete"
+.br
+.ti -1c
+.RI "std::string \fBtoString\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~MatcherUntypedBase\fP ()"
+.br
+.ti -1c
+.RI "virtual std::string \fBdescribe\fP () const =0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBm_cachedToString\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::Matchers::Impl::MatcherUntypedBase::MatcherUntypedBase ()\fR [default]\fP"
+
+.SS "Catch::Matchers::Impl::MatcherUntypedBase::MatcherUntypedBase (\fBMatcherUntypedBase\fP const & )\fR [default]\fP"
+
+.SS "virtual Catch::Matchers::Impl::MatcherUntypedBase::~MatcherUntypedBase ()\fR [protected]\fP, \fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::string Catch::Matchers::Impl::MatcherUntypedBase::describe () const\fR [protected]\fP, \fR [pure virtual]\fP"
+
+.PP
+Implemented in \fBCatch::Matchers::Exception::ExceptionMessageMatcher\fP, \fBCatch::Matchers::Floating::WithinAbsMatcher\fP, \fBCatch::Matchers::Floating::WithinRelMatcher\fP, \fBCatch::Matchers::Floating::WithinUlpsMatcher\fP, \fBCatch::Matchers::Generic::PredicateMatcher< T >\fP, \fBCatch::Matchers::Impl::MatchAllOf< ArgT >\fP, \fBCatch::Matchers::Impl::MatchAnyOf< ArgT >\fP, \fBCatch::Matchers::Impl::MatchNotOf< ArgT >\fP, \fBCatch::Matchers::StdString::RegexMatcher\fP, \fBCatch::Matchers::StdString::StringMatcherBase\fP, \fBCatch::Matchers::Vector::ApproxMatcher< T, AllocComp, AllocMatch >\fP, \fBCatch::Matchers::Vector::ContainsElementMatcher< T, Alloc >\fP, \fBCatch::Matchers::Vector::ContainsMatcher< T, AllocComp, AllocMatch >\fP, \fBCatch::Matchers::Vector::EqualsMatcher< T, AllocComp, AllocMatch >\fP, and \fBCatch::Matchers::Vector::UnorderedEqualsMatcher< T, AllocComp, AllocMatch >\fP\&.
+.SS "\fBMatcherUntypedBase\fP & Catch::Matchers::Impl::MatcherUntypedBase::operator= (\fBMatcherUntypedBase\fP const & )\fR [delete]\fP"
+
+.SS "std::string Catch::Matchers::Impl::MatcherUntypedBase::toString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string Catch::Matchers::Impl::MatcherUntypedBase::m_cachedToString\fR [mutable]\fP, \fR [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

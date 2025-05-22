@@ -1,0 +1,62 @@
+.TH "Catch::Generators::IGenerator< T >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Generators::IGenerator< T >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::Generators::GeneratorUntypedBase\fP\&.
+.PP
+Inherited by \fBCatch::Generators::FilterGenerator< T, Predicate >\fP, \fBCatch::Generators::FixedValuesGenerator< T >\fP, \fBCatch::Generators::Generators< T >\fP, \fBCatch::Generators::IteratorGenerator< T >\fP, \fBCatch::Generators::MapGenerator< T, U, Func >\fP, \fBCatch::Generators::RangeGenerator< T >\fP, \fBCatch::Generators::RepeatGenerator< T >\fP, \fBCatch::Generators::SingleValueGenerator< T >\fP, and \fBCatch::Generators::TakeGenerator< T >\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBtype\fP = T"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IGenerator\fP ()=default"
+.br
+.ti -1c
+.RI "virtual T const & \fBget\fP () const =0"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Generators::GeneratorUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "\fBGeneratorUntypedBase\fP ()=default"
+.br
+.ti -1c
+.RI "virtual \fB~GeneratorUntypedBase\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBnext\fP ()=0"
+.br
+.in -1c
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<typename T> using \fBCatch::Generators::IGenerator\fP< T >::type = T"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T> virtual \fBCatch::Generators::IGenerator\fP< T >::~\fBIGenerator\fP ()\fR [virtual]\fP, \fR [default]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T> virtual T const  & \fBCatch::Generators::IGenerator\fP< T >::get () const\fR [pure virtual]\fP"
+
+.PP
+Implemented in \fBCatch::Generators::ChunkGenerator< T >\fP, \fBCatch::Generators::FilterGenerator< T, Predicate >\fP, \fBCatch::Generators::FixedValuesGenerator< T >\fP, \fBCatch::Generators::Generators< T >\fP, \fBCatch::Generators::IteratorGenerator< T >\fP, \fBCatch::Generators::MapGenerator< T, U, Func >\fP, \fBCatch::Generators::RandomFloatingGenerator< Float >\fP, \fBCatch::Generators::RandomIntegerGenerator< Integer >\fP, \fBCatch::Generators::RangeGenerator< T >\fP, \fBCatch::Generators::RepeatGenerator< T >\fP, \fBCatch::Generators::SingleValueGenerator< T >\fP, and \fBCatch::Generators::TakeGenerator< T >\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

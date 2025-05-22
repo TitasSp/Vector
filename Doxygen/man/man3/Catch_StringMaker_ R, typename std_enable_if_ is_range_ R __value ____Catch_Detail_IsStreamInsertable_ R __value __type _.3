@@ -1,0 +1,35 @@
+.TH "Catch::StringMaker< R, typename std::enable_if< is_range< R >::value &&!::Catch::Detail::IsStreamInsertable< R >::value >::type >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::StringMaker< R, typename std::enable_if< is_range< R >::value &&!::Catch::Detail::IsStreamInsertable< R >::value >::type >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static std::string \fBconvert\fP (R const &range)"
+.br
+.ti -1c
+.RI "static std::enable_if<\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBconvert\fP (const Fake &value)"
+.br
+.ti -1c
+.RI "static std::enable_if<!\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBconvert\fP (const Fake &value)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "static std::enable_if<\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBCatch::StringMaker\fP< R, typename >::convert (const Fake & value)\fR [inline]\fP, \fR [static]\fP"
+
+.SS "static std::enable_if<!\fB::Catch::Detail::IsStreamInsertable\fP< Fake >::value, std::string >::type \fBCatch::StringMaker\fP< R, typename >::convert (const Fake & value)\fR [inline]\fP, \fR [static]\fP"
+
+.SS "template<typename R> static std::string \fBCatch::StringMaker\fP< R, typename std::enable_if< \fBis_range\fP< R >::value &&!\fB::Catch::Detail::IsStreamInsertable\fP< R >::value >::type >::convert (R const & range)\fR [inline]\fP, \fR [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

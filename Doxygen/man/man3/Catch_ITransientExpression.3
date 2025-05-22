@@ -1,0 +1,67 @@
+.TH "Catch::ITransientExpression" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::ITransientExpression
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherited by \fBCatch::BinaryExpr< LhsT, RhsT >\fP, \fBCatch::MatchExpr< ArgT, MatcherT >\fP, and \fBCatch::UnaryExpr< LhsT >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "auto \fBisBinaryExpression\fP () const \-> bool"
+.br
+.ti -1c
+.RI "auto \fBgetResult\fP () const \-> bool"
+.br
+.ti -1c
+.RI "virtual void \fBstreamReconstructedExpression\fP (std::ostream &os) const =0"
+.br
+.ti -1c
+.RI "\fBITransientExpression\fP (bool \fBisBinaryExpression\fP, bool result)"
+.br
+.ti -1c
+.RI "virtual \fB~ITransientExpression\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBm_isBinaryExpression\fP"
+.br
+.ti -1c
+.RI "bool \fBm_result\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::ITransientExpression::ITransientExpression (bool isBinaryExpression, bool result)\fR [inline]\fP"
+
+.SS "virtual Catch::ITransientExpression::~ITransientExpression ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "auto Catch::ITransientExpression::getResult () const \-> bool \fR [inline]\fP"
+
+.SS "auto Catch::ITransientExpression::isBinaryExpression () const \-> bool \fR [inline]\fP"
+
+.SS "virtual void Catch::ITransientExpression::streamReconstructedExpression (std::ostream & os) const\fR [pure virtual]\fP"
+
+.PP
+Implemented in \fBCatch::MatchExpr< ArgT, MatcherT >\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool Catch::ITransientExpression::m_isBinaryExpression"
+
+.SS "bool Catch::ITransientExpression::m_result"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

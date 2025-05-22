@@ -1,0 +1,722 @@
+.TH "Catch" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBDetail\fP"
+.br
+.ti -1c
+.RI "namespace \fBdetail\fP"
+.br
+.ti -1c
+.RI "namespace \fBGenerators\fP"
+.br
+.ti -1c
+.RI "namespace \fBliterals\fP"
+.br
+.ti -1c
+.RI "namespace \fBMatchers\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBalways_false\fP"
+.br
+.ti -1c
+.RI "class \fBAssertionHandler\fP"
+.br
+.ti -1c
+.RI "struct \fBAssertionInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBAssertionReaction\fP"
+.br
+.ti -1c
+.RI "struct \fBAutoReg\fP"
+.br
+.ti -1c
+.RI "class \fBBinaryExpr\fP"
+.br
+.ti -1c
+.RI "class \fBCapturer\fP"
+.br
+.ti -1c
+.RI "struct \fBCaseSensitive\fP"
+.br
+.ti -1c
+.RI "struct \fBCounts\fP"
+.br
+.ti -1c
+.RI "struct \fBDecomposer\fP"
+.br
+.ti -1c
+.RI "class \fBExceptionTranslatorRegistrar\fP"
+.br
+.ti -1c
+.RI "class \fBExprLhs\fP"
+.br
+.ti -1c
+.RI "class \fBGeneratorException\fP"
+.br
+.ti -1c
+.RI "struct \fBIConfig\fP"
+.br
+.ti -1c
+.RI "struct \fBIContext\fP"
+.br
+.ti -1c
+.RI "struct \fBIExceptionTranslator\fP"
+.br
+.ti -1c
+.RI "struct \fBIExceptionTranslatorRegistry\fP"
+.br
+.ti -1c
+.RI "struct \fBIGeneratorTracker\fP"
+.br
+.ti -1c
+.RI "struct \fBIMutableContext\fP"
+.br
+.ti -1c
+.RI "struct \fBIMutableEnumValuesRegistry\fP"
+.br
+.ti -1c
+.RI "struct \fBIMutableRegistryHub\fP"
+.br
+.ti -1c
+.RI "struct \fBIRegistryHub\fP"
+.br
+.ti -1c
+.RI "struct \fBIResultCapture\fP"
+.br
+.ti -1c
+.RI "struct \fBIRunner\fP"
+.br
+.ti -1c
+.RI "struct \fBis_callable\fP"
+.br
+.ti -1c
+.RI "struct \fBis_callable< Fun(Args\&.\&.\&.)>\fP"
+.br
+.ti -1c
+.RI "struct \fBis_callable_tester\fP"
+.br
+.ti -1c
+.RI "struct \fBis_range\fP"
+.br
+.ti -1c
+.RI "struct \fBIStream\fP"
+.br
+.ti -1c
+.RI "struct \fBITestCaseRegistry\fP"
+.br
+.ti -1c
+.RI "struct \fBITestInvoker\fP"
+.br
+.ti -1c
+.RI "struct \fBITransientExpression\fP"
+.br
+.ti -1c
+.RI "class \fBLazyExpression\fP"
+.br
+.ti -1c
+.RI "struct \fBMatcherBase\fP"
+.br
+.ti -1c
+.RI "class \fBMatchExpr\fP"
+.br
+.ti -1c
+.RI "struct \fBMessageBuilder\fP"
+.br
+.ti -1c
+.RI "struct \fBMessageInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBMessageStream\fP"
+.br
+.ti -1c
+.RI "struct \fBNameAndTags\fP"
+.br
+.ti -1c
+.RI "class \fBNonCopyable\fP"
+.br
+.ti -1c
+.RI "class \fBOption\fP"
+.br
+.ti -1c
+.RI "struct \fBpluralise\fP"
+.br
+.ti -1c
+.RI "struct \fBRegistrarForTagAliases\fP"
+.br
+.ti -1c
+.RI "struct \fBResultDisposition\fP"
+.br
+.ti -1c
+.RI "struct \fBResultWas\fP"
+.br
+.ti -1c
+.RI "class \fBReusableStringStream\fP"
+.br
+.ti -1c
+.RI "struct \fBRunTests\fP"
+.br
+.ti -1c
+.RI "class \fBScopedMessage\fP"
+.br
+.ti -1c
+.RI "class \fBSection\fP"
+.br
+.ti -1c
+.RI "struct \fBSectionEndInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBSectionInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBShowDurations\fP"
+.br
+.ti -1c
+.RI "class \fBSimplePcg32\fP"
+.br
+.ti -1c
+.RI "struct \fBSourceLineInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBStreamEndStop\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< bool >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< Catch::Detail::Approx >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< char * >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< char >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< char const * >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< char[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< double >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< float >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< int >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< long >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< long long >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< R C::* >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< R, typename std::enable_if< is_range< R >::value &&!::Catch::Detail::IsStreamInsertable< R >::value >::type >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< signed char >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< signed char[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< std::nullptr_t >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< std::string >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< std::wstring >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< T * >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< T[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< unsigned char >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< unsigned char[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< unsigned int >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< unsigned long >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< unsigned long long >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< wchar_t * >\fP"
+.br
+.ti -1c
+.RI "struct \fBStringMaker< wchar_t const * >\fP"
+.br
+.ti -1c
+.RI "class \fBStringRef\fP"
+.br
+.ti -1c
+.RI "class \fBTestCase\fP"
+.br
+.ti -1c
+.RI "struct \fBTestCaseInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBTestFailureException\fP"
+.br
+.ti -1c
+.RI "class \fBTestInvokerAsMethod\fP"
+.br
+.ti -1c
+.RI "class \fBTimer\fP"
+.br
+.ti -1c
+.RI "struct \fBTotals\fP"
+.br
+.ti -1c
+.RI "struct \fBtrue_given\fP"
+.br
+.ti -1c
+.RI "class \fBUnaryExpr\fP"
+.br
+.ti -1c
+.RI "struct \fBUseColour\fP"
+.br
+.ti -1c
+.RI "struct \fBWaitForKeypress\fP"
+.br
+.ti -1c
+.RI "struct \fBWarnAbout\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "template<typename Func, typename\&.\&.\&. U> using \fBFunctionReturnType\fP = typename std::remove_reference<typename std::remove_cv<typename std::result_of<Func(U\&.\&.\&.)>::type>::type>::type"
+.br
+.ti -1c
+.RI "using \fBIReporterFactoryPtr\fP = std::shared_ptr<IReporterFactory>"
+.br
+.ti -1c
+.RI "using \fBexceptionTranslateFunction\fP = std::string(*)()"
+.br
+.ti -1c
+.RI "using \fBExceptionTranslators\fP = std::vector<std::unique_ptr<\fBIExceptionTranslator\fP const>>"
+.br
+.ti -1c
+.RI "using \fBStringMatcher\fP = \fBMatchers::Impl::MatcherBase\fP<std::string>"
+.br
+.ti -1c
+.RI "using \fBIConfigPtr\fP = std::shared_ptr<\fBIConfig\fP const>"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBVerbosity\fP { \fBQuiet\fP = 0, \fBNormal\fP, \fBHigh\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBrngSeed\fP ()"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, \fBSourceLineInfo\fP const &info)"
+.br
+.ti -1c
+.RI "template<typename T> T const & \fBoperator+\fP (T const &value, \fBStreamEndStop\fP)"
+.br
+.ti -1c
+.RI "bool \fBisThrowSafe\fP (\fBTestCase\fP const &testCase, \fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "bool \fBmatchTest\fP (\fBTestCase\fP const &testCase, TestSpec const &testSpec, \fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "std::vector< \fBTestCase\fP > \fBfilterTests\fP (std::vector< \fBTestCase\fP > const &testCases, TestSpec const &testSpec, \fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "std::vector< \fBTestCase\fP > const & \fBgetAllTestCasesSorted\fP (\fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "auto \fBoperator+=\fP (std::string &lhs, \fBStringRef\fP const &sr) \-> std::string &"
+.br
+.ti -1c
+.RI "auto \fBoperator<<\fP (std::ostream &os, \fBStringRef\fP const &sr) \-> std::ostream &"
+.br
+.ti -1c
+.RI "constexpr auto \fBoperator''_sr\fP (char const *rawChars, std::size_t size) noexcept \-> \fBStringRef\fP"
+.br
+.ti -1c
+.RI "auto \fBmakeTestInvoker\fP (void(*testAsFunction)()) noexcept \-> \fBITestInvoker\fP *"
+.br
+.ti -1c
+.RI "template<typename C> auto \fBmakeTestInvoker\fP (void(C::*testAsMethod)()) noexcept \-> \fBITestInvoker\fP *"
+.br
+.ti -1c
+.RI "bool \fBisOk\fP (\fBResultWas::OfType\fP resultType)"
+.br
+.ti -1c
+.RI "bool \fBisJustInfo\fP (int flags)"
+.br
+.ti -1c
+.RI "\fBResultDisposition::Flags\fP \fBoperator|\fP (\fBResultDisposition::Flags\fP lhs, \fBResultDisposition::Flags\fP rhs)"
+.br
+.ti -1c
+.RI "bool \fBshouldContinueOnFailure\fP (int flags)"
+.br
+.ti -1c
+.RI "bool \fBisFalseTest\fP (int flags)"
+.br
+.ti -1c
+.RI "bool \fBshouldSuppressFailure\fP (int flags)"
+.br
+.ti -1c
+.RI "std::ostream & \fBcout\fP ()"
+.br
+.ti -1c
+.RI "std::ostream & \fBcerr\fP ()"
+.br
+.ti -1c
+.RI "std::ostream & \fBclog\fP ()"
+.br
+.ti -1c
+.RI "auto \fBmakeStream\fP (\fBStringRef\fP const &filename) \-> \fBIStream\fP const *"
+.br
+.ti -1c
+.RI "template<typename Range> std::string \fBrangeToString\fP (Range const &range)"
+.br
+.ti -1c
+.RI "template<typename Allocator> std::string \fBrangeToString\fP (std::vector< bool, Allocator > const &v)"
+.br
+.ti -1c
+.RI "void \fBformatReconstructedExpression\fP (std::ostream &os, std::string const &lhs, \fBStringRef\fP op, std::string const &rhs)"
+.br
+.ti -1c
+.RI "template<typename LhsT, typename RhsT> auto \fBcompareEqual\fP (LhsT const &lhs, RhsT const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareEqual\fP (T *const &lhs, int rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareEqual\fP (T *const &lhs, long rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareEqual\fP (int lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareEqual\fP (long lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename LhsT, typename RhsT> auto \fBcompareNotEqual\fP (LhsT const &lhs, RhsT &&rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareNotEqual\fP (T *const &lhs, int rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareNotEqual\fP (T *const &lhs, long rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareNotEqual\fP (int lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBcompareNotEqual\fP (long lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "void \fBhandleExpression\fP (\fBITransientExpression\fP const &expr)"
+.br
+.ti -1c
+.RI "template<typename T> void \fBhandleExpression\fP (\fBExprLhs\fP< T > const &expr)"
+.br
+.ti -1c
+.RI "\fBIResultCapture\fP & \fBgetResultCapture\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleExceptionMatchExpr\fP (\fBAssertionHandler\fP &handler, std::string const &str, \fBStringRef\fP const &matcherString)"
+.br
+.ti -1c
+.RI "auto \fBgetCurrentNanosecondsSinceEpoch\fP () \-> uint64_t"
+.br
+.ti -1c
+.RI "auto \fBgetEstimatedClockResolution\fP () \-> uint64_t"
+.br
+.ti -1c
+.RI "\fBIRegistryHub\fP const & \fBgetRegistryHub\fP ()"
+.br
+.ti -1c
+.RI "\fBIMutableRegistryHub\fP & \fBgetMutableRegistryHub\fP ()"
+.br
+.ti -1c
+.RI "void \fBcleanUp\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBtranslateActiveException\fP ()"
+.br
+.ti -1c
+.RI "bool \fBstartsWith\fP (std::string const &s, std::string const &prefix)"
+.br
+.ti -1c
+.RI "bool \fBstartsWith\fP (std::string const &s, char prefix)"
+.br
+.ti -1c
+.RI "bool \fBendsWith\fP (std::string const &s, std::string const &suffix)"
+.br
+.ti -1c
+.RI "bool \fBendsWith\fP (std::string const &s, char suffix)"
+.br
+.ti -1c
+.RI "bool \fBcontains\fP (std::string const &s, std::string const &infix)"
+.br
+.ti -1c
+.RI "void \fBtoLowerInPlace\fP (std::string &s)"
+.br
+.ti -1c
+.RI "std::string \fBtoLower\fP (std::string const &s)"
+.br
+.ti -1c
+.RI "std::string \fBtrim\fP (std::string const &str)"
+.br
+.RI "Returns a new string without whitespace at the start/end\&. "
+.ti -1c
+.RI "\fBStringRef\fP \fBtrim\fP (\fBStringRef\fP ref)"
+.br
+.RI "Returns a substring of the original ref without whitespace\&. Beware lifetimes! "
+.ti -1c
+.RI "std::vector< \fBStringRef\fP > \fBsplitStringRef\fP (\fBStringRef\fP str, char delimiter)"
+.br
+.ti -1c
+.RI "bool \fBreplaceInPlace\fP (std::string &str, std::string const &replaceThis, std::string const &withThis)"
+.br
+.ti -1c
+.RI "void \fBhandleExceptionMatchExpr\fP (\fBAssertionHandler\fP &handler, \fBStringMatcher\fP const &matcher, \fBStringRef\fP const &matcherString)"
+.br
+.ti -1c
+.RI "template<typename ArgT, typename MatcherT> auto \fBmakeMatchExpr\fP (ArgT const &arg, MatcherT const &matcher, \fBStringRef\fP const &matcherString) \-> \fBMatchExpr\fP< ArgT, MatcherT >"
+.br
+.ti -1c
+.RI "void \fBthrow_exception\fP (std::exception const &e)"
+.br
+.ti -1c
+.RI "void \fBthrow_logic_error\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "void \fBthrow_domain_error\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "void \fBthrow_runtime_error\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "\fBIMutableContext\fP & \fBgetCurrentMutableContext\fP ()"
+.br
+.ti -1c
+.RI "\fBIContext\fP & \fBgetCurrentContext\fP ()"
+.br
+.ti -1c
+.RI "void \fBcleanUpContext\fP ()"
+.br
+.ti -1c
+.RI "\fBSimplePcg32\fP & \fBrng\fP ()"
+.br
+.ti -1c
+.RI "\fBTestCase\fP \fBmakeTestCase\fP (\fBITestInvoker\fP *testCase, std::string const &className, \fBNameAndTags\fP const &nameAndTags, \fBSourceLineInfo\fP const &lineInfo)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "using \fBCatch::exceptionTranslateFunction\fP = std::string(*)()"
+
+.SS "using \fBCatch::ExceptionTranslators\fP = std::vector<std::unique_ptr<\fBIExceptionTranslator\fP const>>"
+
+.SS "template<typename Func, typename\&.\&.\&. U> using \fBCatch::FunctionReturnType\fP = typename std::remove_reference<typename std::remove_cv<typename std::result_of<Func(U\&.\&.\&.)>::type>::type>::type"
+
+.SS "typedef std::shared_ptr< \fBIConfig\fP const  > \fBCatch::IConfigPtr\fP = std::shared_ptr<\fBIConfig\fP const>"
+
+.SS "using \fBCatch::IReporterFactoryPtr\fP = std::shared_ptr<IReporterFactory>"
+
+.SS "using \fBCatch::StringMatcher\fP = \fBMatchers::Impl::MatcherBase\fP<std::string>"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum class \fBCatch::Verbosity\fP\fR [strong]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\f(BIQuiet \fP
+.TP
+\f(BINormal \fP
+.TP
+\f(BIHigh \fP
+.SH "Function Documentation"
+.PP 
+.SS "std::ostream & Catch::cerr ()"
+
+.SS "void Catch::cleanUp ()"
+
+.SS "void Catch::cleanUpContext ()"
+
+.SS "std::ostream & Catch::clog ()"
+
+.SS "template<typename T> auto Catch::compareEqual (int lhs, T *const & rhs) \-> bool "
+
+.SS "template<typename LhsT, typename RhsT> auto Catch::compareEqual (LhsT const & lhs, RhsT const & rhs) \-> bool "
+
+.SS "template<typename T> auto Catch::compareEqual (long lhs, T *const & rhs) \-> bool "
+
+.SS "template<typename T> auto Catch::compareEqual (T *const & lhs, int rhs) \-> bool "
+
+.SS "template<typename T> auto Catch::compareEqual (T *const & lhs, long rhs) \-> bool "
+
+.SS "template<typename T> auto Catch::compareNotEqual (int lhs, T *const & rhs) \-> bool "
+
+.SS "template<typename LhsT, typename RhsT> auto Catch::compareNotEqual (LhsT const & lhs, RhsT && rhs) \-> bool "
+
+.SS "template<typename T> auto Catch::compareNotEqual (long lhs, T *const & rhs) \-> bool "
+
+.SS "template<typename T> auto Catch::compareNotEqual (T *const & lhs, int rhs) \-> bool "
+
+.SS "template<typename T> auto Catch::compareNotEqual (T *const & lhs, long rhs) \-> bool "
+
+.SS "bool Catch::contains (std::string const & s, std::string const & infix)"
+
+.SS "std::ostream & Catch::cout ()"
+
+.SS "bool Catch::endsWith (std::string const & s, char suffix)"
+
+.SS "bool Catch::endsWith (std::string const & s, std::string const & suffix)"
+
+.SS "std::vector< \fBTestCase\fP > Catch::filterTests (std::vector< \fBTestCase\fP > const & testCases, TestSpec const & testSpec, \fBIConfig\fP const & config)"
+
+.SS "void Catch::formatReconstructedExpression (std::ostream & os, std::string const & lhs, \fBStringRef\fP op, std::string const & rhs)"
+
+.SS "std::vector< \fBTestCase\fP > const  & Catch::getAllTestCasesSorted (\fBIConfig\fP const & config)"
+
+.SS "\fBIContext\fP & Catch::getCurrentContext ()\fR [inline]\fP"
+
+.SS "\fBIMutableContext\fP & Catch::getCurrentMutableContext ()\fR [inline]\fP"
+
+.SS "auto Catch::getCurrentNanosecondsSinceEpoch () \->  uint64_t"
+
+.SS "auto Catch::getEstimatedClockResolution () \->  uint64_t"
+
+.SS "\fBIMutableRegistryHub\fP & Catch::getMutableRegistryHub ()"
+
+.SS "\fBIRegistryHub\fP const  & Catch::getRegistryHub ()"
+
+.SS "\fBIResultCapture\fP & Catch::getResultCapture ()"
+
+.SS "void Catch::handleExceptionMatchExpr (\fBAssertionHandler\fP & handler, std::string const & str, \fBStringRef\fP const & matcherString)"
+
+.SS "void Catch::handleExceptionMatchExpr (\fBAssertionHandler\fP & handler, \fBStringMatcher\fP const & matcher, \fBStringRef\fP const & matcherString)"
+
+.SS "template<typename T> void Catch::handleExpression (\fBExprLhs\fP< T > const & expr)"
+
+.SS "void Catch::handleExpression (\fBITransientExpression\fP const & expr)"
+
+.SS "bool Catch::isFalseTest (int flags)\fR [inline]\fP"
+
+.SS "bool Catch::isJustInfo (int flags)"
+
+.SS "bool Catch::isOk (\fBResultWas::OfType\fP resultType)"
+
+.SS "bool Catch::isThrowSafe (\fBTestCase\fP const & testCase, \fBIConfig\fP const & config)"
+
+.SS "template<typename ArgT, typename MatcherT> auto Catch::makeMatchExpr (ArgT const & arg, MatcherT const & matcher, \fBStringRef\fP const & matcherString) \-> \fBMatchExpr\fP<ArgT, MatcherT> "
+
+.SS "auto Catch::makeStream (\fBStringRef\fP const & filename) \->  \fBIStream\fP const *"
+
+.SS "\fBTestCase\fP Catch::makeTestCase (\fBITestInvoker\fP * testCase, std::string const & className, \fBNameAndTags\fP const & nameAndTags, \fBSourceLineInfo\fP const & lineInfo)"
+
+.SS "auto Catch::makeTestInvoker (void(* testAsFunction )()) \->  \fBITestInvoker\fP *\fR [noexcept]\fP"
+
+.SS "template<typename C> auto Catch::makeTestInvoker (void(C::* testAsMethod )()) \-> \fBITestInvoker\fP* \fR [noexcept]\fP"
+
+.SS "bool Catch::matchTest (\fBTestCase\fP const & testCase, TestSpec const & testSpec, \fBIConfig\fP const & config)"
+
+.SS "auto Catch::operator''_sr (char const * rawChars, std::size_t size) \-> \fBStringRef\fP \fR [constexpr]\fP, \fR [noexcept]\fP"
+
+.SS "template<typename T> T const  & Catch::operator+ (T const & value, \fBStreamEndStop\fP )"
+
+.SS "auto Catch::operator+= (std::string & lhs, \fBStringRef\fP const & sr) \->  std::string &"
+
+.SS "std::ostream & Catch::operator<< (std::ostream & os, \fBSourceLineInfo\fP const & info)"
+
+.SS "auto Catch::operator<< (std::ostream & os, \fBStringRef\fP const & sr) \->  std::ostream &"
+
+.SS "\fBResultDisposition::Flags\fP Catch::operator| (\fBResultDisposition::Flags\fP lhs, \fBResultDisposition::Flags\fP rhs)"
+
+.SS "template<typename Range> std::string Catch::rangeToString (Range const & range)"
+
+.SS "template<typename Allocator> std::string Catch::rangeToString (std::vector< bool, Allocator > const & v)"
+
+.SS "bool Catch::replaceInPlace (std::string & str, std::string const & replaceThis, std::string const & withThis)"
+
+.SS "\fBSimplePcg32\fP & Catch::rng ()"
+
+.SS "unsigned int Catch::rngSeed ()"
+
+.SS "bool Catch::shouldContinueOnFailure (int flags)"
+
+.SS "bool Catch::shouldSuppressFailure (int flags)"
+
+.SS "std::vector< \fBStringRef\fP > Catch::splitStringRef (\fBStringRef\fP str, char delimiter)"
+
+.SS "bool Catch::startsWith (std::string const & s, char prefix)"
+
+.SS "bool Catch::startsWith (std::string const & s, std::string const & prefix)"
+
+.SS "void Catch::throw_domain_error (std::string const & msg)"
+
+.SS "void Catch::throw_exception (std::exception const & e)"
+
+.SS "void Catch::throw_logic_error (std::string const & msg)"
+
+.SS "void Catch::throw_runtime_error (std::string const & msg)"
+
+.SS "std::string Catch::toLower (std::string const & s)"
+
+.SS "void Catch::toLowerInPlace (std::string & s)"
+
+.SS "std::string Catch::translateActiveException ()"
+
+.SS "std::string Catch::trim (std::string const & str)"
+
+.PP
+Returns a new string without whitespace at the start/end\&. 
+.SS "\fBStringRef\fP Catch::trim (\fBStringRef\fP ref)"
+
+.PP
+Returns a substring of the original ref without whitespace\&. Beware lifetimes! 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

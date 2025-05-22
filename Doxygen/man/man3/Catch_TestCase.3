@@ -1,0 +1,110 @@
+.TH "Catch::TestCase" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::TestCase
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::TestCaseInfo\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTestCase\fP (\fBITestInvoker\fP *testCase, \fBTestCaseInfo\fP &&info)"
+.br
+.ti -1c
+.RI "\fBTestCase\fP \fBwithName\fP (std::string const &_newName) const"
+.br
+.ti -1c
+.RI "void \fBinvoke\fP () const"
+.br
+.ti -1c
+.RI "\fBTestCaseInfo\fP const & \fBgetTestCaseInfo\fP () const"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBTestCase\fP const &other) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (\fBTestCase\fP const &other) const"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::TestCaseInfo\fP
+.in +1c
+.ti -1c
+.RI "\fBTestCaseInfo\fP (std::string const &_name, std::string const &_className, std::string const &_description, std::vector< std::string > const &_tags, \fBSourceLineInfo\fP const &_lineInfo)"
+.br
+.ti -1c
+.RI "bool \fBisHidden\fP () const"
+.br
+.ti -1c
+.RI "bool \fBthrows\fP () const"
+.br
+.ti -1c
+.RI "bool \fBokToFail\fP () const"
+.br
+.ti -1c
+.RI "bool \fBexpectedToFail\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBtagsAsString\fP () const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBCatch::TestCaseInfo\fP
+.in +1c
+.ti -1c
+.RI "enum \fBSpecialProperties\fP { \fBNone\fP = 0, \fBIsHidden\fP = 1 << 1, \fBShouldFail\fP = 1 << 2, \fBMayFail\fP = 1 << 3, \fBThrows\fP = 1 << 4, \fBNonPortable\fP = 1 << 5, \fBBenchmark\fP = 1 << 6 }"
+.br
+.in -1c
+
+Public Attributes inherited from \fBCatch::TestCaseInfo\fP
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.ti -1c
+.RI "std::string \fBclassName\fP"
+.br
+.ti -1c
+.RI "std::string \fBdescription\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBtags\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBlcaseTags\fP"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP \fBlineInfo\fP"
+.br
+.ti -1c
+.RI "\fBSpecialProperties\fP \fBproperties\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::TestCase::TestCase (\fBITestInvoker\fP * testCase, \fBTestCaseInfo\fP && info)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBTestCaseInfo\fP const  & Catch::TestCase::getTestCaseInfo () const"
+
+.SS "void Catch::TestCase::invoke () const"
+
+.SS "bool Catch::TestCase::operator< (\fBTestCase\fP const & other) const"
+
+.SS "bool Catch::TestCase::operator== (\fBTestCase\fP const & other) const"
+
+.SS "\fBTestCase\fP Catch::TestCase::withName (std::string const & _newName) const"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

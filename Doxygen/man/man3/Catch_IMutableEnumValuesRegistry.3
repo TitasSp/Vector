@@ -1,0 +1,37 @@
+.TH "Catch::IMutableEnumValuesRegistry" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::IMutableEnumValuesRegistry
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IMutableEnumValuesRegistry\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBDetail::EnumInfo\fP const & \fBregisterEnum\fP (\fBStringRef\fP enumName, \fBStringRef\fP allEnums, std::vector< int > const &values)=0"
+.br
+.ti -1c
+.RI "template<typename E> \fBDetail::EnumInfo\fP const & \fBregisterEnum\fP (\fBStringRef\fP enumName, \fBStringRef\fP allEnums, std::initializer_list< E > values)"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Catch::IMutableEnumValuesRegistry::~IMutableEnumValuesRegistry ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename E> \fBDetail::EnumInfo\fP const  & Catch::IMutableEnumValuesRegistry::registerEnum (\fBStringRef\fP enumName, \fBStringRef\fP allEnums, std::initializer_list< E > values)\fR [inline]\fP"
+
+.SS "virtual \fBDetail::EnumInfo\fP const  & Catch::IMutableEnumValuesRegistry::registerEnum (\fBStringRef\fP enumName, \fBStringRef\fP allEnums, std::vector< int > const & values)\fR [pure virtual]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

@@ -1,0 +1,69 @@
+.TH "Catch::Generators::RandomIntegerGenerator< Integer >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Generators::RandomIntegerGenerator< Integer >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::Generators::IGenerator< Integer >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRandomIntegerGenerator\fP (Integer a, Integer b)"
+.br
+.ti -1c
+.RI "Integer const & \fBget\fP () const override"
+.br
+.ti -1c
+.RI "bool \fBnext\fP () override"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Generators::IGenerator< Integer >\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~IGenerator\fP ()=default"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::Generators::GeneratorUntypedBase\fP
+.in +1c
+.ti -1c
+.RI "\fBGeneratorUntypedBase\fP ()=default"
+.br
+.ti -1c
+.RI "virtual \fB~GeneratorUntypedBase\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Types inherited from \fBCatch::Generators::IGenerator< Integer >\fP
+.in +1c
+.ti -1c
+.RI "using \fBtype\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Integer> \fBCatch::Generators::RandomIntegerGenerator\fP< Integer >::RandomIntegerGenerator (Integer a, Integer b)\fR [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Integer> Integer const  & \fBCatch::Generators::RandomIntegerGenerator\fP< Integer >::get () const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBCatch::Generators::IGenerator< Integer >\fP\&.
+.SS "template<typename Integer> bool \fBCatch::Generators::RandomIntegerGenerator\fP< Integer >::next ()\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBCatch::Generators::GeneratorUntypedBase\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

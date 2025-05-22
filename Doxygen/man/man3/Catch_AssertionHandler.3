@@ -1,0 +1,87 @@
+.TH "Catch::AssertionHandler" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::AssertionHandler
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAssertionHandler\fP (\fBStringRef\fP const &macroName, \fBSourceLineInfo\fP const &lineInfo, \fBStringRef\fP capturedExpression, \fBResultDisposition::Flags\fP resultDisposition)"
+.br
+.ti -1c
+.RI "\fB~AssertionHandler\fP ()"
+.br
+.ti -1c
+.RI "template<typename T> void \fBhandleExpr\fP (\fBExprLhs\fP< T > const &expr)"
+.br
+.ti -1c
+.RI "void \fBhandleExpr\fP (\fBITransientExpression\fP const &expr)"
+.br
+.ti -1c
+.RI "void \fBhandleMessage\fP (\fBResultWas::OfType\fP resultType, \fBStringRef\fP const &message)"
+.br
+.ti -1c
+.RI "void \fBhandleExceptionThrownAsExpected\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleUnexpectedExceptionNotThrown\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleExceptionNotThrownAsExpected\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleThrowingCallSkipped\fP ()"
+.br
+.ti -1c
+.RI "void \fBhandleUnexpectedInflightException\fP ()"
+.br
+.ti -1c
+.RI "void \fBcomplete\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetCompleted\fP ()"
+.br
+.ti -1c
+.RI "auto \fBallowThrows\fP () const \-> bool"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::AssertionHandler::AssertionHandler (\fBStringRef\fP const & macroName, \fBSourceLineInfo\fP const & lineInfo, \fBStringRef\fP capturedExpression, \fBResultDisposition::Flags\fP resultDisposition)"
+
+.SS "Catch::AssertionHandler::~AssertionHandler ()\fR [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "auto Catch::AssertionHandler::allowThrows () const \->  bool"
+
+.SS "void Catch::AssertionHandler::complete ()"
+
+.SS "void Catch::AssertionHandler::handleExceptionNotThrownAsExpected ()"
+
+.SS "void Catch::AssertionHandler::handleExceptionThrownAsExpected ()"
+
+.SS "template<typename T> void Catch::AssertionHandler::handleExpr (\fBExprLhs\fP< T > const & expr)\fR [inline]\fP"
+
+.SS "void Catch::AssertionHandler::handleExpr (\fBITransientExpression\fP const & expr)"
+
+.SS "void Catch::AssertionHandler::handleMessage (\fBResultWas::OfType\fP resultType, \fBStringRef\fP const & message)"
+
+.SS "void Catch::AssertionHandler::handleThrowingCallSkipped ()"
+
+.SS "void Catch::AssertionHandler::handleUnexpectedExceptionNotThrown ()"
+
+.SS "void Catch::AssertionHandler::handleUnexpectedInflightException ()"
+
+.SS "void Catch::AssertionHandler::setCompleted ()"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

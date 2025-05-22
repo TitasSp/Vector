@@ -1,0 +1,83 @@
+.TH "Catch::SourceLineInfo" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::SourceLineInfo
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSourceLineInfo\fP ()=delete"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP (char const *_file, std::size_t _line) noexcept"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP (\fBSourceLineInfo\fP const &other)=default"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP & \fBoperator=\fP (\fBSourceLineInfo\fP const &)=default"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP (\fBSourceLineInfo\fP &&) noexcept=default"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP & \fBoperator=\fP (\fBSourceLineInfo\fP &&) noexcept=default"
+.br
+.ti -1c
+.RI "bool \fBempty\fP () const noexcept"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBSourceLineInfo\fP const &other) const noexcept"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (\fBSourceLineInfo\fP const &other) const noexcept"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "char const  * \fBfile\fP"
+.br
+.ti -1c
+.RI "std::size_t \fBline\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::SourceLineInfo::SourceLineInfo ()\fR [delete]\fP"
+
+.SS "Catch::SourceLineInfo::SourceLineInfo (char const * _file, std::size_t _line)\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "Catch::SourceLineInfo::SourceLineInfo (\fBSourceLineInfo\fP const & other)\fR [default]\fP"
+
+.SS "Catch::SourceLineInfo::SourceLineInfo (\fBSourceLineInfo\fP && )\fR [default]\fP, \fR [noexcept]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Catch::SourceLineInfo::empty () const\fR [inline]\fP, \fR [noexcept]\fP"
+
+.SS "bool Catch::SourceLineInfo::operator< (\fBSourceLineInfo\fP const & other) const\fR [noexcept]\fP"
+
+.SS "\fBSourceLineInfo\fP & Catch::SourceLineInfo::operator= (\fBSourceLineInfo\fP && )\fR [default]\fP, \fR [noexcept]\fP"
+
+.SS "\fBSourceLineInfo\fP & Catch::SourceLineInfo::operator= (\fBSourceLineInfo\fP const & )\fR [default]\fP"
+
+.SS "bool Catch::SourceLineInfo::operator== (\fBSourceLineInfo\fP const & other) const\fR [noexcept]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "char const* Catch::SourceLineInfo::file"
+
+.SS "std::size_t Catch::SourceLineInfo::line"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

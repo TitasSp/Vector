@@ -1,0 +1,64 @@
+.TH "Catch::MatchExpr< ArgT, MatcherT >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::MatchExpr< ArgT, MatcherT >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::ITransientExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatchExpr\fP (ArgT const &arg, MatcherT const &matcher, \fBStringRef\fP const &matcherString)"
+.br
+.ti -1c
+.RI "void \fBstreamReconstructedExpression\fP (std::ostream &os) const override"
+.br
+.in -1c
+
+Public Member Functions inherited from \fBCatch::ITransientExpression\fP
+.in +1c
+.ti -1c
+.RI "auto \fBisBinaryExpression\fP () const \-> bool"
+.br
+.ti -1c
+.RI "auto \fBgetResult\fP () const \-> bool"
+.br
+.ti -1c
+.RI "\fBITransientExpression\fP (bool \fBisBinaryExpression\fP, bool result)"
+.br
+.ti -1c
+.RI "virtual \fB~ITransientExpression\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Attributes inherited from \fBCatch::ITransientExpression\fP
+.in +1c
+.ti -1c
+.RI "bool \fBm_isBinaryExpression\fP"
+.br
+.ti -1c
+.RI "bool \fBm_result\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename ArgT, typename MatcherT> \fBCatch::MatchExpr\fP< ArgT, MatcherT >::MatchExpr (ArgT const & arg, MatcherT const & matcher, \fBStringRef\fP const & matcherString)\fR [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename ArgT, typename MatcherT> void \fBCatch::MatchExpr\fP< ArgT, MatcherT >::streamReconstructedExpression (std::ostream & os) const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBCatch::ITransientExpression\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

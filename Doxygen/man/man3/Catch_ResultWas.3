@@ -1,0 +1,51 @@
+.TH "Catch::ResultWas" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::ResultWas
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBOfType\fP { \fBUnknown\fP = -1, \fBOk\fP = 0, \fBInfo\fP = 1, \fBWarning\fP = 2, \fBFailureBit\fP = 0x10, \fBExpressionFailed\fP = FailureBit | 1, \fBExplicitFailure\fP = FailureBit | 2, \fBException\fP = 0x100 | FailureBit, \fBThrewException\fP = Exception | 1, \fBDidntThrowException\fP = Exception | 2, \fBFatalErrorCondition\fP = 0x200 | FailureBit }"
+.br
+.in -1c
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCatch::ResultWas::OfType\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\f(BIUnknown \fP
+.TP
+\f(BIOk \fP
+.TP
+\f(BIInfo \fP
+.TP
+\f(BIWarning \fP
+.TP
+\f(BIFailureBit \fP
+.TP
+\f(BIExpressionFailed \fP
+.TP
+\f(BIExplicitFailure \fP
+.TP
+\f(BIException \fP
+.TP
+\f(BIThrewException \fP
+.TP
+\f(BIDidntThrowException \fP
+.TP
+\f(BIFatalErrorCondition \fP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

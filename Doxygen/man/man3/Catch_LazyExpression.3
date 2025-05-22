@@ -1,0 +1,68 @@
+.TH "Catch::LazyExpression" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::LazyExpression
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLazyExpression\fP (bool isNegated)"
+.br
+.ti -1c
+.RI "\fBLazyExpression\fP (\fBLazyExpression\fP const &other)"
+.br
+.ti -1c
+.RI "\fBLazyExpression\fP & \fBoperator=\fP (\fBLazyExpression\fP const &)=delete"
+.br
+.ti -1c
+.RI "\fBoperator bool\fP () const"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBAssertionHandler\fP"
+.br
+.ti -1c
+.RI "struct \fBAssertionStats\fP"
+.br
+.ti -1c
+.RI "class \fBRunContext\fP"
+.br
+.ti -1c
+.RI "auto \fBoperator<<\fP (std::ostream &os, \fBLazyExpression\fP const &lazyExpr) \-> std::ostream &"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::LazyExpression::LazyExpression (bool isNegated)"
+
+.SS "Catch::LazyExpression::LazyExpression (\fBLazyExpression\fP const & other)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "Catch::LazyExpression::operator bool () const\fR [explicit]\fP"
+
+.SS "\fBLazyExpression\fP & Catch::LazyExpression::operator= (\fBLazyExpression\fP const & )\fR [delete]\fP"
+
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "friend class \fBAssertionHandler\fP\fR [friend]\fP"
+
+.SS "friend struct AssertionStats\fR [friend]\fP"
+
+.SS "auto operator<< (std::ostream & os, \fBLazyExpression\fP const & lazyExpr) \->  std::ostream &\fR [friend]\fP"
+
+.SS "friend class RunContext\fR [friend]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

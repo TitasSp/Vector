@@ -1,0 +1,134 @@
+.TH "Catch::TestCaseInfo" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::TestCaseInfo
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherited by \fBCatch::TestCase\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSpecialProperties\fP { \fBNone\fP = 0, \fBIsHidden\fP = 1 << 1, \fBShouldFail\fP = 1 << 2, \fBMayFail\fP = 1 << 3, \fBThrows\fP = 1 << 4, \fBNonPortable\fP = 1 << 5, \fBBenchmark\fP = 1 << 6 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTestCaseInfo\fP (std::string const &_name, std::string const &_className, std::string const &_description, std::vector< std::string > const &_tags, \fBSourceLineInfo\fP const &_lineInfo)"
+.br
+.ti -1c
+.RI "bool \fBisHidden\fP () const"
+.br
+.ti -1c
+.RI "bool \fBthrows\fP () const"
+.br
+.ti -1c
+.RI "bool \fBokToFail\fP () const"
+.br
+.ti -1c
+.RI "bool \fBexpectedToFail\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBtagsAsString\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.ti -1c
+.RI "std::string \fBclassName\fP"
+.br
+.ti -1c
+.RI "std::string \fBdescription\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBtags\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBlcaseTags\fP"
+.br
+.ti -1c
+.RI "\fBSourceLineInfo\fP \fBlineInfo\fP"
+.br
+.ti -1c
+.RI "\fBSpecialProperties\fP \fBproperties\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetTags\fP (\fBTestCaseInfo\fP &testCaseInfo, std::vector< std::string > \fBtags\fP)"
+.br
+.in -1c
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCatch::TestCaseInfo::SpecialProperties\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\f(BINone \fP
+.TP
+\f(BIIsHidden \fP
+.TP
+\f(BIShouldFail \fP
+.TP
+\f(BIMayFail \fP
+.TP
+\f(BIThrows \fP
+.TP
+\f(BINonPortable \fP
+.TP
+\f(BIBenchmark \fP
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::TestCaseInfo::TestCaseInfo (std::string const & _name, std::string const & _className, std::string const & _description, std::vector< std::string > const & _tags, \fBSourceLineInfo\fP const & _lineInfo)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Catch::TestCaseInfo::expectedToFail () const"
+
+.SS "bool Catch::TestCaseInfo::isHidden () const"
+
+.SS "bool Catch::TestCaseInfo::okToFail () const"
+
+.SS "std::string Catch::TestCaseInfo::tagsAsString () const"
+
+.SS "bool Catch::TestCaseInfo::throws () const"
+
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "void setTags (\fBTestCaseInfo\fP & testCaseInfo, std::vector< std::string > tags)\fR [friend]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string Catch::TestCaseInfo::className"
+
+.SS "std::string Catch::TestCaseInfo::description"
+
+.SS "std::vector<std::string> Catch::TestCaseInfo::lcaseTags"
+
+.SS "\fBSourceLineInfo\fP Catch::TestCaseInfo::lineInfo"
+
+.SS "std::string Catch::TestCaseInfo::name"
+
+.SS "\fBSpecialProperties\fP Catch::TestCaseInfo::properties"
+
+.SS "std::vector<std::string> Catch::TestCaseInfo::tags"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

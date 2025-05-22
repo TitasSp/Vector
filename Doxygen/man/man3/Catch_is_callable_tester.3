@@ -1,0 +1,30 @@
+.TH "Catch::is_callable_tester" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::is_callable_tester
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename Fun, typename\&.\&.\&. Args> static \fBtrue_given\fP< decltype(std::declval< Fun >()(std::declval< Args >()\&.\&.\&.))> \fBtest\fP (int)"
+.br
+.ti -1c
+.RI "template<typename\&.\&.\&.> static std::false_type \fBtest\fP (\&.\&.\&.)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename\&.\&.\&.> static std::false_type Catch::is_callable_tester::test ( \&.\&.\&.)\fR [static]\fP"
+
+.SS "template<typename Fun, typename\&.\&.\&. Args> static \fBtrue_given\fP< decltype(std::declval< Fun >()(std::declval< Args >()\&.\&.\&.))> Catch::is_callable_tester::test (int )\fR [static]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

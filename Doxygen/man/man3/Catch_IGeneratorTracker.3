@@ -1,0 +1,42 @@
+.TH "Catch::IGeneratorTracker" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::IGeneratorTracker
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IGeneratorTracker\fP ()"
+.br
+.ti -1c
+.RI "virtual auto \fBhasGenerator\fP () const \-> bool=0"
+.br
+.ti -1c
+.RI "virtual auto \fBgetGenerator\fP () const \-> \fBGenerators::GeneratorBasePtr\fP const &=0"
+.br
+.ti -1c
+.RI "virtual void \fBsetGenerator\fP (\fBGenerators::GeneratorBasePtr\fP &&generator)=0"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Catch::IGeneratorTracker::~IGeneratorTracker ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual auto Catch::IGeneratorTracker::getGenerator () const \->  \fBGenerators::GeneratorBasePtr\fP const &\fR [pure virtual]\fP"
+
+.SS "virtual auto Catch::IGeneratorTracker::hasGenerator () const \->  bool\fR [pure virtual]\fP"
+
+.SS "virtual void Catch::IGeneratorTracker::setGenerator (\fBGenerators::GeneratorBasePtr\fP && generator)\fR [pure virtual]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

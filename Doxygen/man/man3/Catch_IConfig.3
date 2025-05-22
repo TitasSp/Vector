@@ -1,0 +1,161 @@
+.TH "Catch::IConfig" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::IConfig
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::NonCopyable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IConfig\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBallowThrows\fP () const =0"
+.br
+.ti -1c
+.RI "virtual std::ostream & \fBstream\fP () const =0"
+.br
+.ti -1c
+.RI "virtual std::string \fBname\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBincludeSuccessfulResults\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBshouldDebugBreak\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBwarnAboutMissingAssertions\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBwarnAboutNoTests\fP () const =0"
+.br
+.ti -1c
+.RI "virtual int \fBabortAfter\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBshowInvisibles\fP () const =0"
+.br
+.ti -1c
+.RI "virtual \fBShowDurations::OrNot\fP \fBshowDurations\fP () const =0"
+.br
+.ti -1c
+.RI "virtual double \fBminDuration\fP () const =0"
+.br
+.ti -1c
+.RI "virtual TestSpec const & \fBtestSpec\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBhasTestFilters\fP () const =0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::string > const & \fBgetTestsOrTags\fP () const =0"
+.br
+.ti -1c
+.RI "virtual \fBRunTests::InWhatOrder\fP \fBrunOrder\fP () const =0"
+.br
+.ti -1c
+.RI "virtual unsigned int \fBrngSeed\fP () const =0"
+.br
+.ti -1c
+.RI "virtual \fBUseColour::YesOrNo\fP \fBuseColour\fP () const =0"
+.br
+.ti -1c
+.RI "virtual std::vector< std::string > const & \fBgetSectionsToRun\fP () const =0"
+.br
+.ti -1c
+.RI "virtual \fBVerbosity\fP \fBverbosity\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBbenchmarkNoAnalysis\fP () const =0"
+.br
+.ti -1c
+.RI "virtual int \fBbenchmarkSamples\fP () const =0"
+.br
+.ti -1c
+.RI "virtual double \fBbenchmarkConfidenceInterval\fP () const =0"
+.br
+.ti -1c
+.RI "virtual unsigned int \fBbenchmarkResamples\fP () const =0"
+.br
+.ti -1c
+.RI "virtual std::chrono::milliseconds \fBbenchmarkWarmupTime\fP () const =0"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Member Functions inherited from \fBCatch::NonCopyable\fP
+.in +1c
+.ti -1c
+.RI "\fBNonCopyable\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~NonCopyable\fP ()"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Catch::IConfig::~IConfig ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int Catch::IConfig::abortAfter () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::allowThrows () const\fR [pure virtual]\fP"
+
+.SS "virtual double Catch::IConfig::benchmarkConfidenceInterval () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::benchmarkNoAnalysis () const\fR [pure virtual]\fP"
+
+.SS "virtual unsigned int Catch::IConfig::benchmarkResamples () const\fR [pure virtual]\fP"
+
+.SS "virtual int Catch::IConfig::benchmarkSamples () const\fR [pure virtual]\fP"
+
+.SS "virtual std::chrono::milliseconds Catch::IConfig::benchmarkWarmupTime () const\fR [pure virtual]\fP"
+
+.SS "virtual std::vector< std::string > const  & Catch::IConfig::getSectionsToRun () const\fR [pure virtual]\fP"
+
+.SS "virtual std::vector< std::string > const  & Catch::IConfig::getTestsOrTags () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::hasTestFilters () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::includeSuccessfulResults () const\fR [pure virtual]\fP"
+
+.SS "virtual double Catch::IConfig::minDuration () const\fR [pure virtual]\fP"
+
+.SS "virtual std::string Catch::IConfig::name () const\fR [pure virtual]\fP"
+
+.SS "virtual unsigned int Catch::IConfig::rngSeed () const\fR [pure virtual]\fP"
+
+.SS "virtual \fBRunTests::InWhatOrder\fP Catch::IConfig::runOrder () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::shouldDebugBreak () const\fR [pure virtual]\fP"
+
+.SS "virtual \fBShowDurations::OrNot\fP Catch::IConfig::showDurations () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::showInvisibles () const\fR [pure virtual]\fP"
+
+.SS "virtual std::ostream & Catch::IConfig::stream () const\fR [pure virtual]\fP"
+
+.SS "virtual TestSpec const  & Catch::IConfig::testSpec () const\fR [pure virtual]\fP"
+
+.SS "virtual \fBUseColour::YesOrNo\fP Catch::IConfig::useColour () const\fR [pure virtual]\fP"
+
+.SS "virtual \fBVerbosity\fP Catch::IConfig::verbosity () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::warnAboutMissingAssertions () const\fR [pure virtual]\fP"
+
+.SS "virtual bool Catch::IConfig::warnAboutNoTests () const\fR [pure virtual]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

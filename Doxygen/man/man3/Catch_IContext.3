@@ -1,0 +1,44 @@
+.TH "Catch::IContext" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::IContext
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherited by \fBCatch::IMutableContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~IContext\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBIResultCapture\fP * \fBgetResultCapture\fP ()=0"
+.br
+.ti -1c
+.RI "virtual \fBIRunner\fP * \fBgetRunner\fP ()=0"
+.br
+.ti -1c
+.RI "virtual \fBIConfigPtr\fP const & \fBgetConfig\fP () const =0"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual Catch::IContext::~IContext ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBIConfigPtr\fP const  & Catch::IContext::getConfig () const\fR [pure virtual]\fP"
+
+.SS "virtual \fBIResultCapture\fP * Catch::IContext::getResultCapture ()\fR [pure virtual]\fP"
+
+.SS "virtual \fBIRunner\fP * Catch::IContext::getRunner ()\fR [pure virtual]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

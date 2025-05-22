@@ -1,0 +1,130 @@
+\chapter{Vector.\+h}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Vector.h@{Vector.h}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+Ši biblioteka pateikia universalią C++ šabloninę {\ttfamily \doxylink{class_vector}{Vector}} klasę, kuri imituoja STL {\ttfamily std\+::vector} elgseną. Ji palaiko dinaminį dydžio valdymą, iteratorius, atminties rezervavimą, įterpimą, pašalinimą ir kt.\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Savybės}{Savybės}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Dinamiškai augantis masyvas su rezervavimo galimybe
+\item Pilnai palaikoma kopijavimo ir perkėlimo semantika
+\item Iteratoriai ir reverse iteratoriai
+\item Prieigos metodai\+: {\ttfamily at}, {\ttfamily \mbox{[}\mbox{]}}, {\ttfamily front}, {\ttfamily back}, {\ttfamily data}
+\item Modifikavimo metodai\+: {\ttfamily insert}, {\ttfamily erase}, {\ttfamily push\+\_\+back}, {\ttfamily pop\+\_\+back}, {\ttfamily emplace}, {\ttfamily resize}, {\ttfamily clear}
+\item Operatoriai\+: {\ttfamily ==}, {\ttfamily !=}, {\ttfamily \texorpdfstring{$<$}{<}}, {\ttfamily \texorpdfstring{$<$}{<}=}, {\ttfamily \texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$>$}{>}=}
+\item Palaikomi šablonai, initializer list\textquotesingle{}ai ir range konstruktoriai
+\item Atminties valdymas su {\ttfamily reserve} ir {\ttfamily shrink\+\_\+to\+\_\+fit}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Naudojimas}{Naudojimas}}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_vector_8h}{Vector.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{class_vector}{Vector<int>}}\ vec;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ vec.\mbox{\hyperlink{class_vector_aa169231896a5e446fa915317857bcba6}{push\_back}}(10);}
+\DoxyCodeLine{\ \ \ \ vec.\mbox{\hyperlink{class_vector_aa169231896a5e446fa915317857bcba6}{push\_back}}(20);}
+\DoxyCodeLine{\ \ \ \ vec.\mbox{\hyperlink{class_vector_aa169231896a5e446fa915317857bcba6}{push\_back}}(30);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Vector\ size:\ "{}}\ <<\ vec.\mbox{\hyperlink{class_vector_a820aa7774df7f171db7ced1049adce57}{size}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}First\ element:\ "{}}\ <<\ vec.\mbox{\hyperlink{class_vector_a2f2e14b2a9a0041c783b5ad44dd59593}{front}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Last\ element:\ "{}}\ <<\ vec.\mbox{\hyperlink{class_vector_a8abc3f8273089dadf91fb8eaca0676e6}{back}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ vec.\mbox{\hyperlink{class_vector_adcba035109febbe55cba2a25f8483ba6}{pop\_back}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ val\ :\ vec)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ val\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{std\+::vector ir Vector greičio palyginimo lentelė\+:}{std\+::vector ir Vector greičio palyginimo lentelė\+:}}\label{md__r_e_a_d_m_e_autotoc_md3}
+ 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::vector\ reallocations\ with\ 100000000:\ 28}
+\DoxyCodeLine{Vector\ reallocations\ with\ 100000000:\ 28}
+\DoxyCodeLine{Testas\ 1}
+\DoxyCodeLine{studentai100000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai100000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 152\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 100000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 51\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 437\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 898\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{studentai1000000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai1000000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 902\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 600000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 389\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 2313\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 5065\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{studentai10000000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai10000000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 16171\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 10000000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 8631\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 48234\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 100677\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{Testas\ 2}
+\DoxyCodeLine{studentai100000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai100000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 186\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 100000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 59\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 524\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 1165\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{studentai1000000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai1000000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 1031\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 600000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 414\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 2825\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 5914\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{studentai10000000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai10000000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 18119\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 10000000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 9020\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 48570\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 103486\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{Testas\ 3}
+\DoxyCodeLine{studentai100000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai100000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 213\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 100000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 63\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 512\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 1130\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{studentai1000000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai1000000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 1099\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 600000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 418\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 3046\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 6155\ ms}
+\DoxyCodeLine{}
+\DoxyCodeLine{studentai10000000.txt}
+\DoxyCodeLine{Reading\ file:\ studentai10000000.txt}
+\DoxyCodeLine{Studentu\ nuskaitymas\ is\ failo\ uztruko:\ 18393\ ms}
+\DoxyCodeLine{Total\ students\ read:\ 10000000}
+\DoxyCodeLine{Studentu\ rikiavimas\ uztruko:\ 8674\ ms}
+\DoxyCodeLine{Studentu\ skaidymas\ ir\ irasymas\ i\ failus\ uztruko:\ 48685\ ms}
+\DoxyCodeLine{Is\ viso\ uztruko:\ 103587\ ms}
+
+\end{DoxyCode}
+ 

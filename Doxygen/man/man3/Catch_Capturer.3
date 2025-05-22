@@ -1,0 +1,47 @@
+.TH "Catch::Capturer" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Capturer
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCapturer\fP (\fBStringRef\fP macroName, \fBSourceLineInfo\fP const &lineInfo, \fBResultWas::OfType\fP resultType, \fBStringRef\fP names)"
+.br
+.ti -1c
+.RI "\fB~Capturer\fP ()"
+.br
+.ti -1c
+.RI "void \fBcaptureValue\fP (size_t index, std::string const &value)"
+.br
+.ti -1c
+.RI "template<typename T> void \fBcaptureValues\fP (size_t index, T const &value)"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Ts> void \fBcaptureValues\fP (size_t index, T const &value, Ts const &\&.\&.\&. values)"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::Capturer::Capturer (\fBStringRef\fP macroName, \fBSourceLineInfo\fP const & lineInfo, \fBResultWas::OfType\fP resultType, \fBStringRef\fP names)"
+
+.SS "Catch::Capturer::~Capturer ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Catch::Capturer::captureValue (size_t index, std::string const & value)"
+
+.SS "template<typename T> void Catch::Capturer::captureValues (size_t index, T const & value)\fR [inline]\fP"
+
+.SS "template<typename T, typename\&.\&.\&. Ts> void Catch::Capturer::captureValues (size_t index, T const & value, Ts const &\&.\&.\&. values)\fR [inline]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

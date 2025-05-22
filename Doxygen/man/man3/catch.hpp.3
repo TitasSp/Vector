@@ -1,0 +1,3151 @@
+.TH "Test/catch.hpp" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Test/catch.hpp
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <iosfwd>\fP
+.br
+\fR#include <string>\fP
+.br
+\fR#include <cstdint>\fP
+.br
+\fR#include <vector>\fP
+.br
+\fR#include <cstddef>\fP
+.br
+\fR#include <cassert>\fP
+.br
+\fR#include <type_traits>\fP
+.br
+\fR#include <ostream>\fP
+.br
+\fR#include <chrono>\fP
+.br
+\fR#include <memory>\fP
+.br
+\fR#include <exception>\fP
+.br
+\fR#include <functional>\fP
+.br
+\fR#include <algorithm>\fP
+.br
+\fR#include <utility>\fP
+.br
+\fR#include <random>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCatch_global_namespace_dummy\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::CaseSensitive\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::NonCopyable\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::SourceLineInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StreamEndStop\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::RegistrarForTagAliases\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::ITestInvoker\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::ITestCaseRegistry\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::StringRef\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::always_false< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::true_given< typename >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::is_callable_tester\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::is_callable< Fun(Args\&.\&.\&.)>\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::TestInvokerAsMethod< C >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::NameAndTags\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::AutoReg\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::ResultWas\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::ResultDisposition\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::AssertionInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IStream\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::ReusableStringStream\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Detail::EnumInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IMutableEnumValuesRegistry\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Detail::IsStreamInsertable< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< T, typename >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< std::string >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< char const * >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< char * >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< std::wstring >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< wchar_t const * >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< wchar_t * >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< char[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< signed char[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< unsigned char[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< int >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< long >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< long long >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< unsigned int >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< unsigned long >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< unsigned long long >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< bool >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< char >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< signed char >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< unsigned char >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< std::nullptr_t >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< float >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< double >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< T * >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< R C::* >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::detail::void_type<\&.\&.\&. >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::detail::is_range_impl< T, typename >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::detail::is_range_impl< T, typename void_type< decltype(begin(std::declval< T >()))>::type >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::is_range< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< R, typename std::enable_if< is_range< R >::value &&!::Catch::Detail::IsStreamInsertable< R >::value >::type >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< T[SZ]>\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::ITransientExpression\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::BinaryExpr< LhsT, RhsT >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::UnaryExpr< LhsT >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::ExprLhs< LhsT >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Decomposer\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IResultCapture\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::TestFailureException\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::LazyExpression\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::AssertionReaction\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::AssertionHandler\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::MessageInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::MessageStream\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::MessageBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::ScopedMessage\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Capturer\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Counts\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Totals\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::SectionInfo\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::SectionEndInfo\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Timer\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Section\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IRegistryHub\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IMutableRegistryHub\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IExceptionTranslator\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IExceptionTranslatorRegistry\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::ExceptionTranslatorRegistrar\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Detail::Approx\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::StringMaker< Catch::Detail::Approx >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::pluralise\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Matchers::Impl::MatcherUntypedBase\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Impl::MatcherMethod< ObjectT >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Impl::MatcherBase< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Impl::MatchAllOf< ArgT >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Impl::MatchAnyOf< ArgT >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Impl::MatchNotOf< ArgT >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Matchers::Exception::ExceptionMessageMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Floating::WithinAbsMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Floating::WithinUlpsMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Floating::WithinRelMatcher\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Matchers::Generic::PredicateMatcher< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::StdString::CasedString\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::StdString::StringMatcherBase\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::StdString::EqualsMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::StdString::ContainsMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::StdString::StartsWithMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::StdString::EndsWithMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::StdString::RegexMatcher\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Vector::ContainsElementMatcher< T, Alloc >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Vector::ContainsMatcher< T, AllocComp, AllocMatch >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Vector::EqualsMatcher< T, AllocComp, AllocMatch >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Vector::ApproxMatcher< T, AllocComp, AllocMatch >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Matchers::Vector::UnorderedEqualsMatcher< T, AllocComp, AllocMatch >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::MatchExpr< ArgT, MatcherT >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::GeneratorUntypedBase\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IGeneratorTracker\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::GeneratorException\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Generators::IGenerator< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::SingleValueGenerator< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::FixedValuesGenerator< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::GeneratorWrapper< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::Generators< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::Generators::as< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::TakeGenerator< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::FilterGenerator< T, Predicate >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::RepeatGenerator< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::MapGenerator< T, U, Func >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::ChunkGenerator< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IContext\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IMutableContext\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Option< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::WarnAbout\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::ShowDurations\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::RunTests\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::UseColour\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::WaitForKeypress\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IConfig\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::SimplePcg32\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::RandomFloatingGenerator< Float >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::RandomIntegerGenerator< Integer >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::RangeGenerator< T >\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::Generators::IteratorGenerator< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::TestCaseInfo\fP"
+.br
+.ti -1c
+.RI "class \fBCatch::TestCase\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::IRunner\fP"
+.br
+.ti -1c
+.RI "struct \fBCatch::MatcherBase< T >\fP"
+.br
+.ti -1c
+.RI "class \fBApprox\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBCatch\fP"
+.br
+.ti -1c
+.RI "namespace \fBmpl_\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Detail\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::detail\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::literals\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers::Impl\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers::Exception\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers::Floating\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers::Generic\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers::Generic::Detail\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers::StdString\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Matchers::Vector\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Generators\fP"
+.br
+.ti -1c
+.RI "namespace \fBCatch::Generators::pf\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCATCH_VERSION_MAJOR\fP   2"
+.br
+.ti -1c
+.RI "#define \fBCATCH_VERSION_MINOR\fP   13"
+.br
+.ti -1c
+.RI "#define \fBCATCH_VERSION_PATCH\fP   10"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_CONFIG_POSIX_SIGNALS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_CONFIG_COUNTER\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_CONFIG_GLOBAL_NEXTAFTER\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CONFIG_COUNTER\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CONFIG_POSIX_SIGNALS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CONFIG_WCHAR\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CONFIG_CPP11_TO_STRING\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CONFIG_DISABLE_EXCEPTIONS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CONFIG_GLOBAL_NEXTAFTER\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_START_WARNINGS_SUPPRESSION\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_SUPPRESS_PARENTHESES_WARNINGS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_SUPPRESS_UNUSED_WARNINGS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_SUPPRESS_ZERO_VARIADIC_WARNINGS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_IGNORE_BUT_WARN\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_TRY\fP   if ((true))"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CATCH_ALL\fP   if ((false))"
+.br
+.ti -1c
+.RI "#define \fBCATCH_CATCH_ANON\fP(type)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_UNIQUE_NAME_LINE2\fP(name,  line)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_UNIQUE_NAME_LINE\fP(name,  line)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_UNIQUE_NAME\fP(name)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_LINEINFO\fP       \fB::Catch::SourceLineInfo\fP( __FILE__, static_cast<std::size_t>( __LINE__ ) )"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REGISTER_TAG_ALIAS\fP(alias,  spec)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RECURSION_LEVEL0\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RECURSION_LEVEL1\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RECURSION_LEVEL2\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RECURSION_LEVEL3\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RECURSION_LEVEL4\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RECURSION_LEVEL5\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RECURSE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_END\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_OUT\fP"
+.br
+.ti -1c
+.RI "#define \fBCATCH_EMPTY\fP()"
+.br
+.ti -1c
+.RI "#define \fBCATCH_DEFER\fP(id)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_GET_END2\fP()"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_GET_END1\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_GET_END\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_NEXT0\fP(test,  next, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_NEXT1\fP(test,  next)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_NEXT\fP(test,  next)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST0\fP(f,  x,  peek, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST1\fP(f,  x,  peek, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST2\fP(f,  x,  peek, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST0_UD\fP(f,  userdata,  x,  peek, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST1_UD\fP(f,  userdata,  x,  peek, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST2_UD\fP(f,  userdata,  x,  peek, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST_UD\fP(f,  userdata, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REC_LIST\fP(f, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_EXPAND1\fP(param)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_EXPAND2\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEF\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NOINTERNAL_CATCH_DEF\fP"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_STRINGIZE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_STRINGIZE2\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS\fP(param)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_MAKE_NAMESPACE2\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_MAKE_NAMESPACE\fP(name)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_MAKE_TYPE_LIST2\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_MAKE_TYPE_LIST\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_MAKE_TYPE_LISTS_FROM_TYPES\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_1_ARG\fP(_0)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_2_ARG\fP(_0,  _1)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_3_ARG\fP(_0,  _1,  _2)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_4_ARG\fP(_0,  _1,  _2,  _3)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_5_ARG\fP(_0,  _1,  _2,  _3,  _4)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_6_ARG\fP(_0,  _1,  _2,  _3,  _4,  _5)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_7_ARG\fP(_0,  _1,  _2,  _3,  _4,  _5,  _6)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_8_ARG\fP(_0,  _1,  _2,  _3,  _4,  _5,  _6,  _7)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_9_ARG\fP(_0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_10_ARG\fP(_0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8,  _9)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_11_ARG\fP(_0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8,  _9,  _10)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_VA_NARGS_IMPL\fP(_0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8,  _9,  _10,  N, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TYPE_GEN\fP"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_1\fP(signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST0\fP(TestName)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST1\fP(TestName,  signature)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST_X\fP(TestName,  signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST0\fP(TestName)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST1\fP(TestName,  signature)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST_X\fP(TestName,  signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_REGISTER0\fP(TestFunc,  signature)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_REGISTER\fP(TestFunc,  signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_REGISTER_METHOD0\fP(TestName,  signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_REGISTER_METHOD\fP(TestName,  signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST_METHOD0\fP(TestName,  ClassName)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST_METHOD1\fP(TestName,  ClassName,  signature)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X\fP(TestName,  ClassName,  signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST_METHOD0\fP(TestName)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST_METHOD1\fP(TestName,  signature)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X\fP(TestName,  signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_0\fP"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_GEN\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST_METHOD\fP(TestName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST_METHOD\fP(TestName,  ClassName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_REG_METHOD_GEN\fP(TestName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NTTP_REG_GEN\fP(TestFunc, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DEFINE_SIG_TEST\fP(TestName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DECLARE_SIG_TEST\fP(TestName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REMOVE_PARENS_GEN\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TESTCASE2\fP(TestName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TESTCASE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_METHOD_AS_TEST_CASE\fP(QualifiedMethod, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEST_CASE_METHOD2\fP(TestName,  ClassName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEST_CASE_METHOD\fP(ClassName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REGISTER_TESTCASE\fP(Function, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_TEST_CASE_2\fP(TestName,  TestFunc,  Name,  Tags,  Signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_TEST_CASE\fP(Name,  Tags, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG\fP(Name,  Tags,  Signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2\fP(TestName,  TestFuncName,  Name,  Tags,  Signature,  TmplTypes,  TypesList)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE\fP(Name,  Tags, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_SIG\fP(Name,  Tags,  Signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_2\fP(TestName,  TestFunc,  Name,  Tags,  TmplList)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE\fP(Name,  Tags,  TmplList)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2\fP(TestNameClass,  TestName,  ClassName,  Name,  Tags,  Signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD\fP(ClassName,  Name,  Tags, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_SIG\fP(ClassName,  Name,  Tags,  Signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2\fP(TestNameClass,  TestName,  ClassName,  Name,  Tags,  Signature,  TmplTypes,  TypesList)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD\fP(ClassName,  Name,  Tags, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG\fP(ClassName,  Name,  Tags,  Signature, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_METHOD_2\fP(TestNameClass,  TestName,  ClassName,  Name,  Tags,  TmplList)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_METHOD\fP(ClassName,  Name,  Tags,  TmplList)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REGISTER_ENUM\fP(enumName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_REGISTER_ENUM\fP(enumName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_STRINGIFY\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TRY\fP"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_CATCH\fP(capturer)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_REACT\fP(handler)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TEST\fP(macroName,  resultDisposition, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_IF\fP(macroName,  resultDisposition, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_ELSE\fP(macroName,  resultDisposition, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_NO_THROW\fP(macroName,  resultDisposition, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_THROWS\fP(macroName,  resultDisposition, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_THROWS_AS\fP(macroName,  exceptionType,  resultDisposition,  expr)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_MSG\fP(macroName,  messageType,  resultDisposition, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_CAPTURE\fP(varName,  macroName, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_INFO\fP(macroName,  log)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_UNSCOPED_INFO\fP(macroName,  log)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_THROWS_STR_MATCHES\fP(macroName,  resultDisposition,  matcher, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_SECTION\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_DYNAMIC_SECTION\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TRANSLATE_EXCEPTION2\fP(translatorName,  signature)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_TRANSLATE_EXCEPTION\fP(signature)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CHECK_THAT\fP(macroName,  matcher,  resultDisposition,  arg)"
+.br
+.ti -1c
+.RI "#define \fBINTERNAL_CATCH_THROWS_MATCHES\fP(macroName,  exceptionType,  resultDisposition,  matcher, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_MAKE_MSG\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_INTERNAL_ERROR\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_ERROR\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_RUNTIME_ERROR\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_ENFORCE\fP(condition, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBGENERATE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBGENERATE_COPY\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBGENERATE_REF\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE_FALSE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE_THROWS\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE_THROWS_AS\fP(expr,  exceptionType)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE_THROWS_WITH\fP(expr,  matcher)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE_THROWS_MATCHES\fP(expr,  exceptionType,  matcher)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE_NOTHROW\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECK\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_FALSE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECKED_IF\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECKED_ELSE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_NOFAIL\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_THROWS\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_THROWS_AS\fP(expr,  exceptionType)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_THROWS_WITH\fP(expr,  matcher)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_THROWS_MATCHES\fP(expr,  exceptionType,  matcher)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_NOTHROW\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_THAT\fP(arg,  matcher)"
+.br
+.ti -1c
+.RI "#define \fBREQUIRE_THAT\fP(arg,  matcher)"
+.br
+.ti -1c
+.RI "#define \fBINFO\fP(msg)"
+.br
+.ti -1c
+.RI "#define \fBUNSCOPED_INFO\fP(msg)"
+.br
+.ti -1c
+.RI "#define \fBWARN\fP(msg)"
+.br
+.ti -1c
+.RI "#define \fBCAPTURE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEST_CASE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEST_CASE_METHOD\fP(className, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBMETHOD_AS_TEST_CASE\fP(method, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBREGISTER_TEST_CASE\fP(Function, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBSECTION\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBDYNAMIC_SECTION\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBFAIL\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBFAIL_CHECK\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBSUCCEED\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBANON_TEST_CASE\fP()"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_TEST_CASE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_TEST_CASE_SIG\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_TEST_CASE_METHOD\fP(className, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_TEST_CASE_METHOD_SIG\fP(className, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_PRODUCT_TEST_CASE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_PRODUCT_TEST_CASE_SIG\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_PRODUCT_TEST_CASE_METHOD\fP(className, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG\fP(className, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_LIST_TEST_CASE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBTEMPLATE_LIST_TEST_CASE_METHOD\fP(className, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBSTATIC_REQUIRE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBSTATIC_REQUIRE_FALSE\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBCATCH_TRANSLATE_EXCEPTION\fP(signature)"
+.br
+.ti -1c
+.RI "#define \fBSCENARIO\fP(\&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBSCENARIO_METHOD\fP(className, \&.\&.\&.)"
+.br
+.ti -1c
+.RI "#define \fBGIVEN\fP(desc)"
+.br
+.ti -1c
+.RI "#define \fBAND_GIVEN\fP(desc)"
+.br
+.ti -1c
+.RI "#define \fBWHEN\fP(desc)"
+.br
+.ti -1c
+.RI "#define \fBAND_WHEN\fP(desc)"
+.br
+.ti -1c
+.RI "#define \fBTHEN\fP(desc)"
+.br
+.ti -1c
+.RI "#define \fBAND_THEN\fP(desc)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "template<typename Func, typename\&.\&.\&. U> using \fBCatch::FunctionReturnType\fP = typename std::remove_reference<typename std::remove_cv<typename std::result_of<Func(U\&.\&.\&.)>::type>::type>::type"
+.br
+.ti -1c
+.RI "using \fBCatch::IReporterFactoryPtr\fP = std::shared_ptr<IReporterFactory>"
+.br
+.ti -1c
+.RI "using \fBCatch::exceptionTranslateFunction\fP = std::string(*)()"
+.br
+.ti -1c
+.RI "using \fBCatch::ExceptionTranslators\fP = std::vector<std::unique_ptr<\fBIExceptionTranslator\fP const>>"
+.br
+.ti -1c
+.RI "using \fBCatch::StringMatcher\fP = \fBMatchers::Impl::MatcherBase\fP<std::string>"
+.br
+.ti -1c
+.RI "using \fBCatch::Generators::GeneratorBasePtr\fP = std::unique_ptr<\fBGeneratorUntypedBase\fP>"
+.br
+.ti -1c
+.RI "using \fBCatch::IConfigPtr\fP = std::shared_ptr<\fBIConfig\fP const>"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBCatch::Verbosity\fP { \fBCatch::Quiet\fP = 0, \fBCatch::Normal\fP, \fBCatch::High\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBCatch::rngSeed\fP ()"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &, \fBCatch_global_namespace_dummy\fP)"
+.br
+.ti -1c
+.RI "std::ostream & \fBCatch::operator<<\fP (std::ostream &os, \fBSourceLineInfo\fP const &info)"
+.br
+.ti -1c
+.RI "template<typename T> T const & \fBCatch::operator+\fP (T const &value, \fBStreamEndStop\fP)"
+.br
+.ti -1c
+.RI "bool \fBCatch::isThrowSafe\fP (\fBTestCase\fP const &testCase, \fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "bool \fBCatch::matchTest\fP (\fBTestCase\fP const &testCase, TestSpec const &testSpec, \fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "std::vector< \fBTestCase\fP > \fBCatch::filterTests\fP (std::vector< \fBTestCase\fP > const &testCases, TestSpec const &testSpec, \fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "std::vector< \fBTestCase\fP > const & \fBCatch::getAllTestCasesSorted\fP (\fBIConfig\fP const &config)"
+.br
+.ti -1c
+.RI "auto \fBCatch::operator+=\fP (std::string &lhs, \fBStringRef\fP const &sr) \-> std::string &"
+.br
+.ti -1c
+.RI "auto \fBCatch::operator<<\fP (std::ostream &os, \fBStringRef\fP const &sr) \-> std::ostream &"
+.br
+.ti -1c
+.RI "constexpr auto \fBCatch::operator''_sr\fP (char const *rawChars, std::size_t size) noexcept \-> \fBStringRef\fP"
+.br
+.ti -1c
+.RI "constexpr auto \fBoperator''_catch_sr\fP (char const *rawChars, std::size_t size) noexcept \-> \fBCatch::StringRef\fP"
+.br
+.ti -1c
+.RI "auto \fBCatch::makeTestInvoker\fP (void(*testAsFunction)()) noexcept \-> \fBITestInvoker\fP *"
+.br
+.ti -1c
+.RI "template<typename C> auto \fBCatch::makeTestInvoker\fP (void(C::*testAsMethod)()) noexcept \-> \fBITestInvoker\fP *"
+.br
+.ti -1c
+.RI "bool \fBCatch::isOk\fP (\fBResultWas::OfType\fP resultType)"
+.br
+.ti -1c
+.RI "bool \fBCatch::isJustInfo\fP (int flags)"
+.br
+.ti -1c
+.RI "\fBResultDisposition::Flags\fP \fBCatch::operator|\fP (\fBResultDisposition::Flags\fP lhs, \fBResultDisposition::Flags\fP rhs)"
+.br
+.ti -1c
+.RI "bool \fBCatch::shouldContinueOnFailure\fP (int flags)"
+.br
+.ti -1c
+.RI "bool \fBCatch::isFalseTest\fP (int flags)"
+.br
+.ti -1c
+.RI "bool \fBCatch::shouldSuppressFailure\fP (int flags)"
+.br
+.ti -1c
+.RI "std::ostream & \fBCatch::cout\fP ()"
+.br
+.ti -1c
+.RI "std::ostream & \fBCatch::cerr\fP ()"
+.br
+.ti -1c
+.RI "std::ostream & \fBCatch::clog\fP ()"
+.br
+.ti -1c
+.RI "auto \fBCatch::makeStream\fP (\fBStringRef\fP const &filename) \-> \fBIStream\fP const *"
+.br
+.ti -1c
+.RI "std::string \fBCatch::Detail::rawMemoryToString\fP (const void *object, std::size_t size)"
+.br
+.ti -1c
+.RI "template<typename T> std::string \fBCatch::Detail::rawMemoryToString\fP (const T &object)"
+.br
+.ti -1c
+.RI "template<typename E> std::string \fBCatch::Detail::convertUnknownEnumToString\fP (E e)"
+.br
+.ti -1c
+.RI "template<typename T> std::enable_if<!std::is_enum< T >::value &&!std::is_base_of< std::exception, T >::value, std::string >::type \fBCatch::Detail::convertUnstreamable\fP (T const &)"
+.br
+.ti -1c
+.RI "template<typename T> std::enable_if<!std::is_enum< T >::value &&std::is_base_of< std::exception, T >::value, std::string >::type \fBCatch::Detail::convertUnstreamable\fP (T const &ex)"
+.br
+.ti -1c
+.RI "template<typename T> std::enable_if< std::is_enum< T >::value, std::string >::type \fBCatch::Detail::convertUnstreamable\fP (T const &value)"
+.br
+.ti -1c
+.RI "template<typename T> std::string \fBCatch::Detail::stringify\fP (const T &e)"
+.br
+.ti -1c
+.RI "template<typename InputIterator, typename Sentinel = InputIterator> std::string \fBCatch::Detail::rangeToString\fP (InputIterator first, Sentinel last)"
+.br
+.ti -1c
+.RI "template<typename Range> std::string \fBCatch::rangeToString\fP (Range const &range)"
+.br
+.ti -1c
+.RI "template<typename Allocator> std::string \fBCatch::rangeToString\fP (std::vector< bool, Allocator > const &v)"
+.br
+.ti -1c
+.RI "void \fBCatch::formatReconstructedExpression\fP (std::ostream &os, std::string const &lhs, \fBStringRef\fP op, std::string const &rhs)"
+.br
+.ti -1c
+.RI "template<typename LhsT, typename RhsT> auto \fBCatch::compareEqual\fP (LhsT const &lhs, RhsT const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareEqual\fP (T *const &lhs, int rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareEqual\fP (T *const &lhs, long rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareEqual\fP (int lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareEqual\fP (long lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename LhsT, typename RhsT> auto \fBCatch::compareNotEqual\fP (LhsT const &lhs, RhsT &&rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareNotEqual\fP (T *const &lhs, int rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareNotEqual\fP (T *const &lhs, long rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareNotEqual\fP (int lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::compareNotEqual\fP (long lhs, T *const &rhs) \-> bool"
+.br
+.ti -1c
+.RI "void \fBCatch::handleExpression\fP (\fBITransientExpression\fP const &expr)"
+.br
+.ti -1c
+.RI "template<typename T> void \fBCatch::handleExpression\fP (\fBExprLhs\fP< T > const &expr)"
+.br
+.ti -1c
+.RI "\fBIResultCapture\fP & \fBCatch::getResultCapture\fP ()"
+.br
+.ti -1c
+.RI "void \fBCatch::handleExceptionMatchExpr\fP (\fBAssertionHandler\fP &handler, std::string const &str, \fBStringRef\fP const &matcherString)"
+.br
+.ti -1c
+.RI "auto \fBCatch::getCurrentNanosecondsSinceEpoch\fP () \-> uint64_t"
+.br
+.ti -1c
+.RI "auto \fBCatch::getEstimatedClockResolution\fP () \-> uint64_t"
+.br
+.ti -1c
+.RI "\fBIRegistryHub\fP const & \fBCatch::getRegistryHub\fP ()"
+.br
+.ti -1c
+.RI "\fBIMutableRegistryHub\fP & \fBCatch::getMutableRegistryHub\fP ()"
+.br
+.ti -1c
+.RI "void \fBCatch::cleanUp\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBCatch::translateActiveException\fP ()"
+.br
+.ti -1c
+.RI "\fBDetail::Approx\fP \fBCatch::literals::operator''_a\fP (long double val)"
+.br
+.ti -1c
+.RI "\fBDetail::Approx\fP \fBCatch::literals::operator''_a\fP (unsigned long long val)"
+.br
+.ti -1c
+.RI "bool \fBCatch::startsWith\fP (std::string const &s, std::string const &prefix)"
+.br
+.ti -1c
+.RI "bool \fBCatch::startsWith\fP (std::string const &s, char prefix)"
+.br
+.ti -1c
+.RI "bool \fBCatch::endsWith\fP (std::string const &s, std::string const &suffix)"
+.br
+.ti -1c
+.RI "bool \fBCatch::endsWith\fP (std::string const &s, char suffix)"
+.br
+.ti -1c
+.RI "bool \fBCatch::contains\fP (std::string const &s, std::string const &infix)"
+.br
+.ti -1c
+.RI "void \fBCatch::toLowerInPlace\fP (std::string &s)"
+.br
+.ti -1c
+.RI "std::string \fBCatch::toLower\fP (std::string const &s)"
+.br
+.ti -1c
+.RI "std::string \fBCatch::trim\fP (std::string const &str)"
+.br
+.RI "Returns a new string without whitespace at the start/end\&. "
+.ti -1c
+.RI "\fBStringRef\fP \fBCatch::trim\fP (\fBStringRef\fP ref)"
+.br
+.RI "Returns a substring of the original ref without whitespace\&. Beware lifetimes! "
+.ti -1c
+.RI "std::vector< \fBStringRef\fP > \fBCatch::splitStringRef\fP (\fBStringRef\fP str, char delimiter)"
+.br
+.ti -1c
+.RI "bool \fBCatch::replaceInPlace\fP (std::string &str, std::string const &replaceThis, std::string const &withThis)"
+.br
+.ti -1c
+.RI "\fBException::ExceptionMessageMatcher\fP \fBCatch::Matchers::Message\fP (std::string const &message)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinUlpsMatcher\fP \fBCatch::Matchers::WithinULP\fP (double target, uint64_t maxUlpDiff)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinUlpsMatcher\fP \fBCatch::Matchers::WithinULP\fP (float target, uint64_t maxUlpDiff)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinAbsMatcher\fP \fBCatch::Matchers::WithinAbs\fP (double target, double margin)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBCatch::Matchers::WithinRel\fP (double target, double eps)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBCatch::Matchers::WithinRel\fP (double target)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBCatch::Matchers::WithinRel\fP (float target, float eps)"
+.br
+.ti -1c
+.RI "\fBFloating::WithinRelMatcher\fP \fBCatch::Matchers::WithinRel\fP (float target)"
+.br
+.ti -1c
+.RI "std::string \fBCatch::Matchers::Generic::Detail::finalizeDescription\fP (const std::string &desc)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneric::PredicateMatcher\fP< T > \fBCatch::Matchers::Predicate\fP (std::function< bool(T const &)> const &predicate, std::string const &description='')"
+.br
+.ti -1c
+.RI "\fBStdString::EqualsMatcher\fP \fBCatch::Matchers::Equals\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::ContainsMatcher\fP \fBCatch::Matchers::Contains\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::EndsWithMatcher\fP \fBCatch::Matchers::EndsWith\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::StartsWithMatcher\fP \fBCatch::Matchers::StartsWith\fP (std::string const &str, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "\fBStdString::RegexMatcher\fP \fBCatch::Matchers::Matches\fP (std::string const &regex, \fBCaseSensitive::Choice\fP caseSensitivity=\fBCaseSensitive::Yes\fP)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::ContainsMatcher\fP< T, AllocComp, AllocMatch > \fBCatch::Matchers::Contains\fP (std::vector< T, AllocComp > const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename Alloc = std::allocator<T>> \fBVector::ContainsElementMatcher\fP< T, Alloc > \fBCatch::Matchers::VectorContains\fP (T const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::EqualsMatcher\fP< T, AllocComp, AllocMatch > \fBCatch::Matchers::Equals\fP (std::vector< T, AllocComp > const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::ApproxMatcher\fP< T, AllocComp, AllocMatch > \fBCatch::Matchers::Approx\fP (std::vector< T, AllocComp > const &comparator)"
+.br
+.ti -1c
+.RI "template<typename T, typename AllocComp = std::allocator<T>, typename AllocMatch = AllocComp> \fBVector::UnorderedEqualsMatcher\fP< T, AllocComp, AllocMatch > \fBCatch::Matchers::UnorderedEquals\fP (std::vector< T, AllocComp > const &target)"
+.br
+.ti -1c
+.RI "void \fBCatch::handleExceptionMatchExpr\fP (\fBAssertionHandler\fP &handler, \fBStringMatcher\fP const &matcher, \fBStringRef\fP const &matcherString)"
+.br
+.ti -1c
+.RI "template<typename ArgT, typename MatcherT> auto \fBCatch::makeMatchExpr\fP (ArgT const &arg, MatcherT const &matcher, \fBStringRef\fP const &matcherString) \-> \fBMatchExpr\fP< ArgT, MatcherT >"
+.br
+.ti -1c
+.RI "void \fBCatch::throw_exception\fP (std::exception const &e)"
+.br
+.ti -1c
+.RI "void \fBCatch::throw_logic_error\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "void \fBCatch::throw_domain_error\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "void \fBCatch::throw_runtime_error\fP (std::string const &msg)"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Args> std::unique_ptr< T > \fBCatch::Generators::pf::make_unique\fP (Args &&\&.\&.\&. args)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::value\fP (T &&value)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::values\fP (std::initializer_list< T > values)"
+.br
+.ti -1c
+.RI "template<typename\&.\&.\&. Ts> \fBGeneratorWrapper\fP< std::tuple< Ts\&.\&.\&. > > \fBCatch::Generators::table\fP (std::initializer_list< std::tuple< typename std::decay< Ts >::type\&.\&.\&. > > tuples)"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Gs> auto \fBCatch::Generators::makeGenerators\fP (\fBGeneratorWrapper\fP< T > &&generator, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBCatch::Generators::makeGenerators\fP (\fBGeneratorWrapper\fP< T > &&generator) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Gs> auto \fBCatch::Generators::makeGenerators\fP (T &&val, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "template<typename T, typename U, typename\&.\&.\&. Gs> auto \fBCatch::Generators::makeGenerators\fP (\fBas\fP< T >, U &&val, Gs &&\&.\&.\&. moreGenerators) \-> \fBGenerators\fP< T >"
+.br
+.ti -1c
+.RI "auto \fBCatch::Generators::acquireGeneratorTracker\fP (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const &lineInfo) \-> \fBIGeneratorTracker\fP &"
+.br
+.ti -1c
+.RI "template<typename L> auto \fBCatch::Generators::generate\fP (\fBStringRef\fP generatorName, \fBSourceLineInfo\fP const &lineInfo, L const &generatorExpression) \-> decltype(std::declval< decltype(generatorExpression())>()\&.get())"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::take\fP (size_t target, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "template<typename T, typename \fBPredicate\fP> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::filter\fP (\fBPredicate\fP &&pred, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::repeat\fP (size_t repeats, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "template<typename Func, typename U, typename T = FunctionReturnType<Func, U>> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::map\fP (Func &&function, \fBGeneratorWrapper\fP< U > &&generator)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< std::vector< T > > \fBCatch::Generators::chunk\fP (size_t size, \fBGeneratorWrapper\fP< T > &&generator)"
+.br
+.ti -1c
+.RI "\fBIMutableContext\fP & \fBCatch::getCurrentMutableContext\fP ()"
+.br
+.ti -1c
+.RI "\fBIContext\fP & \fBCatch::getCurrentContext\fP ()"
+.br
+.ti -1c
+.RI "void \fBCatch::cleanUpContext\fP ()"
+.br
+.ti -1c
+.RI "\fBSimplePcg32\fP & \fBCatch::rng\fP ()"
+.br
+.ti -1c
+.RI "template<typename T> std::enable_if< std::is_integral< T >\fB::value\fP &&!std::is_same< T, bool >\fB::value\fP, \fBGeneratorWrapper\fP< T > >::type \fBCatch::Generators::random\fP (T a, T b)"
+.br
+.ti -1c
+.RI "template<typename T> std::enable_if< std::is_floating_point< T >\fB::value\fP, \fBGeneratorWrapper\fP< T > >::type \fBCatch::Generators::random\fP (T a, T b)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::range\fP (T const &start, T const &end, T const &step)"
+.br
+.ti -1c
+.RI "template<typename T> \fBGeneratorWrapper\fP< T > \fBCatch::Generators::range\fP (T const &start, T const &end)"
+.br
+.ti -1c
+.RI "template<typename InputIterator, typename InputSentinel, typename ResultType = typename std::iterator_traits<InputIterator>::value_type> \fBGeneratorWrapper\fP< ResultType > \fBCatch::Generators::from_range\fP (InputIterator from, InputSentinel to)"
+.br
+.ti -1c
+.RI "template<typename Container, typename ResultType = typename Container::value_type> \fBGeneratorWrapper\fP< ResultType > \fBCatch::Generators::from_range\fP (Container const &cnt)"
+.br
+.ti -1c
+.RI "\fBTestCase\fP \fBCatch::makeTestCase\fP (\fBITestInvoker\fP *testCase, std::string const &className, \fBNameAndTags\fP const &nameAndTags, \fBSourceLineInfo\fP const &lineInfo)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const std::string \fBCatch::Detail::unprintableString\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define AND_GIVEN( desc)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DYNAMIC_SECTION( "And given: " << desc )
+.PP
+.fi
+
+.SS "#define AND_THEN( desc)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DYNAMIC_SECTION( "      And: " << desc )
+.PP
+.fi
+
+.SS "#define AND_WHEN( desc)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DYNAMIC_SECTION( " And when: " << desc )
+.PP
+.fi
+
+.SS "#define ANON_TEST_CASE()"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TESTCASE()
+.PP
+.fi
+
+.SS "#define CAPTURE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_CAPTURE( INTERNAL_CATCH_UNIQUE_NAME(capturer), "CAPTURE",__VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_CATCH_ALL   if ((false))"
+
+.SS "#define CATCH_CATCH_ANON( type)"
+\fBValue:\fP
+.nf
+if ((false))
+.PP
+.fi
+
+.SS "#define CATCH_CONFIG_COUNTER"
+
+.SS "#define CATCH_CONFIG_CPP11_TO_STRING"
+
+.SS "#define CATCH_CONFIG_DISABLE_EXCEPTIONS"
+
+.SS "#define CATCH_CONFIG_GLOBAL_NEXTAFTER"
+
+.SS "#define CATCH_CONFIG_POSIX_SIGNALS"
+
+.SS "#define CATCH_CONFIG_WCHAR"
+
+.SS "#define CATCH_DEFER( id)"
+\fBValue:\fP
+.nf
+id CATCH_EMPTY()
+.PP
+.fi
+
+.SS "#define CATCH_EMPTY()"
+
+.SS "#define CATCH_ENFORCE( condition,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    do{ if( !(condition) ) CATCH_ERROR( __VA_ARGS__ ); } while(false)
+.PP
+.fi
+
+.SS "#define CATCH_ERROR( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    Catch::throw_domain_error(CATCH_MAKE_MSG( __VA_ARGS__ ))
+.PP
+.fi
+
+.SS "#define CATCH_INTERNAL_CONFIG_COUNTER"
+
+.SS "#define CATCH_INTERNAL_CONFIG_GLOBAL_NEXTAFTER"
+
+.SS "#define CATCH_INTERNAL_CONFIG_POSIX_SIGNALS"
+
+.SS "#define CATCH_INTERNAL_ERROR( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    Catch::throw_logic_error(CATCH_MAKE_MSG( CATCH_INTERNAL_LINEINFO << ": Internal Catch2 error: " << __VA_ARGS__))
+.PP
+.fi
+
+.SS "#define CATCH_INTERNAL_IGNORE_BUT_WARN( \&.\&.\&.)"
+
+.SS "#define CATCH_INTERNAL_LINEINFO       \fB::Catch::SourceLineInfo\fP( __FILE__, static_cast<std::size_t>( __LINE__ ) )"
+
+.SS "#define CATCH_INTERNAL_START_WARNINGS_SUPPRESSION"
+
+.SS "#define CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION"
+
+.SS "#define CATCH_INTERNAL_STRINGIFY( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+#__VA_ARGS__
+.PP
+.fi
+
+.SS "#define CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS"
+
+.SS "#define CATCH_INTERNAL_SUPPRESS_PARENTHESES_WARNINGS"
+
+.SS "#define CATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS"
+
+.SS "#define CATCH_INTERNAL_SUPPRESS_UNUSED_WARNINGS"
+
+.SS "#define CATCH_INTERNAL_SUPPRESS_ZERO_VARIADIC_WARNINGS"
+
+.SS "#define CATCH_MAKE_MSG( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    (Catch::ReusableStringStream() << __VA_ARGS__)\&.str()
+.PP
+.fi
+
+.SS "#define CATCH_REC_END( \&.\&.\&.)"
+
+.SS "#define CATCH_REC_GET_END( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_REC_GET_END1
+.PP
+.fi
+
+.SS "#define CATCH_REC_GET_END1( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_REC_GET_END2
+.PP
+.fi
+
+.SS "#define CATCH_REC_GET_END2()"
+\fBValue:\fP
+.nf
+0, CATCH_REC_END
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST( f,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSE(CATCH_REC_LIST2(f, __VA_ARGS__, ()()(), ()()(), ()()(), 0))
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST0( f,  x,  peek,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+, f(x) CATCH_DEFER ( CATCH_REC_NEXT(peek, CATCH_REC_LIST1) ) ( f, peek, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST0_UD( f,  userdata,  x,  peek,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+, f(userdata, x) CATCH_DEFER ( CATCH_REC_NEXT(peek, CATCH_REC_LIST1_UD) ) ( f, userdata, peek, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST1( f,  x,  peek,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+, f(x) CATCH_DEFER ( CATCH_REC_NEXT(peek, CATCH_REC_LIST0) ) ( f, peek, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST1_UD( f,  userdata,  x,  peek,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+, f(userdata, x) CATCH_DEFER ( CATCH_REC_NEXT(peek, CATCH_REC_LIST0_UD) ) ( f, userdata, peek, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST2( f,  x,  peek,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+f(x) CATCH_DEFER ( CATCH_REC_NEXT(peek, CATCH_REC_LIST1) ) ( f, peek, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST2_UD( f,  userdata,  x,  peek,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+f(userdata, x) CATCH_DEFER ( CATCH_REC_NEXT(peek, CATCH_REC_LIST1_UD) ) ( f, userdata, peek, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_REC_LIST_UD( f,  userdata,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSE(CATCH_REC_LIST2_UD(f, userdata, __VA_ARGS__, ()()(), ()()(), ()()(), 0))
+.PP
+.fi
+
+.SS "#define CATCH_REC_NEXT( test,  next)"
+\fBValue:\fP
+.nf
+CATCH_REC_NEXT1(CATCH_REC_GET_END test, next)
+.PP
+.fi
+
+.SS "#define CATCH_REC_NEXT0( test,  next,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+next CATCH_REC_OUT
+.PP
+.fi
+
+.SS "#define CATCH_REC_NEXT1( test,  next)"
+\fBValue:\fP
+.nf
+CATCH_DEFER ( CATCH_REC_NEXT0 ) ( test, next, 0)
+.PP
+.fi
+
+.SS "#define CATCH_REC_OUT"
+
+.SS "#define CATCH_RECURSE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSION_LEVEL5(__VA_ARGS__)
+.PP
+.fi
+
+.SS "#define CATCH_RECURSION_LEVEL0( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+__VA_ARGS__
+.PP
+.fi
+
+.SS "#define CATCH_RECURSION_LEVEL1( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSION_LEVEL0(CATCH_RECURSION_LEVEL0(CATCH_RECURSION_LEVEL0(__VA_ARGS__)))
+.PP
+.fi
+
+.SS "#define CATCH_RECURSION_LEVEL2( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSION_LEVEL1(CATCH_RECURSION_LEVEL1(CATCH_RECURSION_LEVEL1(__VA_ARGS__)))
+.PP
+.fi
+
+.SS "#define CATCH_RECURSION_LEVEL3( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSION_LEVEL2(CATCH_RECURSION_LEVEL2(CATCH_RECURSION_LEVEL2(__VA_ARGS__)))
+.PP
+.fi
+
+.SS "#define CATCH_RECURSION_LEVEL4( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSION_LEVEL3(CATCH_RECURSION_LEVEL3(CATCH_RECURSION_LEVEL3(__VA_ARGS__)))
+.PP
+.fi
+
+.SS "#define CATCH_RECURSION_LEVEL5( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+CATCH_RECURSION_LEVEL4(CATCH_RECURSION_LEVEL4(CATCH_RECURSION_LEVEL4(__VA_ARGS__)))
+.PP
+.fi
+
+.SS "#define CATCH_REGISTER_ENUM( enumName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REGISTER_ENUM( enumName, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CATCH_REGISTER_TAG_ALIAS( alias,  spec)"
+\fBValue:\fP
+.nf
+    CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+    CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+    namespace{ Catch::RegistrarForTagAliases INTERNAL_CATCH_UNIQUE_NAME( AutoRegisterTagAlias )( alias, spec, CATCH_INTERNAL_LINEINFO ); } \\
+    CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION
+.PP
+.fi
+
+.SS "#define CATCH_RUNTIME_ERROR( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    Catch::throw_runtime_error(CATCH_MAKE_MSG( __VA_ARGS__ ))
+.PP
+.fi
+
+.SS "#define CATCH_TRANSLATE_EXCEPTION( signature)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TRANSLATE_EXCEPTION( signature )
+.PP
+.fi
+
+.SS "#define CATCH_TRY   if ((true))"
+
+.SS "#define CATCH_VERSION_MAJOR   2"
+
+.SS "#define CATCH_VERSION_MINOR   13"
+
+.SS "#define CATCH_VERSION_PATCH   10"
+
+.SS "#define CHECK( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEST( "CHECK", Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CHECK_FALSE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEST( "CHECK_FALSE", Catch::ResultDisposition::ContinueOnFailure | Catch::ResultDisposition::FalseTest, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CHECK_NOFAIL( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEST( "CHECK_NOFAIL", Catch::ResultDisposition::ContinueOnFailure | Catch::ResultDisposition::SuppressFail, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CHECK_NOTHROW( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_NO_THROW( "CHECK_NOTHROW", Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CHECK_THAT( arg,  matcher)"
+\fBValue:\fP
+.nf
+INTERNAL_CHECK_THAT( "CHECK_THAT", matcher, Catch::ResultDisposition::ContinueOnFailure, arg )
+.PP
+.fi
+
+.SS "#define CHECK_THROWS( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS( "CHECK_THROWS", Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CHECK_THROWS_AS( expr,  exceptionType)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS_AS( "CHECK_THROWS_AS", exceptionType, Catch::ResultDisposition::ContinueOnFailure, expr )
+.PP
+.fi
+
+.SS "#define CHECK_THROWS_MATCHES( expr,  exceptionType,  matcher)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS_MATCHES( "CHECK_THROWS_MATCHES", exceptionType, Catch::ResultDisposition::ContinueOnFailure, matcher, expr )
+.PP
+.fi
+
+.SS "#define CHECK_THROWS_WITH( expr,  matcher)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS_STR_MATCHES( "CHECK_THROWS_WITH", Catch::ResultDisposition::ContinueOnFailure, matcher, expr )
+.PP
+.fi
+
+.SS "#define CHECKED_ELSE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_ELSE( "CHECKED_ELSE", Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define CHECKED_IF( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_IF( "CHECKED_IF", Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define DYNAMIC_SECTION( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DYNAMIC_SECTION( __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define FAIL( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_MSG( "FAIL", Catch::ResultWas::ExplicitFailure, Catch::ResultDisposition::Normal, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define FAIL_CHECK( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_MSG( "FAIL_CHECK", Catch::ResultWas::ExplicitFailure, Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define GENERATE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    Catch::Generators::generate( INTERNAL_CATCH_STRINGIZE(INTERNAL_CATCH_UNIQUE_NAME(generator)), \\
+                                 CATCH_INTERNAL_LINEINFO, \\
+                                 [ ]{ using namespace Catch::Generators; return makeGenerators( __VA_ARGS__ ); } )
+.PP
+.fi
+
+.SS "#define GENERATE_COPY( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    Catch::Generators::generate( INTERNAL_CATCH_STRINGIZE(INTERNAL_CATCH_UNIQUE_NAME(generator)), \\
+                                 CATCH_INTERNAL_LINEINFO, \\
+                                 [=]{ using namespace Catch::Generators; return makeGenerators( __VA_ARGS__ ); } )
+.PP
+.fi
+
+.SS "#define GENERATE_REF( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    Catch::Generators::generate( INTERNAL_CATCH_STRINGIZE(INTERNAL_CATCH_UNIQUE_NAME(generator)), \\
+                                 CATCH_INTERNAL_LINEINFO, \\
+                                 [&]{ using namespace Catch::Generators; return makeGenerators( __VA_ARGS__ ); } )
+.PP
+.fi
+
+.SS "#define GIVEN( desc)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DYNAMIC_SECTION( "    Given: " << desc )
+.PP
+.fi
+
+.SS "#define INFO( msg)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_INFO( "INFO", msg )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_CAPTURE( varName,  macroName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    auto varName = Catch::Capturer( macroName, CATCH_INTERNAL_LINEINFO, Catch::ResultWas::Info, #__VA_ARGS__ ); \\
+    varName\&.captureValues( 0, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_CATCH( capturer)"
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST( TestName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_DECLARE_SIG_TEST_X,INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X,INTERNAL_CATCH_DECLARE_SIG_TEST_X,INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST1, INTERNAL_CATCH_DECLARE_SIG_TEST0)(TestName, __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST0( TestName)"
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST1( TestName,  signature)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    static void TestName()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD( TestName,  ClassName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD1, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD0)(TestName, ClassName, __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD0( TestName,  ClassName)"
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD1( TestName,  ClassName,  signature)"
+\fBValue:\fP
+.nf
+    template<typename TestType> \\
+    struct TestName : INTERNAL_CATCH_REMOVE_PARENS(ClassName)<TestType> { \\
+        void test();\\
+    }
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X( TestName,  ClassName,  signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)> \\
+    struct TestName : INTERNAL_CATCH_REMOVE_PARENS(ClassName)<__VA_ARGS__> { \\
+        void test();\\
+    }
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DECLARE_SIG_TEST_X( TestName,  signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    static void TestName()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DEF( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DEF __VA_ARGS__
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST( TestName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_DEFINE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X,INTERNAL_CATCH_DEFINE_SIG_TEST_X,INTERNAL_CATCH_DEFINE_SIG_TEST1, INTERNAL_CATCH_DEFINE_SIG_TEST0)(TestName, __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST0( TestName)"
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST1( TestName,  signature)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    static void TestName()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD( TestName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD1, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD0)(TestName, __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD0( TestName)"
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD1( TestName,  signature)"
+\fBValue:\fP
+.nf
+    template<typename TestType> \\
+    void INTERNAL_CATCH_MAKE_NAMESPACE(TestName)::TestName<TestType>::test()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X( TestName,  signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)> \\
+    void INTERNAL_CATCH_MAKE_NAMESPACE(TestName)::TestName<__VA_ARGS__>::test()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DEFINE_SIG_TEST_X( TestName,  signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    static void TestName()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_DYNAMIC_SECTION( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+    CATCH_INTERNAL_SUPPRESS_UNUSED_WARNINGS \\
+    if( Catch::Section const& INTERNAL_CATCH_UNIQUE_NAME( catch_internal_Section ) = Catch::SectionInfo( CATCH_INTERNAL_LINEINFO, (Catch::ReusableStringStream() << __VA_ARGS__)\&.str() ) ) \\
+    CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_ELSE( macroName,  resultDisposition,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    INTERNAL_CATCH_TEST( macroName, resultDisposition, __VA_ARGS__ ); \\
+    if( !Catch::getResultCapture()\&.lastAssertionPassed() )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_EXPAND1( param)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_EXPAND2(param)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_EXPAND2( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_NO## __VA_ARGS__
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_IF( macroName,  resultDisposition,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    INTERNAL_CATCH_TEST( macroName, resultDisposition, __VA_ARGS__ ); \\
+    if( Catch::getResultCapture()\&.lastAssertionPassed() )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_INFO( macroName,  log)"
+\fBValue:\fP
+.nf
+    Catch::ScopedMessage INTERNAL_CATCH_UNIQUE_NAME( scopedMessage )( Catch::MessageBuilder( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, Catch::ResultWas::Info ) << log );
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_MAKE_NAMESPACE( name)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_MAKE_NAMESPACE2(name)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_MAKE_NAMESPACE2( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+ns_##__VA_ARGS__
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_MAKE_TYPE_LIST( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_MAKE_TYPE_LIST2(INTERNAL_CATCH_REMOVE_PARENS(__VA_ARGS__))
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_MAKE_TYPE_LIST2( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+decltype(get_wrapper<INTERNAL_CATCH_REMOVE_PARENS_GEN(__VA_ARGS__)>())
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_MAKE_TYPE_LISTS_FROM_TYPES( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    CATCH_REC_LIST(INTERNAL_CATCH_MAKE_TYPE_LIST,__VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_METHOD_AS_TEST_CASE( QualifiedMethod,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        namespace{ Catch::AutoReg INTERNAL_CATCH_UNIQUE_NAME( autoRegistrar )( Catch::makeTestInvoker( &QualifiedMethod ), CATCH_INTERNAL_LINEINFO, "&" #QualifiedMethod, Catch::NameAndTags{ __VA_ARGS__ } ); } /* NOLINT */ \\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_MSG( macroName,  messageType,  resultDisposition,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    do { \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, Catch::StringRef(), resultDisposition ); \\
+        catchAssertionHandler\&.handleMessage( messageType, ( Catch::MessageStream() << __VA_ARGS__ + ::Catch::StreamEndStop() )\&.m_stream\&.str() ); \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( false )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NO_THROW( macroName,  resultDisposition,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    do { \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, CATCH_INTERNAL_STRINGIFY(__VA_ARGS__), resultDisposition ); \\
+        try { \\
+            static_cast<void>(__VA_ARGS__); \\
+            catchAssertionHandler\&.handleExceptionNotThrownAsExpected(); \\
+        } \\
+        catch( \&.\&.\&. ) { \\
+            catchAssertionHandler\&.handleUnexpectedInflightException(); \\
+        } \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( false )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NOINTERNAL_CATCH_DEF"
+
+.SS "#define INTERNAL_CATCH_NTTP_0"
+
+.SS "#define INTERNAL_CATCH_NTTP_1( signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)> struct Nttp{};\\
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    constexpr auto get_wrapper() noexcept \-> Nttp<__VA_ARGS__> { return {}; } \\
+    template<template<INTERNAL_CATCH_REMOVE_PARENS(signature)> class\&.\&.\&.> struct NttpTemplateTypeList{};\\
+    template<template<INTERNAL_CATCH_REMOVE_PARENS(signature)> class\&.\&.\&.Cs>\\
+    constexpr auto get_wrapper() noexcept \-> NttpTemplateTypeList<Cs\&.\&.\&.> { return {}; } \\
+    \\
+    template< template<INTERNAL_CATCH_REMOVE_PARENS(signature)> class Container, template<INTERNAL_CATCH_REMOVE_PARENS(signature)> class List, INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    struct rewrap<NttpTemplateTypeList<Container>, List<__VA_ARGS__>> { using type = TypeList<Container<__VA_ARGS__>>; };\\
+    template< template<INTERNAL_CATCH_REMOVE_PARENS(signature)> class Container, template<INTERNAL_CATCH_REMOVE_PARENS(signature)> class List, INTERNAL_CATCH_REMOVE_PARENS(signature), typename\&.\&.\&.Elements>\\
+    struct rewrap<NttpTemplateTypeList<Container>, List<__VA_ARGS__>, Elements\&.\&.\&.> { using type = typename append<TypeList<Container<__VA_ARGS__>>, typename rewrap<NttpTemplateTypeList<Container>, Elements\&.\&.\&.>::type>::type; };\\
+    template<template <typename\&.\&.\&.> class Final, template<INTERNAL_CATCH_REMOVE_PARENS(signature)> class\&.\&.\&.Containers, typename\&.\&.\&.Types>\\
+    struct create<Final, NttpTemplateTypeList<Containers\&.\&.\&.>, TypeList<Types\&.\&.\&.>> { using type = typename append<Final<>, typename rewrap<NttpTemplateTypeList<Containers>, Types\&.\&.\&.>::type\&.\&.\&.>::type; };
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NTTP_GEN( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL(__VA_ARGS__, INTERNAL_CATCH_NTTP_1(__VA_ARGS__), INTERNAL_CATCH_NTTP_1(__VA_ARGS__), INTERNAL_CATCH_NTTP_1(__VA_ARGS__), INTERNAL_CATCH_NTTP_1(__VA_ARGS__), INTERNAL_CATCH_NTTP_1(__VA_ARGS__), INTERNAL_CATCH_NTTP_1( __VA_ARGS__), INTERNAL_CATCH_NTTP_1( __VA_ARGS__), INTERNAL_CATCH_NTTP_1( __VA_ARGS__), INTERNAL_CATCH_NTTP_1( __VA_ARGS__),INTERNAL_CATCH_NTTP_1( __VA_ARGS__), INTERNAL_CATCH_NTTP_0)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NTTP_REG_GEN( TestFunc,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER, INTERNAL_CATCH_NTTP_REGISTER0, INTERNAL_CATCH_NTTP_REGISTER0)(TestFunc, __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NTTP_REG_METHOD_GEN( TestName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD, INTERNAL_CATCH_NTTP_REGISTER_METHOD0, INTERNAL_CATCH_NTTP_REGISTER_METHOD0)(TestName, __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NTTP_REGISTER( TestFunc,  signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    void reg_test(Nttp<__VA_ARGS__>, Catch::NameAndTags nameAndTags)\\
+    {\\
+        Catch::AutoReg( Catch::makeTestInvoker(&TestFunc<__VA_ARGS__>), CATCH_INTERNAL_LINEINFO, Catch::StringRef(), nameAndTags);\\
+    }
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NTTP_REGISTER0( TestFunc,  signature)"
+\fBValue:\fP
+.nf
+    template<typename Type>\\
+    void reg_test(TypeList<Type>, Catch::NameAndTags nameAndTags)\\
+    {\\
+        Catch::AutoReg( Catch::makeTestInvoker(&TestFunc<Type>), CATCH_INTERNAL_LINEINFO, Catch::StringRef(), nameAndTags);\\
+    }
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NTTP_REGISTER_METHOD( TestName,  signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<INTERNAL_CATCH_REMOVE_PARENS(signature)>\\
+    void reg_test(Nttp<__VA_ARGS__>, Catch::StringRef className, Catch::NameAndTags nameAndTags)\\
+    {\\
+        Catch::AutoReg( Catch::makeTestInvoker(&TestName<__VA_ARGS__>::test), CATCH_INTERNAL_LINEINFO, className, nameAndTags);\\
+    }
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_NTTP_REGISTER_METHOD0( TestName,  signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    template<typename Type>\\
+    void reg_test(TypeList<Type>, Catch::StringRef className, Catch::NameAndTags nameAndTags)\\
+    {\\
+        Catch::AutoReg( Catch::makeTestInvoker(&TestName<Type>::test), CATCH_INTERNAL_LINEINFO, className, nameAndTags);\\
+    }
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REACT( handler)"
+\fBValue:\fP
+.nf
+handler\&.complete();
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REGISTER_ENUM( enumName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+namespace Catch { \\
+    template<> struct StringMaker<enumName> { \\
+        static std::string convert( enumName value ) { \\
+            static const auto& enumInfo = ::Catch::getMutableRegistryHub()\&.getMutableEnumValuesRegistry()\&.registerEnum( #enumName, #__VA_ARGS__, { __VA_ARGS__ } ); \\
+            return static_cast<std::string>(enumInfo\&.lookup( static_cast<int>( value ) )); \\
+        } \\
+    }; \\
+}
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REGISTER_TESTCASE( Function,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        Catch::AutoReg INTERNAL_CATCH_UNIQUE_NAME( autoRegistrar )( Catch::makeTestInvoker( Function ), CATCH_INTERNAL_LINEINFO, Catch::StringRef(), Catch::NameAndTags{ __VA_ARGS__ } ); /* NOLINT */ \\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_EXPAND1(INTERNAL_CATCH_DEF __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_10_ARG( _0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8,  _9)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_9_ARG(_1, _2, _3, _4, _5, _6, _7, _8, _9)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_11_ARG( _0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8,  _9,  _10)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_10_ARG(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_1_ARG( _0)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_2_ARG( _0,  _1)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_1_ARG(_1)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_3_ARG( _0,  _1,  _2)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_2_ARG(_1, _2)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_4_ARG( _0,  _1,  _2,  _3)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_3_ARG(_1, _2, _3)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_5_ARG( _0,  _1,  _2,  _3,  _4)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_4_ARG(_1, _2, _3, _4)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_6_ARG( _0,  _1,  _2,  _3,  _4,  _5)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_5_ARG(_1, _2, _3, _4, _5)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_7_ARG( _0,  _1,  _2,  _3,  _4,  _5,  _6)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_6_ARG(_1, _2, _3, _4, _5, _6)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_8_ARG( _0,  _1,  _2,  _3,  _4,  _5,  _6,  _7)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_7_ARG(_1, _2, _3, _4, _5, _6, _7)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_9_ARG( _0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REMOVE_PARENS(_0), INTERNAL_CATCH_REMOVE_PARENS_8_ARG(_1, _2, _3, _4, _5, _6, _7, _8)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_REMOVE_PARENS_GEN( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_VA_NARGS_IMPL(__VA_ARGS__, INTERNAL_CATCH_REMOVE_PARENS_11_ARG,INTERNAL_CATCH_REMOVE_PARENS_10_ARG,INTERNAL_CATCH_REMOVE_PARENS_9_ARG,INTERNAL_CATCH_REMOVE_PARENS_8_ARG,INTERNAL_CATCH_REMOVE_PARENS_7_ARG,INTERNAL_CATCH_REMOVE_PARENS_6_ARG,INTERNAL_CATCH_REMOVE_PARENS_5_ARG,INTERNAL_CATCH_REMOVE_PARENS_4_ARG,INTERNAL_CATCH_REMOVE_PARENS_3_ARG,INTERNAL_CATCH_REMOVE_PARENS_2_ARG,INTERNAL_CATCH_REMOVE_PARENS_1_ARG)(__VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_SECTION( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+    CATCH_INTERNAL_SUPPRESS_UNUSED_WARNINGS \\
+    if( Catch::Section const& INTERNAL_CATCH_UNIQUE_NAME( catch_internal_Section ) = Catch::SectionInfo( CATCH_INTERNAL_LINEINFO, __VA_ARGS__ ) ) \\
+    CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_STRINGIZE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_STRINGIZE2(__VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_STRINGIZE2( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+#__VA_ARGS__
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS( param)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_STRINGIZE(INTERNAL_CATCH_REMOVE_PARENS(param))
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE( Name,  Tags,  TmplList)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), Name, Tags, TmplList )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_2( TestName,  TestFunc,  Name,  Tags,  TmplList)"
+\fBValue:\fP
+.nf
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        CATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS \\
+        template<typename TestType> static void TestFunc();       \\
+        namespace {\\
+        namespace INTERNAL_CATCH_MAKE_NAMESPACE(TestName){\\
+        INTERNAL_CATCH_TYPE_GEN\\
+        template<typename\&.\&.\&. Types>                               \\
+        struct TestName {                                         \\
+            void reg_tests() {                                          \\
+                int index = 0;                                    \\
+                using expander = int[];                           \\
+                (void)expander{(Catch::AutoReg( Catch::makeTestInvoker( &TestFunc<Types> ), CATCH_INTERNAL_LINEINFO, Catch::StringRef(), Catch::NameAndTags{ Name " \- " + std::string(INTERNAL_CATCH_STRINGIZE(TmplList)) + " \- " + std::to_string(index), Tags } ), index++)\&.\&.\&. };/* NOLINT */\\
+            }                                                     \\
+        };\\
+        static int INTERNAL_CATCH_UNIQUE_NAME( globalRegistrar ) = [](){ \\
+                using TestInit = typename convert<TestName, TmplList>::type; \\
+                TestInit t;                                           \\
+                t\&.reg_tests();                                        \\
+                return 0;                                             \\
+            }();                                                      \\
+        }}\\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION                       \\
+        template<typename TestType>                                   \\
+        static void TestFunc()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_METHOD( ClassName,  Name,  Tags,  TmplList)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), ClassName, Name, Tags, TmplList )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_METHOD_2( TestNameClass,  TestName,  ClassName,  Name,  Tags,  TmplList)"
+\fBValue:\fP
+.nf
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        CATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS \\
+        template<typename TestType> \\
+        struct TestName : INTERNAL_CATCH_REMOVE_PARENS(ClassName <TestType>) { \\
+            void test();\\
+        };\\
+        namespace {\\
+        namespace INTERNAL_CATCH_MAKE_NAMESPACE(TestName){ \\
+            INTERNAL_CATCH_TYPE_GEN\\
+            template<typename\&.\&.\&.Types>\\
+            struct TestNameClass{\\
+                void reg_tests(){\\
+                    int index = 0;\\
+                    using expander = int[];\\
+                    (void)expander{(Catch::AutoReg( Catch::makeTestInvoker( &TestName<Types>::test ), CATCH_INTERNAL_LINEINFO, #ClassName, Catch::NameAndTags{ Name " \- " + std::string(INTERNAL_CATCH_STRINGIZE(TmplList)) + " \- " + std::to_string(index), Tags } ), index++)\&.\&.\&. };/* NOLINT */ \\
+                }\\
+            };\\
+            static int INTERNAL_CATCH_UNIQUE_NAME( globalRegistrar ) = [](){\\
+                using TestInit = typename convert<TestNameClass, TmplList>::type;\\
+                TestInit t;\\
+                t\&.reg_tests();\\
+                return 0;\\
+            }(); \\
+        }}\\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \\
+        template<typename TestType> \\
+        void TestName<TestType>::test()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE( Name,  Tags,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2(INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), Name, Tags, typename T,__VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2( TestName,  TestFuncName,  Name,  Tags,  Signature,  TmplTypes,  TypesList)"
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD( ClassName,  Name,  Tags,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), ClassName, Name, Tags, typename T, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2( TestNameClass,  TestName,  ClassName,  Name,  Tags,  Signature,  TmplTypes,  TypesList)"
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG( ClassName,  Name,  Tags,  Signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), ClassName, Name, Tags, Signature, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_SIG( Name,  Tags,  Signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2(INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), Name, Tags, Signature, __VA_ARGS__)
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_TEST_CASE( Name,  Tags,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_TEST_CASE_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), Name, Tags, typename TestType, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_2( TestName,  TestFunc,  Name,  Tags,  Signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        CATCH_INTERNAL_SUPPRESS_ZERO_VARIADIC_WARNINGS \\
+        CATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS \\
+        INTERNAL_CATCH_DECLARE_SIG_TEST(TestFunc, INTERNAL_CATCH_REMOVE_PARENS(Signature));\\
+        namespace {\\
+        namespace INTERNAL_CATCH_MAKE_NAMESPACE(TestName){\\
+            INTERNAL_CATCH_TYPE_GEN\\
+            INTERNAL_CATCH_NTTP_GEN(INTERNAL_CATCH_REMOVE_PARENS(Signature))\\
+            INTERNAL_CATCH_NTTP_REG_GEN(TestFunc,INTERNAL_CATCH_REMOVE_PARENS(Signature))\\
+            template<typename\&.\&.\&.Types> \\
+            struct TestName{\\
+                TestName(){\\
+                    int index = 0;                                    \\
+                    constexpr char const* tmpl_types[] = {CATCH_REC_LIST(INTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS, __VA_ARGS__)};\\
+                    using expander = int[];\\
+                    (void)expander{(reg_test(Types{}, Catch::NameAndTags{ Name " \- " + std::string(tmpl_types[index]), Tags } ), index++)\&.\&.\&. };/* NOLINT */ \\
+                }\\
+            };\\
+            static int INTERNAL_CATCH_UNIQUE_NAME( globalRegistrar ) = [](){\\
+            TestName<INTERNAL_CATCH_MAKE_TYPE_LISTS_FROM_TYPES(__VA_ARGS__)>();\\
+            return 0;\\
+        }();\\
+        }\\
+        }\\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \\
+        INTERNAL_CATCH_DEFINE_SIG_TEST(TestFunc,INTERNAL_CATCH_REMOVE_PARENS(Signature))
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD( ClassName,  Name,  Tags,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_C_L_A_S_S_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ) , ClassName, Name, Tags, typename T, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2( TestNameClass,  TestName,  ClassName,  Name,  Tags,  Signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        CATCH_INTERNAL_SUPPRESS_ZERO_VARIADIC_WARNINGS \\
+        CATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS \\
+        namespace {\\
+        namespace INTERNAL_CATCH_MAKE_NAMESPACE(TestName){ \\
+            INTERNAL_CATCH_TYPE_GEN\\
+            INTERNAL_CATCH_NTTP_GEN(INTERNAL_CATCH_REMOVE_PARENS(Signature))\\
+            INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD(TestName, ClassName, INTERNAL_CATCH_REMOVE_PARENS(Signature));\\
+            INTERNAL_CATCH_NTTP_REG_METHOD_GEN(TestName, INTERNAL_CATCH_REMOVE_PARENS(Signature))\\
+            template<typename\&.\&.\&.Types> \\
+            struct TestNameClass{\\
+                TestNameClass(){\\
+                    int index = 0;                                    \\
+                    constexpr char const* tmpl_types[] = {CATCH_REC_LIST(INTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS, __VA_ARGS__)};\\
+                    using expander = int[];\\
+                    (void)expander{(reg_test(Types{}, #ClassName, Catch::NameAndTags{ Name " \- " + std::string(tmpl_types[index]), Tags } ), index++)\&.\&.\&. };/* NOLINT */ \\
+                }\\
+            };\\
+            static int INTERNAL_CATCH_UNIQUE_NAME( globalRegistrar ) = [](){\\
+                TestNameClass<INTERNAL_CATCH_MAKE_TYPE_LISTS_FROM_TYPES(__VA_ARGS__)>();\\
+                return 0;\\
+        }();\\
+        }\\
+        }\\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \\
+        INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD(TestName, INTERNAL_CATCH_REMOVE_PARENS(Signature))
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_SIG( ClassName,  Name,  Tags,  Signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_C_L_A_S_S_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ) , ClassName, Name, Tags, Signature, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG( Name,  Tags,  Signature,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEMPLATE_TEST_CASE_2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_ ), INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_M_P_L_A_T_E_T_E_S_T_F_U_N_C_ ), Name, Tags, Signature, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEST( macroName,  resultDisposition,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    do { \\
+        CATCH_INTERNAL_IGNORE_BUT_WARN(__VA_ARGS__); \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, CATCH_INTERNAL_STRINGIFY(__VA_ARGS__), resultDisposition ); \\
+        INTERNAL_CATCH_TRY { \\
+            CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+            CATCH_INTERNAL_SUPPRESS_PARENTHESES_WARNINGS \\
+            catchAssertionHandler\&.handleExpr( Catch::Decomposer() <= __VA_ARGS__ ); \\
+            CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \\
+        } INTERNAL_CATCH_CATCH( catchAssertionHandler ) \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( (void)0, (false) && static_cast<bool>( !!(__VA_ARGS__) ) )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEST_CASE_METHOD( ClassName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TEST_CASE_METHOD2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_S_T_ ), ClassName, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TEST_CASE_METHOD2( TestName,  ClassName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        namespace{ \\
+            struct TestName : INTERNAL_CATCH_REMOVE_PARENS(ClassName) { \\
+                void test(); \\
+            }; \\
+            Catch::AutoReg INTERNAL_CATCH_UNIQUE_NAME( autoRegistrar ) ( Catch::makeTestInvoker( &TestName::test ), CATCH_INTERNAL_LINEINFO, #ClassName, Catch::NameAndTags{ __VA_ARGS__ } ); /* NOLINT */ \\
+        } \\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \\
+        void TestName::test()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TESTCASE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        INTERNAL_CATCH_TESTCASE2( INTERNAL_CATCH_UNIQUE_NAME( C_A_T_C_H_T_E_S_T_ ), __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TESTCASE2( TestName,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+        static void TestName(); \\
+        CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+        CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+        namespace{ Catch::AutoReg INTERNAL_CATCH_UNIQUE_NAME( autoRegistrar )( Catch::makeTestInvoker( &TestName ), CATCH_INTERNAL_LINEINFO, Catch::StringRef(), Catch::NameAndTags{ __VA_ARGS__ } ); } /* NOLINT */ \\
+        CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \\
+        static void TestName()
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_THROWS( macroName,  resultDisposition,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    do { \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, CATCH_INTERNAL_STRINGIFY(__VA_ARGS__), resultDisposition); \\
+        if( catchAssertionHandler\&.allowThrows() ) \\
+            try { \\
+                static_cast<void>(__VA_ARGS__); \\
+                catchAssertionHandler\&.handleUnexpectedExceptionNotThrown(); \\
+            } \\
+            catch( \&.\&.\&. ) { \\
+                catchAssertionHandler\&.handleExceptionThrownAsExpected(); \\
+            } \\
+        else \\
+            catchAssertionHandler\&.handleThrowingCallSkipped(); \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( false )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_THROWS_AS( macroName,  exceptionType,  resultDisposition,  expr)"
+\fBValue:\fP
+.nf
+    do { \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, CATCH_INTERNAL_STRINGIFY(expr) ", " CATCH_INTERNAL_STRINGIFY(exceptionType), resultDisposition ); \\
+        if( catchAssertionHandler\&.allowThrows() ) \\
+            try { \\
+                static_cast<void>(expr); \\
+                catchAssertionHandler\&.handleUnexpectedExceptionNotThrown(); \\
+            } \\
+            catch( exceptionType const& ) { \\
+                catchAssertionHandler\&.handleExceptionThrownAsExpected(); \\
+            } \\
+            catch( \&.\&.\&. ) { \\
+                catchAssertionHandler\&.handleUnexpectedInflightException(); \\
+            } \\
+        else \\
+            catchAssertionHandler\&.handleThrowingCallSkipped(); \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( false )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_THROWS_MATCHES( macroName,  exceptionType,  resultDisposition,  matcher,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    do { \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, CATCH_INTERNAL_STRINGIFY(__VA_ARGS__) ", " CATCH_INTERNAL_STRINGIFY(exceptionType) ", " CATCH_INTERNAL_STRINGIFY(matcher), resultDisposition ); \\
+        if( catchAssertionHandler\&.allowThrows() ) \\
+            try { \\
+                static_cast<void>(__VA_ARGS__ ); \\
+                catchAssertionHandler\&.handleUnexpectedExceptionNotThrown(); \\
+            } \\
+            catch( exceptionType const& ex ) { \\
+                catchAssertionHandler\&.handleExpr( Catch::makeMatchExpr( ex, matcher, #matcher##_catch_sr ) ); \\
+            } \\
+            catch( \&.\&.\&. ) { \\
+                catchAssertionHandler\&.handleUnexpectedInflightException(); \\
+            } \\
+        else \\
+            catchAssertionHandler\&.handleThrowingCallSkipped(); \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( false )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_THROWS_STR_MATCHES( macroName,  resultDisposition,  matcher,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+    do { \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, CATCH_INTERNAL_STRINGIFY(__VA_ARGS__) ", " CATCH_INTERNAL_STRINGIFY(matcher), resultDisposition ); \\
+        if( catchAssertionHandler\&.allowThrows() ) \\
+            try { \\
+                static_cast<void>(__VA_ARGS__); \\
+                catchAssertionHandler\&.handleUnexpectedExceptionNotThrown(); \\
+            } \\
+            catch( \&.\&.\&. ) { \\
+                Catch::handleExceptionMatchExpr( catchAssertionHandler, matcher, #matcher##_catch_sr ); \\
+            } \\
+        else \\
+            catchAssertionHandler\&.handleThrowingCallSkipped(); \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( false )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TRANSLATE_EXCEPTION( signature)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TRANSLATE_EXCEPTION2( INTERNAL_CATCH_UNIQUE_NAME( catch_internal_ExceptionTranslator ), signature )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TRANSLATE_EXCEPTION2( translatorName,  signature)"
+\fBValue:\fP
+.nf
+    static std::string translatorName( signature ); \\
+    CATCH_INTERNAL_START_WARNINGS_SUPPRESSION \\
+    CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS \\
+    namespace{ Catch::ExceptionTranslatorRegistrar INTERNAL_CATCH_UNIQUE_NAME( catch_internal_ExceptionRegistrar )( &translatorName ); } \\
+    CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION \\
+    static std::string translatorName( signature )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_TRY"
+
+.SS "#define INTERNAL_CATCH_TYPE_GEN"
+
+.SS "#define INTERNAL_CATCH_UNIQUE_NAME( name)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_UNIQUE_NAME_LINE( name, __COUNTER__ )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_UNIQUE_NAME_LINE( name,  line)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_UNIQUE_NAME_LINE2( name, line )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_UNIQUE_NAME_LINE2( name,  line)"
+\fBValue:\fP
+.nf
+name##line
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_UNSCOPED_INFO( macroName,  log)"
+\fBValue:\fP
+.nf
+    Catch::getResultCapture()\&.emplaceUnscopedMessage( Catch::MessageBuilder( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, Catch::ResultWas::Info ) << log )
+.PP
+.fi
+
+.SS "#define INTERNAL_CATCH_VA_NARGS_IMPL( _0,  _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8,  _9,  _10,  N,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+N
+.PP
+.fi
+
+.SS "#define INTERNAL_CHECK_THAT( macroName,  matcher,  resultDisposition,  arg)"
+\fBValue:\fP
+.nf
+    do { \\
+        Catch::AssertionHandler catchAssertionHandler( macroName##_catch_sr, CATCH_INTERNAL_LINEINFO, CATCH_INTERNAL_STRINGIFY(arg) ", " CATCH_INTERNAL_STRINGIFY(matcher), resultDisposition ); \\
+        INTERNAL_CATCH_TRY { \\
+            catchAssertionHandler\&.handleExpr( Catch::makeMatchExpr( arg, matcher, #matcher##_catch_sr ) ); \\
+        } INTERNAL_CATCH_CATCH( catchAssertionHandler ) \\
+        INTERNAL_CATCH_REACT( catchAssertionHandler ) \\
+    } while( false )
+.PP
+.fi
+
+.SS "#define METHOD_AS_TEST_CASE( method,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_METHOD_AS_TEST_CASE( method, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define REGISTER_TEST_CASE( Function,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_REGISTER_TESTCASE( Function, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define REQUIRE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEST( "REQUIRE", Catch::ResultDisposition::Normal, __VA_ARGS__  )
+.PP
+.fi
+
+.SS "#define REQUIRE_FALSE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEST( "REQUIRE_FALSE", Catch::ResultDisposition::Normal | Catch::ResultDisposition::FalseTest, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define REQUIRE_NOTHROW( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_NO_THROW( "REQUIRE_NOTHROW", Catch::ResultDisposition::Normal, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define REQUIRE_THAT( arg,  matcher)"
+\fBValue:\fP
+.nf
+INTERNAL_CHECK_THAT( "REQUIRE_THAT", matcher, Catch::ResultDisposition::Normal, arg )
+.PP
+.fi
+
+.SS "#define REQUIRE_THROWS( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS( "REQUIRE_THROWS", Catch::ResultDisposition::Normal, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define REQUIRE_THROWS_AS( expr,  exceptionType)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS_AS( "REQUIRE_THROWS_AS", exceptionType, Catch::ResultDisposition::Normal, expr )
+.PP
+.fi
+
+.SS "#define REQUIRE_THROWS_MATCHES( expr,  exceptionType,  matcher)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS_MATCHES( "REQUIRE_THROWS_MATCHES", exceptionType, Catch::ResultDisposition::Normal, matcher, expr )
+.PP
+.fi
+
+.SS "#define REQUIRE_THROWS_WITH( expr,  matcher)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_THROWS_STR_MATCHES( "REQUIRE_THROWS_WITH", Catch::ResultDisposition::Normal, matcher, expr )
+.PP
+.fi
+
+.SS "#define SCENARIO( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+TEST_CASE( "Scenario: " __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define SCENARIO_METHOD( className,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEST_CASE_METHOD( className, "Scenario: " __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define SECTION( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_SECTION( __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define STATIC_REQUIRE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+static_assert(   __VA_ARGS__,  #__VA_ARGS__ ); SUCCEED( #__VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define STATIC_REQUIRE_FALSE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+static_assert( !(__VA_ARGS__), "!(" #__VA_ARGS__ ")" ); SUCCEED( "!(" #__VA_ARGS__ ")" )
+.PP
+.fi
+
+.SS "#define SUCCEED( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_MSG( "SUCCEED", Catch::ResultWas::Ok, Catch::ResultDisposition::ContinueOnFailure, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_LIST_TEST_CASE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE(__VA_ARGS__)
+.PP
+.fi
+
+.SS "#define TEMPLATE_LIST_TEST_CASE_METHOD( className,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_METHOD( className, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_PRODUCT_TEST_CASE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE( __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_PRODUCT_TEST_CASE_METHOD( className,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD( className, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG( className,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG( className, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_PRODUCT_TEST_CASE_SIG( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_SIG( __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_TEST_CASE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_TEST_CASE( __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_TEST_CASE_METHOD( className,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD( className, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_TEST_CASE_METHOD_SIG( className,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_SIG( className, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEMPLATE_TEST_CASE_SIG( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG( __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEST_CASE( \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TESTCASE( __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define TEST_CASE_METHOD( className,  \&.\&.\&.)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_TEST_CASE_METHOD( className, __VA_ARGS__ )
+.PP
+.fi
+
+.SS "#define THEN( desc)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DYNAMIC_SECTION( "     Then: " << desc )
+.PP
+.fi
+
+.SS "#define UNSCOPED_INFO( msg)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_UNSCOPED_INFO( "UNSCOPED_INFO", msg )
+.PP
+.fi
+
+.SS "#define WARN( msg)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_MSG( "WARN", Catch::ResultWas::Warning, Catch::ResultDisposition::ContinueOnFailure, msg )
+.PP
+.fi
+
+.SS "#define WHEN( desc)"
+\fBValue:\fP
+.nf
+INTERNAL_CATCH_DYNAMIC_SECTION( "     When: " << desc )
+.PP
+.fi
+
+.SH "Function Documentation"
+.PP 
+.SS "auto operator''_catch_sr (char const * rawChars, std::size_t size) \-> \fBCatch::StringRef\fP \fR [constexpr]\fP, \fR [noexcept]\fP"
+
+.SS "std::ostream & operator<< (std::ostream & , \fBCatch_global_namespace_dummy\fP )"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

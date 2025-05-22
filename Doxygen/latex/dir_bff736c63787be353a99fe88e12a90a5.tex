@@ -1,0 +1,198 @@
+\doxysection{v1.5 Directory Reference}
+\hypertarget{dir_bff736c63787be353a99fe88e12a90a5}{}\label{dir_bff736c63787be353a99fe88e12a90a5}\index{v1.5 Directory Reference@{v1.5 Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_66dd160226e7aa93a264d290d2954890}{vectors\+\_\+testing}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{funkcijos_8cpp}{funkcijos.\+cpp}}
+\item 
+file \mbox{\hyperlink{funkcijos_8h}{funkcijos.\+h}}
+\item 
+file \mbox{\hyperlink{main_8cpp}{main.\+cpp}}
+\item 
+file \mbox{\hyperlink{mano__lib_8h}{mano\+\_\+lib.\+h}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{README.md_autotoc_md5}{}\doxysubsection{\texorpdfstring{Apie programą}{Apie programą}}\label{README.md_autotoc_md5}
+Ši programa skirta studentų pažymių ir galutinio įvertinimo valdymui. Sistema leidžia įvesti, generuoti, skaityti iš failų bei apdoroti studentų duomenis, apskaičiuoti galutinius įvertinimus ir rūšiuoti studentus pagal įvairius kriterijus.\hypertarget{README.md_autotoc_md6}{}\doxysubsection{\texorpdfstring{Funkcionalumas}{Funkcionalumas}}\label{README.md_autotoc_md6}
+Duomenų įvedimas\+: galimybė rankiniu būdu įvesti studentų vardus, pavardes ir pažymius Atsitiktinis generavimas\+: automatinis studentų ir jų pažymių generavimas Duomenų nuskaitymas\+: efektyvus didelių duomenų failų nuskaitymas Duomenų išsaugojimas\+: rezultatų išsaugojimas į tekstinius failus Skaičiavimai\+: galutinio balo skaičiavimas naudojant vidurkį arba medianą Rūšiavimas\+: studentų rūšiavimas pagal vardą, pavardę ar galutinį balą Grupavimas\+: studentų skirstymas į "{}kietiakus"{} (≥5) ir "{}vargšiukus"{} (\texorpdfstring{$<$}{<}5) Efektyvumo testavimas\+: programos veikimo greičio matavimas ir optimizavimas
+
+\DoxyHorRuler{0}
+ \hypertarget{README.md_autotoc_md8}{}\doxysubsection{\texorpdfstring{Diegimas ir paleidimas}{Diegimas ir paleidimas}}\label{README.md_autotoc_md8}
+
+\begin{DoxyEnumerate}
+\item Klonuokite repozitoriją\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/TitasSp/Vector/tree/v3.0.git}
+
+\end{DoxyCode}
+
+\item Pereikite į programos direktoriją\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ C:\(\backslash\)"{}projekto\ direktorija"{}}
+
+\end{DoxyCode}
+
+\item Sukompiliuokite programą\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{g++\ -\/o\ program\ main.cpp\ funkcijos.cpp\ -\/std=c++17}
+
+\end{DoxyCode}
+
+\item Paleiskite programą\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./programa}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{README.md_autotoc_md9}{}\doxysubsection{\texorpdfstring{Arba naudojant CMake}{Arba naudojant CMake}}\label{README.md_autotoc_md9}
+
+\begin{DoxyEnumerate}
+\item Atidarykite projekto direktoriją terminale\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ C:\(\backslash\)"{}projekto\ direktorija"{}}
+
+\end{DoxyCode}
+
+\item Sukurkite build direktoriją\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build}
+
+\end{DoxyCode}
+
+\item Pereikite į build direktoriją\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ build}
+
+\end{DoxyCode}
+
+\item Paleiskite CMake, norint sugeneruoti build failus\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..}
+
+\end{DoxyCode}
+
+\item Kompiliuokite projekta\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/-\/build\ .}
+
+\end{DoxyCode}
+
+\item Paleiskite faila\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.\(\backslash\)ObjCppProject.exe}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{README.md_autotoc_md10}{}\doxysubsection{\texorpdfstring{Naudojimas}{Naudojimas}}\label{README.md_autotoc_md10}
+Programa naudojama per terminalą. Paleidus programą, sekite pateikiamus nurodymus\+:
+
+Pasirinkite konteinerio tipą (vector, deque arba list) Pasirinkite duomenų įvedimo būdą\+:
+
+Įvesti duomenis rankiniu būdu Generuoti pažymius atsitiktinai Generuoti ir pažymius, ir studentų vardus/pavardes Nuskaityti duomenis iš failo
+
+Pasirinkite skaičiavimo būdą (vidurkis arba mediana) Pasirinkite rezultatų išvesties tipą (konsolė arba failas) Pasirinkite rūšiavimo būdą\hypertarget{README.md_autotoc_md11}{}\doxysubsection{\texorpdfstring{Releasai}{Releasai}}\label{README.md_autotoc_md11}
+\hypertarget{README.md_autotoc_md12}{}\doxysubsection{\texorpdfstring{🔹 v1.\+5}{🔹 v1.\+5}}\label{README.md_autotoc_md12}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{class_studentas}{Studentas}} klasė paveldi iš abstrakčios {\ttfamily Žmogus} klasės.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md14}{}\doxysubsection{\texorpdfstring{🔹 v1.\+2}{🔹 v1.\+2}}\label{README.md_autotoc_md14}
+
+\begin{DoxyItemize}
+\item Įdiegti „\+Rule of Five“ metodai klasei {\ttfamily \doxylink{class_studentas}{Studentas}}.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md16}{}\doxysubsection{\texorpdfstring{🔹 v1.\+1}{🔹 v1.\+1}}\label{README.md_autotoc_md16}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{class_studentas}{Studentas}} perdarytas iš struktūros į klasę.
+\item Pridėti getteriai ir setteriai.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{README.md_autotoc_md18}{}\doxysubsection{\texorpdfstring{🔹 v1.\+0}{🔹 v1.\+0}}\label{README.md_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Palaikomi {\ttfamily vector}, {\ttfamily list}, {\ttfamily deque} konteineriai.
+\item Pridėtas {\ttfamily CMake\+Lists.\+txt} diegimui.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+ \hypertarget{README.md_autotoc_md20}{}\doxysubsection{\texorpdfstring{Testavimo sistemos parametrai\+:}{Testavimo sistemos parametrai\+:}}\label{README.md_autotoc_md20}
+Processor 12th Gen Intel(\+R) Core(\+TM) i5-\/1235U, 1300 Mhz, 10 Core(s), 12 Logical Processor(s)
+
+Installed Physical Memory (RAM) 16.\+0 GB
+
+SSD 512 GB NVMe Micron\+\_\+2400\+\_\+\+MTFDKBA512\+QFM
+
+\DoxyHorRuler{0}
+ \hypertarget{README.md_autotoc_md22}{}\doxysubsection{\texorpdfstring{Testai su klasemis (naudojant vector)}{Testai su klasemis (naudojant vector)}}\label{README.md_autotoc_md22}
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 3689 ms Studentu rikiavimas uztruko\+: 158 ms Studentu skaidymas ir irasymas i failus uztruko\+: 2043 ms Is viso uztruko\+: 8654 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 20653 ms Studentu rikiavimas uztruko\+: 919 ms Studentu skaidymas ir irasymas i failus uztruko\+: 14782 ms Is viso uztruko\+: 42303 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 3414 ms Studentu rikiavimas uztruko\+: 157 ms Studentu skaidymas ir irasymas i failus uztruko\+: 2561 ms Is viso uztruko\+: 7009 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 21611 ms Studentu rikiavimas uztruko\+: 904 ms Studentu skaidymas ir irasymas i failus uztruko\+: 14855 ms Is viso uztruko\+: 42616 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 3829 ms Studentu rikiavimas uztruko\+: 187 ms Studentu skaidymas ir irasymas i failus uztruko\+: 2722 ms Is viso uztruko\+: 7787 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 19429 ms Studentu rikiavimas uztruko\+: 820 ms Studentu skaidymas ir irasymas i failus uztruko\+: 15109 ms Is viso uztruko\+: 40092 ms
+
+\DoxyHorRuler{0}
+ \hypertarget{README.md_autotoc_md24}{}\doxysubsection{\texorpdfstring{Testai su strukturomis (naudojant vector)}{Testai su strukturomis (naudojant vector)}}\label{README.md_autotoc_md24}
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 3392 ms Studentu rikiavimas uztruko\+: 159 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1433 ms Is viso uztruko\+: 6611 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 19578 ms Studentu rikiavimas uztruko\+: 783 ms Studentu skaidymas ir irasymas i failus uztruko\+: 8246 ms Is viso uztruko\+: 36521 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 3958 ms Studentu rikiavimas uztruko\+: 194 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1645 ms Is viso uztruko\+: 7404 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 20860 ms Studentu rikiavimas uztruko\+: 768 ms Studentu skaidymas ir irasymas i failus uztruko\+: 8065 ms Is viso uztruko\+: 37336 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 3283 ms Studentu rikiavimas uztruko\+: 133 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1328 ms Is viso uztruko\+: 6050 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 20787 ms Studentu rikiavimas uztruko\+: 938 ms Studentu skaidymas ir irasymas i failus uztruko\+: 8911 ms Is viso uztruko\+: 38931 ms\hypertarget{README.md_autotoc_md25}{}\doxysubsection{\texorpdfstring{Flag testai\+:}{Flag testai\+:}}\label{README.md_autotoc_md25}
+\hypertarget{README.md_autotoc_md26}{}\doxysubsection{\texorpdfstring{O1 flag, .exe failo dydis\+: 309 KB}{O1 flag, .exe failo dydis\+: 309 KB}}\label{README.md_autotoc_md26}
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 261 ms Studentu rikiavimas uztruko\+: 31 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1184 ms Is viso uztruko\+: 3311 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1393 ms Studentu rikiavimas uztruko\+: 158 ms Studentu skaidymas ir irasymas i failus uztruko\+: 9316 ms Is viso uztruko\+: 13442 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 319 ms Studentu rikiavimas uztruko\+: 22 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1481 ms Is viso uztruko\+: 2275 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1406 ms Studentu rikiavimas uztruko\+: 180 ms Studentu skaidymas ir irasymas i failus uztruko\+: 9146 ms Is viso uztruko\+: 13562 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 238 ms Studentu rikiavimas uztruko\+: 22 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1150 ms Is viso uztruko\+: 1909 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1671 ms Studentu rikiavimas uztruko\+: 208 ms Studentu skaidymas ir irasymas i failus uztruko\+: 9555 ms Is viso uztruko\+: 15102 ms\hypertarget{README.md_autotoc_md27}{}\doxysubsection{\texorpdfstring{O2 flag, .exe failo dydis\+: 273 KB}{O2 flag, .exe failo dydis\+: 273 KB}}\label{README.md_autotoc_md27}
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 278 ms Studentu rikiavimas uztruko\+: 31 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1210 ms Is viso uztruko\+: 3395 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1385 ms Studentu rikiavimas uztruko\+: 217 ms Studentu skaidymas ir irasymas i failus uztruko\+: 9109 ms Is viso uztruko\+: 13341 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 239 ms Studentu rikiavimas uztruko\+: 31 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1452 ms Is viso uztruko\+: 2166 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1384 ms Studentu rikiavimas uztruko\+: 202 ms Studentu skaidymas ir irasymas i failus uztruko\+: 8809 ms Is viso uztruko\+: 12908 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 247 ms Studentu rikiavimas uztruko\+: 33 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1376 ms Is viso uztruko\+: 2131 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1365 ms Studentu rikiavimas uztruko\+: 198 ms Studentu skaidymas ir irasymas i failus uztruko\+: 8973 ms Is viso uztruko\+: 13254 ms\hypertarget{README.md_autotoc_md28}{}\doxysubsection{\texorpdfstring{O3 flag, .exe failo dydis\+: 318 KB}{O3 flag, .exe failo dydis\+: 318 KB}}\label{README.md_autotoc_md28}
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 240 ms Studentu rikiavimas uztruko\+: 24 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1286 ms Is viso uztruko\+: 3045 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1463 ms Studentu rikiavimas uztruko\+: 293 ms Studentu skaidymas ir irasymas i failus uztruko\+: 9018 ms Is viso uztruko\+: 13703 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 251 ms Studentu rikiavimas uztruko\+: 24 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1298 ms Is viso uztruko\+: 2056 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1362 ms Studentu rikiavimas uztruko\+: 179 ms Studentu skaidymas ir irasymas i failus uztruko\+: 8984 ms Is viso uztruko\+: 13076 ms
+
+studentai100000.\+txt Studentu nuskaitymas is failo uztruko\+: 249 ms Studentu rikiavimas uztruko\+: 23 ms Studentu skaidymas ir irasymas i failus uztruko\+: 1282 ms Is viso uztruko\+: 2034 ms
+
+studentai1000000.\+txt Studentu nuskaitymas is failo uztruko\+: 1403 ms Studentu rikiavimas uztruko\+: 179 ms Studentu skaidymas ir irasymas i failus uztruko\+: 8881 ms Is viso uztruko\+: 13072 ms 

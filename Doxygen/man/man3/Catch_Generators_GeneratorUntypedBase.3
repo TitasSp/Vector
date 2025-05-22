@@ -1,0 +1,41 @@
+.TH "Catch::Generators::GeneratorUntypedBase" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::Generators::GeneratorUntypedBase
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherited by \fBCatch::Generators::IGenerator< std::vector< T > >\fP, \fBCatch::Generators::IGenerator< Float >\fP, \fBCatch::Generators::IGenerator< Integer >\fP, and \fBCatch::Generators::IGenerator< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGeneratorUntypedBase\fP ()=default"
+.br
+.ti -1c
+.RI "virtual \fB~GeneratorUntypedBase\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBnext\fP ()=0"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::Generators::GeneratorUntypedBase::GeneratorUntypedBase ()\fR [default]\fP"
+
+.SS "virtual Catch::Generators::GeneratorUntypedBase::~GeneratorUntypedBase ()\fR [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool Catch::Generators::GeneratorUntypedBase::next ()\fR [pure virtual]\fP"
+
+.PP
+Implemented in \fBCatch::Generators::ChunkGenerator< T >\fP, \fBCatch::Generators::FilterGenerator< T, Predicate >\fP, \fBCatch::Generators::FixedValuesGenerator< T >\fP, \fBCatch::Generators::Generators< T >\fP, \fBCatch::Generators::IteratorGenerator< T >\fP, \fBCatch::Generators::MapGenerator< T, U, Func >\fP, \fBCatch::Generators::RandomFloatingGenerator< Float >\fP, \fBCatch::Generators::RandomIntegerGenerator< Integer >\fP, \fBCatch::Generators::RangeGenerator< T >\fP, \fBCatch::Generators::RepeatGenerator< T >\fP, \fBCatch::Generators::SingleValueGenerator< T >\fP, and \fBCatch::Generators::TakeGenerator< T >\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

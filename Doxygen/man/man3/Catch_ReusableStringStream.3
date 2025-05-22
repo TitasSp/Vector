@@ -1,0 +1,49 @@
+.TH "Catch::ReusableStringStream" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::ReusableStringStream
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.PP
+Inherits \fBCatch::NonCopyable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReusableStringStream\fP ()"
+.br
+.ti -1c
+.RI "\fB~ReusableStringStream\fP ()"
+.br
+.ti -1c
+.RI "auto \fBstr\fP () const \-> std::string"
+.br
+.ti -1c
+.RI "template<typename T> auto \fBoperator<<\fP (T const &value) \-> \fBReusableStringStream\fP &"
+.br
+.ti -1c
+.RI "auto \fBget\fP () \-> std::ostream &"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Catch::ReusableStringStream::ReusableStringStream ()"
+
+.SS "Catch::ReusableStringStream::~ReusableStringStream ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "auto Catch::ReusableStringStream::get () \-> std::ostream& \fR [inline]\fP"
+
+.SS "template<typename T> auto Catch::ReusableStringStream::operator<< (T const & value) \-> \fBReusableStringStream\fP& \fR [inline]\fP"
+
+.SS "auto Catch::ReusableStringStream::str () const \->  std::string"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

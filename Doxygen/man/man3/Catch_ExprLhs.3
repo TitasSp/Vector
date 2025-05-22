@@ -1,0 +1,97 @@
+.TH "Catch::ExprLhs< LhsT >" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Catch::ExprLhs< LhsT >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <catch\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExprLhs\fP (LhsT lhs)"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator==\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "auto \fBoperator==\fP (bool rhs) \-> \fBBinaryExpr\fP< LhsT, bool > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator!=\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "auto \fBoperator!=\fP (bool rhs) \-> \fBBinaryExpr\fP< LhsT, bool > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator>\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator<\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator>=\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator<=\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator|\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator&\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator^\fP (RhsT const &rhs) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator&&\fP (RhsT const &) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "template<typename RhsT> auto \fBoperator||\fP (RhsT const &) \-> \fBBinaryExpr\fP< LhsT, RhsT const & > const"
+.br
+.ti -1c
+.RI "auto \fBmakeUnaryExpr\fP () const \-> \fBUnaryExpr\fP< LhsT >"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename LhsT> \fBCatch::ExprLhs\fP< LhsT >::ExprLhs (LhsT lhs)\fR [inline]\fP, \fR [explicit]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename LhsT> auto \fBCatch::ExprLhs\fP< LhsT >::makeUnaryExpr () const \-> \fBUnaryExpr\fP<LhsT> \fR [inline]\fP"
+
+.SS "template<typename LhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator!= (bool rhs) \-> \fBBinaryExpr\fP<LhsT, bool> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator!= (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator& (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator&& (RhsT const & ) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator< (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator<= (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator== (bool rhs) \-> \fBBinaryExpr\fP<LhsT, bool> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator== (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator> (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator>= (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator^ (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator| (RhsT const & rhs) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+.SS "template<typename LhsT> template<typename RhsT> auto \fBCatch::ExprLhs\fP< LhsT >::operator|| (RhsT const & ) \-> \fBBinaryExpr\fP<LhsT, RhsT const&> const \fR [inline]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Vector from the source code\&.

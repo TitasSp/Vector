@@ -1,0 +1,146 @@
+.TH "md__r_e_a_d_m_e" 3 "Version v3.0" "Vector" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- \fBVector\&.h\fP 
+.PP
+
+
+.PP
+Ši biblioteka pateikia universalią C++ šabloninę \fR\fBVector\fP\fP klasę, kuri imituoja STL \fRstd::vector\fP elgseną\&. Ji palaiko dinaminį dydžio valdymą, iteratorius, atminties rezervavimą, įterpimą, pašalinimą ir kt\&.
+.SH "Savybės"
+.PP
+.IP "\(bu" 2
+Dinamiškai augantis masyvas su rezervavimo galimybe
+.IP "\(bu" 2
+Pilnai palaikoma kopijavimo ir perkėlimo semantika
+.IP "\(bu" 2
+Iteratoriai ir reverse iteratoriai
+.IP "\(bu" 2
+Prieigos metodai: \fRat\fP, \fR[]\fP, \fRfront\fP, \fRback\fP, \fRdata\fP
+.IP "\(bu" 2
+Modifikavimo metodai: \fRinsert\fP, \fRerase\fP, \fRpush_back\fP, \fRpop_back\fP, \fRemplace\fP, \fRresize\fP, \fRclear\fP
+.IP "\(bu" 2
+Operatoriai: \fR==\fP, \fR!=\fP, \fR<\fP, \fR<=\fP, \fR>\fP, \fR>=\fP
+.IP "\(bu" 2
+Palaikomi šablonai, initializer list'ai ir range konstruktoriai
+.IP "\(bu" 2
+Atminties valdymas su \fRreserve\fP ir \fRshrink_to_fit\fP
+.PP
+.SH "Naudojimas"
+.PP
+.PP
+.nf
+#include "Vector\&.h"
+#include <iostream>
+
+int main() {
+    Vector<int> vec;
+
+    vec\&.push_back(10);
+    vec\&.push_back(20);
+    vec\&.push_back(30);
+
+    std::cout << "Vector size: " << vec\&.size() << "\\n";
+    std::cout << "First element: " << vec\&.front() << "\\n";
+    std::cout << "Last element: " << vec\&.back() << "\\n";
+
+    vec\&.pop_back();
+
+    for (auto val : vec) {
+        std::cout << val << " ";
+    }
+
+    return 0;
+}
+.fi
+.PP
+ 
+.SH "std::vector ir Vector greičio palyginimo lentelė:"
+.PP
+ 
+
+.PP
+.PP
+.nf
+std::vector reallocations with 100000000: 28
+Vector reallocations with 100000000: 28
+Testas 1
+studentai100000\&.txt
+Reading file: studentai100000\&.txt
+Studentu nuskaitymas is failo uztruko: 152 ms
+Total students read: 100000
+Studentu rikiavimas uztruko: 51 ms
+Studentu skaidymas ir irasymas i failus uztruko: 437 ms
+Is viso uztruko: 898 ms
+
+studentai1000000\&.txt
+Reading file: studentai1000000\&.txt
+Studentu nuskaitymas is failo uztruko: 902 ms
+Total students read: 600000
+Studentu rikiavimas uztruko: 389 ms
+Studentu skaidymas ir irasymas i failus uztruko: 2313 ms
+Is viso uztruko: 5065 ms
+
+studentai10000000\&.txt
+Reading file: studentai10000000\&.txt
+Studentu nuskaitymas is failo uztruko: 16171 ms
+Total students read: 10000000
+Studentu rikiavimas uztruko: 8631 ms
+Studentu skaidymas ir irasymas i failus uztruko: 48234 ms
+Is viso uztruko: 100677 ms
+
+
+Testas 2
+studentai100000\&.txt
+Reading file: studentai100000\&.txt
+Studentu nuskaitymas is failo uztruko: 186 ms
+Total students read: 100000
+Studentu rikiavimas uztruko: 59 ms
+Studentu skaidymas ir irasymas i failus uztruko: 524 ms
+Is viso uztruko: 1165 ms
+
+studentai1000000\&.txt
+Reading file: studentai1000000\&.txt
+Studentu nuskaitymas is failo uztruko: 1031 ms
+Total students read: 600000
+Studentu rikiavimas uztruko: 414 ms
+Studentu skaidymas ir irasymas i failus uztruko: 2825 ms
+Is viso uztruko: 5914 ms
+
+studentai10000000\&.txt
+Reading file: studentai10000000\&.txt
+Studentu nuskaitymas is failo uztruko: 18119 ms
+Total students read: 10000000
+Studentu rikiavimas uztruko: 9020 ms
+Studentu skaidymas ir irasymas i failus uztruko: 48570 ms
+Is viso uztruko: 103486 ms
+
+
+Testas 3
+studentai100000\&.txt
+Reading file: studentai100000\&.txt
+Studentu nuskaitymas is failo uztruko: 213 ms
+Total students read: 100000
+Studentu rikiavimas uztruko: 63 ms
+Studentu skaidymas ir irasymas i failus uztruko: 512 ms
+Is viso uztruko: 1130 ms
+
+studentai1000000\&.txt
+Reading file: studentai1000000\&.txt
+Studentu nuskaitymas is failo uztruko: 1099 ms
+Total students read: 600000
+Studentu rikiavimas uztruko: 418 ms
+Studentu skaidymas ir irasymas i failus uztruko: 3046 ms
+Is viso uztruko: 6155 ms
+
+studentai10000000\&.txt
+Reading file: studentai10000000\&.txt
+Studentu nuskaitymas is failo uztruko: 18393 ms
+Total students read: 10000000
+Studentu rikiavimas uztruko: 8674 ms
+Studentu skaidymas ir irasymas i failus uztruko: 48685 ms
+Is viso uztruko: 103587 ms
+.fi
+.PP
+ 
